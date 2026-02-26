@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #3b82f6;
+  --color-primary-glow: #60a5fa;
+  --color-accent-green: #10b981;
+  --color-accent-neon-green: #34d399;
+  --color-accent-red: #ef4444;
+  --color-background-base: #09090b;
+  --color-glass-surface: rgba(255, 255, 255, 0.03);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-glass-highlight: rgba(255, 255, 255, 0.1);
+
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --shadow-glow-blue: 0 0 40px -10px rgba(59, 130, 246, 0.5);
+  --shadow-glow-green: 0 0 40px -10px rgba(16, 185, 129, 0.4);
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* Custom utilities */
+.text-glow-hero {
+  text-shadow: 0 0 30px rgba(59, 130, 246, 0.3),
+    0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.glass-panel {
+  background: rgba(20, 20, 23, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  background-color: #09090b;
+  color: #e2e8f0;
+}
