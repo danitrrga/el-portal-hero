@@ -1,3 +1,5 @@
+import { LayoutDashboard, FlaskConical, History, Settings, CalendarDays, Check, Flame, Crosshair, TrendingUp } from "lucide-react";
+
 export default function DashboardPreview() {
     return (
         <div className="mt-20 relative rounded-xl border border-white/10 bg-[#0c0c0e]/60 backdrop-blur-xl shadow-glass p-2 lg:p-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 group hover:scale-[1.01] transition-transform duration-500">
@@ -13,22 +15,22 @@ export default function DashboardPreview() {
                     </div>
                     <div className="space-y-1">
                         <div className="px-3 py-2 bg-primary/10 border border-primary/20 text-primary-glow rounded-md flex items-center gap-3 cursor-pointer shadow-[0_0_10px_rgba(59,130,246,0.1)]">
-                            <span className="material-icons text-sm">dashboard</span>
+                            <LayoutDashboard size={14} />
                             <span className="hidden lg:inline text-sm font-medium">
                                 Dashboard
                             </span>
                         </div>
                         <div className="px-3 py-2 text-slate-500 hover:text-slate-200 hover:bg-white/5 rounded-md flex items-center gap-3 cursor-pointer transition-colors">
-                            <span className="material-icons text-sm">science</span>
+                            <FlaskConical size={14} />
                             <span className="hidden lg:inline text-sm">The Lab</span>
                         </div>
                         <div className="px-3 py-2 text-slate-500 hover:text-slate-200 hover:bg-white/5 rounded-md flex items-center gap-3 cursor-pointer transition-colors">
-                            <span className="material-icons text-sm">history</span>
+                            <History size={14} />
                             <span className="hidden lg:inline text-sm">History</span>
                         </div>
                     </div>
                     <div className="mt-auto flex items-center gap-3 text-slate-500 px-3 hover:text-slate-300 cursor-pointer transition-colors">
-                        <span className="material-icons text-sm">settings</span>
+                        <Settings size={14} />
                         <span className="hidden lg:inline text-sm">Settings</span>
                     </div>
                 </div>
@@ -75,9 +77,7 @@ export default function DashboardPreview() {
                         <div className="bg-white/5 border border-white/5 rounded-xl p-5 hover:border-white/10 hover:bg-white/[0.07] transition-all backdrop-blur-md shadow-lg">
                             <div className="flex justify-between items-center mb-4">
                                 <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
-                                    <span className="material-icons text-[14px] text-slate-500">
-                                        calendar_today
-                                    </span>
+                                    <CalendarDays size={14} className="text-slate-500" />
                                     HABIT TRACKER
                                 </div>
                                 <span className="text-xs text-slate-600">1/2</span>
@@ -99,18 +99,14 @@ export default function DashboardPreview() {
                                 <div className="bg-gradient-to-r from-emerald-900/30 to-emerald-900/10 rounded-lg p-3 flex justify-between items-center cursor-pointer border border-accent-green/20 shadow-[0_0_15px_rgba(16,185,129,0.05)] hover:border-accent-green/40 transition-all">
                                     <div className="flex items-center gap-3">
                                         <div className="w-4 h-4 rounded bg-accent-green flex items-center justify-center shadow-[0_0_8px_rgba(16,185,129,0.4)]">
-                                            <span className="material-icons text-[10px] text-black font-bold">
-                                                check
-                                            </span>
+                                            <Check size={10} className="text-black" strokeWidth={3} />
                                         </div>
                                         <span className="text-sm text-white font-medium">
                                             Deep Work
                                         </span>
                                     </div>
-                                    <div className="flex gap-1 text-accent-green text-[10px]">
-                                        <span className="material-icons text-[10px] animate-pulse">
-                                            local_fire_department
-                                        </span>{" "}
+                                    <div className="flex gap-1 text-accent-green text-[10px] items-center">
+                                        <Flame size={10} className="animate-pulse" />{" "}
                                         4
                                     </div>
                                 </div>
@@ -162,9 +158,7 @@ export default function DashboardPreview() {
                         <div className="bg-white/5 border border-white/5 rounded-xl p-5 hover:border-white/10 hover:bg-white/[0.07] transition-all backdrop-blur-md shadow-lg">
                             <div className="flex justify-between items-center mb-4">
                                 <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
-                                    <span className="material-icons text-[14px] text-slate-500">
-                                        adjust
-                                    </span>
+                                    <Crosshair size={14} className="text-slate-500" />
                                     GOALS
                                 </div>
                                 <span className="text-xs text-slate-600">0/1</span>
@@ -181,17 +175,13 @@ export default function DashboardPreview() {
                             <div className="space-y-2">
                                 <div className="flex items-center gap-2 text-xs text-slate-500 line-through decoration-slate-600">
                                     <div className="w-3 h-3 bg-primary/20 border border-primary/40 rounded-sm flex items-center justify-center">
-                                        <span className="material-icons text-[8px] text-primary">
-                                            check
-                                        </span>
+                                        <Check size={8} className="text-primary" strokeWidth={3} />
                                     </div>
                                     Design Mockups
                                 </div>
                                 <div className="flex items-center gap-2 text-xs text-slate-500 line-through decoration-slate-600">
                                     <div className="w-3 h-3 bg-primary/20 border border-primary/40 rounded-sm flex items-center justify-center">
-                                        <span className="material-icons text-[8px] text-primary">
-                                            check
-                                        </span>
+                                        <Check size={8} className="text-primary" strokeWidth={3} />
                                     </div>
                                     Implement Hero
                                 </div>
@@ -208,9 +198,7 @@ export default function DashboardPreview() {
                         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
                         <div className="flex justify-between items-center mb-4 relative z-10">
                             <div className="text-xs font-mono text-slate-400 flex items-center gap-2">
-                                <span className="material-icons text-[14px] text-slate-500">
-                                    show_chart
-                                </span>
+                                <TrendingUp size={14} className="text-slate-500" />
                                 PROGRESS
                             </div>
                             <div className="flex bg-black/40 border border-white/5 rounded p-0.5 backdrop-blur-sm">

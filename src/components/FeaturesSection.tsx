@@ -1,3 +1,5 @@
+import { Sparkles, Target, Brain, CheckCircle, AlertTriangle } from "lucide-react";
+
 export default function FeaturesSection() {
     return (
         <section id="features" className="py-24 bg-background-base relative overflow-hidden">
@@ -22,7 +24,7 @@ export default function FeaturesSection() {
                     <div className="group relative bg-white/[0.03] backdrop-blur-md border border-white/5 rounded-2xl p-8 hover:bg-white/[0.06] hover:border-white/10 transition-all duration-300 overflow-hidden shadow-lg hover:shadow-primary/5">
                         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary-glow border border-primary/20 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
-                            <span className="material-icons">auto_awesome</span>
+                            <Sparkles size={24} />
                         </div>
                         <h3 className="text-xl font-semibold text-white mb-3">
                             AI-Driven Workflows
@@ -37,7 +39,7 @@ export default function FeaturesSection() {
                     <div className="group relative bg-white/[0.03] backdrop-blur-md border border-white/5 rounded-2xl p-8 hover:bg-white/[0.06] hover:border-white/10 transition-all duration-300 overflow-hidden shadow-lg hover:shadow-accent-green/5">
                         <div className="absolute inset-0 bg-gradient-to-br from-accent-green/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         <div className="w-12 h-12 bg-accent-green/10 rounded-xl flex items-center justify-center mb-6 text-accent-neon-green border border-accent-green/20 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(16,185,129,0.3)]">
-                            <span className="material-icons">track_changes</span>
+                            <Target size={24} />
                         </div>
                         <h3 className="text-xl font-semibold text-white mb-3">
                             Smart Habit Tracking
@@ -52,7 +54,7 @@ export default function FeaturesSection() {
                     <div className="group relative bg-white/[0.03] backdrop-blur-md border border-white/5 rounded-2xl p-8 hover:bg-white/[0.06] hover:border-white/10 transition-all duration-300 overflow-hidden shadow-lg hover:shadow-purple-500/5">
                         <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         <div className="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center mb-6 text-purple-400 border border-purple-500/20 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(168,85,247,0.3)]">
-                            <span className="material-icons">psychology</span>
+                            <Brain size={24} />
                         </div>
                         <h3 className="text-xl font-semibold text-white mb-3">
                             Integrated Learning Focus
@@ -83,25 +85,19 @@ export default function FeaturesSection() {
                                 </p>
                                 <ul className="space-y-4">
                                     <li className="flex items-start gap-3 text-sm text-slate-300">
-                                        <span className="material-icons text-primary-glow text-lg mt-0.5">
-                                            check_circle
-                                        </span>
+                                        <CheckCircle size={18} className="text-primary-glow mt-0.5 shrink-0" />
                                         <span>
                                             Real-time distraction alerts based on browser activity.
                                         </span>
                                     </li>
                                     <li className="flex items-start gap-3 text-sm text-slate-300">
-                                        <span className="material-icons text-primary-glow text-lg mt-0.5">
-                                            check_circle
-                                        </span>
+                                        <CheckCircle size={18} className="text-primary-glow mt-0.5 shrink-0" />
                                         <span>
                                             Sleep consistency correlation with output metrics.
                                         </span>
                                     </li>
                                     <li className="flex items-start gap-3 text-sm text-slate-300">
-                                        <span className="material-icons text-primary-glow text-lg mt-0.5">
-                                            check_circle
-                                        </span>
+                                        <CheckCircle size={18} className="text-primary-glow mt-0.5 shrink-0" />
                                         <span>Automated &quot;Deep Work&quot; protection mode.</span>
                                     </li>
                                 </ul>
@@ -241,7 +237,7 @@ export default function FeaturesSection() {
                                         }}
                                     >
                                         <div className="flex items-center gap-2 text-accent-red text-xs font-bold mb-1 drop-shadow-[0_0_5px_rgba(239,68,68,0.5)]">
-                                            <span className="material-icons text-sm">warning</span>{" "}
+                                            <AlertTriangle size={14} />{" "}
                                             FRICTION DETECTED
                                         </div>
                                         <div className="text-[10px] text-slate-300 italic">

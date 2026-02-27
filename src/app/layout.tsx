@@ -27,12 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet"
-        />
-      </head>
+      <head></head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} bg-background-base text-slate-300 font-sans antialiased selection:bg-primary/30 selection:text-white overflow-x-hidden`}
       >

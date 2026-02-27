@@ -1,3 +1,5 @@
+import { Mail, Lock, Eye } from "lucide-react";
+
 export default function SecuritySection() {
     return (
         <section className="py-24 border-t border-white/5 bg-[#050507]">
@@ -26,21 +28,15 @@ export default function SecuritySection() {
                                 </div>
                                 <div className="space-y-4">
                                     <div className="bg-black/30 border border-white/5 rounded-lg p-3 flex items-center gap-3">
-                                        <span className="material-icons text-slate-500 text-sm">
-                                            email
-                                        </span>
+                                        <Mail size={14} className="text-slate-500" />
                                         <div className="text-xs text-slate-500">Email address</div>
                                     </div>
                                     <div className="bg-black/30 border border-white/5 rounded-lg p-3 flex items-center gap-3 justify-between">
                                         <div className="flex items-center gap-3">
-                                            <span className="material-icons text-slate-500 text-sm">
-                                                lock
-                                            </span>
+                                            <Lock size={14} className="text-slate-500" />
                                             <div className="text-xs text-slate-500">Password</div>
                                         </div>
-                                        <span className="material-icons text-slate-600 text-sm cursor-pointer hover:text-white transition-colors">
-                                            visibility
-                                        </span>
+                                        <Eye size={14} className="text-slate-600 cursor-pointer hover:text-white transition-colors" />
                                     </div>
                                     <button className="w-full bg-primary/20 hover:bg-primary/30 border border-primary/30 text-white text-xs font-bold py-3 rounded-lg tracking-wider transition-all shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:shadow-[0_0_20px_rgba(59,130,246,0.25)]">
                                         AUTHENTICATE
