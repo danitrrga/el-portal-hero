@@ -2,23 +2,9 @@ import Link from "next/link";
 
 export default function Hero() {
     return (
-        <div className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div className="relative py-20 lg:py-32 overflow-hidden">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-[radial-gradient(circle_at_50%_0%,_rgba(30,64,175,0.18)_0%,_rgba(2,6,23,0)_70%)] pointer-events-none opacity-80"></div>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-                {/* Badge */}
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary-glow text-xs font-medium mb-8 shadow-[0_0_20px_rgba(30,64,175,0.25)]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(30,64,175,0.8)]"></span>
-                    v2.0 is now live
-                </div>
-
-                {/* Headline */}
-                <h1 className="text-5xl md:text-7xl font-black tracking-[-0.05em] bg-gradient-to-r from-white to-slate-200 bg-clip-text text-transparent mb-6 leading-tight text-glow-hero">
-                    Your shortcut to <br />
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-glow via-blue-200 to-accent-neon-green">
-                        high performance.
-                    </span>
-                </h1>
-
                 {/* Subtext */}
                 <p className="max-w-2xl mx-auto text-lg md:text-xl text-slate-300 font-medium mb-10 leading-relaxed">
                     Portal is the all-in-one productivity engine for teams and agents.

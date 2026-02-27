@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import DashboardPreview from "@/components/DashboardPreview";
+import { HeroScrollDemo } from "@/components/ui/hero-scroll-demo";
 import LogoBar from "@/components/LogoBar";
 import FeaturesSection from "@/components/FeaturesSection";
 import SecuritySection from "@/components/SecuritySection";
@@ -26,8 +26,8 @@ export default function Home() {
       <Navbar />
 
       <main>
+        <HeroScrollDemo />
         <Hero />
-        <DashboardPreview />
         <LogoBar />
         <FeaturesSection />
         <SecuritySection />

@@ -2,9 +2,8 @@ import { LayoutDashboard, FlaskConical, History, Settings, CalendarDays, Check, 
 
 export default function DashboardPreview() {
     return (
-        <div className="mt-20 relative rounded-2xl border border-slate-800/50 bg-slate-950/80 backdrop-blur-xl shadow-2xl shadow-black/20 p-2 lg:p-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 group hover:scale-[1.01] hover:shadow-[0_0_40px_10px_rgba(30,64,175,0.1)] transition-all duration-500 ease-out">
-            <div className="absolute -inset-1 bg-gradient-to-r from-primary/15 to-accent-green/15 rounded-2xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
-            <div className="bg-slate-950/90 rounded-xl overflow-hidden border border-slate-800/30 aspect-[16/9] md:aspect-[21/9] relative flex z-10 shadow-inner">
+        <div className="h-full w-full relative rounded-xl overflow-hidden">
+            <div className="bg-slate-950/90 rounded-xl overflow-hidden border border-slate-800/30 h-full relative flex shadow-inner">
                 {/* Sidebar */}
                 <div className="w-16 lg:w-64 border-r border-slate-800/30 bg-slate-950/90 backdrop-blur-sm hidden md:flex flex-col p-4">
                     <div className="mb-8 font-bold text-xl text-white flex items-center gap-2">
