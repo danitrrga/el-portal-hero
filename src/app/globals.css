@@ -1,54 +1,90 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-primary: #3b82f6;
-  --color-primary-glow: #60a5fa;
+  --color-primary: #1E40AF;
+  --color-primary-glow: #3B82F6;
   --color-accent-green: #10b981;
   --color-accent-neon-green: #34d399;
   --color-accent-red: #ef4444;
-  --color-background-base: #09090b;
+  --color-background-base: #020617;
   --color-glass-surface: rgba(255, 255, 255, 0.03);
-  --color-glass-border: rgba(255, 255, 255, 0.08);
-  --color-glass-highlight: rgba(255, 255, 255, 0.1);
+  --color-glass-border: rgba(255, 255, 255, 0.06);
+  --color-glass-highlight: rgba(255, 255, 255, 0.08);
+  --color-surface: rgba(2, 6, 23, 0.8);
+  --color-surface-hover: rgba(15, 23, 42, 0.7);
 
   --font-sans: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  --shadow-glow-blue: 0 0 40px -10px rgba(59, 130, 246, 0.5);
+  --shadow-glow-blue: 0 0 40px -10px rgba(30, 64, 175, 0.5);
   --shadow-glow-green: 0 0 40px -10px rgba(16, 185, 129, 0.4);
-  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
 }
 
-/* Scrollbar styles */
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #09090b;
+  background: #020617;
 }
 ::-webkit-scrollbar-thumb {
-  background: #27272a;
-  border-radius: 4px;
+  background: #1e293b;
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+  background: #334155;
 }
 
-/* Custom utilities */
+/* Hero text glow */
 .text-glow-hero {
-  text-shadow: 0 0 30px rgba(59, 130, 246, 0.3),
-    0 0 10px rgba(255, 255, 255, 0.1);
+  text-shadow: 0 0 40px rgba(30, 64, 175, 0.35),
+    0 0 12px rgba(255, 255, 255, 0.08);
 }
 
+/* Glass panel utility */
 .glass-panel {
-  background: rgba(20, 20, 23, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  background: rgba(2, 6, 23, 0.7);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+/* Body */
+html {
+  background: #020617;
 }
 
 body {
-  background-color: #09090b;
-  color: #e2e8f0;
+  background: linear-gradient(135deg, #020617 0%, #000000 50%, #020617 100%);
+  color: #cbd5e1;
+  min-height: 100vh;
+}
+
+/* Card hover glow utility */
+.card-glow {
+  position: relative;
+  transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(30, 64, 175, 0.04), rgba(139, 92, 246, 0.03));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+.card-glow:hover::before {
+  opacity: 1;
+}
+
+/* Blue focus ring */
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(30, 64, 175, 0.5),
+    0 0 25px 6px rgba(30, 64, 175, 0.15);
 }

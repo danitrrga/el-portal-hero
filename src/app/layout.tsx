@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <head></head>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} bg-background-base text-slate-300 font-sans antialiased selection:bg-primary/30 selection:text-white overflow-x-hidden`}
+        className={`${inter.variable} ${jetbrainsMono.variable} bg-gradient-to-br from-slate-950 via-black to-slate-950 text-slate-300 font-sans antialiased selection:bg-primary/30 selection:text-white overflow-x-hidden`}
       >
         {children}
       </body>
