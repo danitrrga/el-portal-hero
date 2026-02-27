@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
-import DashboardPreview from "@/components/DashboardPreview";
+import Image from "next/image";
 
 export function HeroScrollDemo() {
     return (
@@ -22,7 +22,15 @@ export function HeroScrollDemo() {
                     </>
                 }
             >
-                <DashboardPreview />
+                <Image
+                    src={`https://ui.aceternity.com/_next/image?url=%2Flinear.webp&w=3840&q=75`}
+                    alt="hero"
+                    height={720}
+                    width={1400}
+                    className="mx-auto rounded-2xl object-cover h-full object-left-top"
+                    draggable={false}
+                    unoptimized
+                />
             </ContainerScroll>
         </div>
     );

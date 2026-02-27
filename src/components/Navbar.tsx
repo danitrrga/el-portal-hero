@@ -15,7 +15,7 @@ export default function Navbar() {
                     <Link href="/" className="flex items-center gap-2">
                         <span className="font-bold text-2xl text-white tracking-tighter relative z-10 flex items-center">
                             P
-                            <img src="/icon.svg" alt="El Portal Icon" className="w-[1em] h-[1em] mx-[1px]" />
+                            <img src="/icon.svg" alt="El Portal Icon" className="w-[1em] h-[1em] mx-[1px] pl-0px pr-0px" />
                             RTAL
                         </span>
                     </Link>
