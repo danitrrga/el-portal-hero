@@ -12,14 +12,13 @@ export default function Navbar() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16 items-center">
                     {/* Logo */}
-                    <div className="flex items-center gap-2">
-                        <div className="relative w-8 h-8 flex items-center justify-center">
-                            <div className="absolute inset-0 bg-primary/30 rounded-full blur-md"></div>
-                            <span className="font-bold text-2xl text-white tracking-tighter relative z-10">
-                                P<span className="text-primary-glow">O</span>RTAL
-                            </span>
-                        </div>
-                    </div>
+                    <Link href="/" className="flex items-center gap-2">
+                        <span className="font-bold text-2xl text-white tracking-tighter relative z-10 flex items-center">
+                            P
+                            <img src="/icon.svg" alt="El Portal Icon" className="w-[1em] h-[1em] mx-[1px]" />
+                            RTAL
+                        </span>
+                    </Link>
 
                     {/* Desktop Nav Links */}
                     <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-400">

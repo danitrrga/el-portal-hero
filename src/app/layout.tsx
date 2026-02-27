@@ -15,9 +15,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portal: Your shortcut to high performance",
+  title: "El Portal - The personal OS",
   description:
-    "Portal is the all-in-one productivity engine for teams and agents. Manage habits, track deep work cycles, and align your foundational goals in one keyboard-centric interface.",
+    "El Portal is the all-in-one productivity engine for teams and agents. Manage habits, track deep work cycles, and align your foundational goals in one beautifully crafted interface.",
 };
 
 export default function RootLayout({
@@ -27,7 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <head></head>
+      <head>
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} bg-gradient-to-br from-slate-950 via-black to-slate-950 text-slate-300 font-sans antialiased selection:bg-primary/30 selection:text-white overflow-x-hidden`}
       >

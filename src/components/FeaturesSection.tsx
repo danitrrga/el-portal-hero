@@ -13,7 +13,7 @@ export default function FeaturesSection() {
                         A new species of productivity tool.
                     </h2>
                     <p className="text-lg text-slate-300 font-medium leading-relaxed">
-                        Purpose-built for high-performers. Portal sets a new standard for
+                        Purpose-built for high-performers. EL PORTAL sets a new standard for
                         planning, executing, and reviewing your work cycles.
                     </p>
                 </div>
@@ -30,7 +30,7 @@ export default function FeaturesSection() {
                             AI-Driven Workflows
                         </h3>
                         <p className="text-slate-400 leading-relaxed text-sm">
-                            Portal learns from your habits. Automatic scheduling, intelligent
+                            EL PORTAL learns from your habits. Automatic scheduling, intelligent
                             task sorting, and friction warnings help you stay in flow.
                         </p>
                     </div>
@@ -79,7 +79,7 @@ export default function FeaturesSection() {
                                     Identify bottlenecks before they become blockers.
                                 </h3>
                                 <p className="text-slate-400 leading-relaxed mb-8">
-                                    Portal analyzes your log data to identify inconsistent sleep
+                                    EL PORTAL analyzes your log data to identify inconsistent sleep
                                     patterns, distraction triggers, and workload imbalances. Get
                                     actionable insights to reclaim your focus.
                                 </p>

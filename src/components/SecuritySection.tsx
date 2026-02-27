@@ -11,12 +11,9 @@ export default function SecuritySection() {
                             <div className="absolute top-10 left-10 w-full h-full bg-blue-500/8 rounded-full blur-[80px] pointer-events-none"></div>
                             <div className="glass-panel rounded-[32px] p-8 border border-slate-800/50 shadow-2xl shadow-black/20 max-w-sm mx-auto transform rotate-[-5deg] hover:rotate-0 transition-all duration-500 ease-out relative z-10 hover:shadow-[0_0_40px_10px_rgba(30,64,175,0.12)]">
                                 <div className="flex justify-center mb-8">
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-600 to-blue-400 blur-[2px] shadow-[0_0_10px_rgba(30,64,175,0.6)]"></div>
-                                        <span className="font-bold text-xl text-white tracking-tight">
-                                            PORTAL
-                                        </span>
-                                    </div>
+                                    <span className="font-bold text-xl text-white tracking-tight flex items-center">
+                                        EL P<img src="/icon.svg" alt="El Portal Icon" className="w-[1em] h-[1em] mx-[1px]" />RTAL
+                                    </span>
                                 </div>
                                 <div className="text-center mb-8">
                                     <h4 className="text-white text-lg font-medium mb-1">
@@ -61,7 +58,7 @@ export default function SecuritySection() {
                             Security meets speed.
                         </h2>
                         <p className="text-lg text-slate-300 font-medium mb-8 leading-relaxed">
-                            Every interaction in Portal is encrypted and designed for
+                            Every interaction in EL PORTAL is encrypted and designed for
                             milliseconds of latency. Keep your data private and your workflows
                             instant.
                         </p>

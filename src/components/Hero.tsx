@@ -7,7 +7,7 @@ export default function Hero() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                 {/* Subtext */}
                 <p className="max-w-2xl mx-auto text-lg md:text-xl text-slate-300 font-medium mb-10 leading-relaxed">
-                    Portal is the all-in-one productivity engine for teams and agents.
+                    EL PORTAL is the all-in-one productivity engine for teams and agents.
                     Manage habits, track deep work cycles, and align your foundational
                     goals in one keyboard-centric interface.
                 </p>

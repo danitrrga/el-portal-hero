@@ -11,7 +11,7 @@ export default function CTASection() {
                     <span className="text-primary-glow">existence?</span>
                 </h2>
                 <p className="text-lg text-slate-300 font-medium mb-10 max-w-2xl mx-auto leading-relaxed">
-                    Join thousands of engineers, designers, and founders who use Portal to
+                    Join thousands of engineers, designers, and founders who use EL PORTAL to
                     manage their life&apos;s work.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
