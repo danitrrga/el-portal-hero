@@ -1,7 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import { HeroScrollDemo } from "@/components/ui/hero-scroll-demo";
-import LogoBar from "@/components/LogoBar";
 import FeaturesSection from "@/components/FeaturesSection";
 import SecuritySection from "@/components/SecuritySection";
 import CTASection from "@/components/CTASection";
@@ -28,7 +27,6 @@ export default function Home() {
       <main>
         <HeroScrollDemo />
         <Hero />
-        <LogoBar />
         <FeaturesSection />
         <SecuritySection />
         <CTASection />
