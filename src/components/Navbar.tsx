@@ -24,25 +24,25 @@ export default function Navbar() {
                     <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-400">
                         <Link
                             className="hover:text-white hover:drop-shadow-[0_0_8px_rgba(30,64,175,0.5)] transition-all duration-300"
-                            href="#features"
-                        >
-                            Features
-                        </Link>
-                        <Link
-                            className="hover:text-white hover:drop-shadow-[0_0_8px_rgba(30,64,175,0.5)] transition-all duration-300"
-                            href="#manifesto"
+                            href="/manifesto"
                         >
                             Manifesto
                         </Link>
                         <Link
                             className="hover:text-white hover:drop-shadow-[0_0_8px_rgba(30,64,175,0.5)] transition-all duration-300"
-                            href="#changelog"
+                            href="/changelog"
                         >
                             Changelog
                         </Link>
                         <Link
                             className="hover:text-white hover:drop-shadow-[0_0_8px_rgba(30,64,175,0.5)] transition-all duration-300"
-                            href="#pricing"
+                            href="/methodology"
+                        >
+                            Methodology
+                        </Link>
+                        <Link
+                            className="hover:text-white hover:drop-shadow-[0_0_8px_rgba(30,64,175,0.5)] transition-all duration-300"
+                            href="/pricing"
                         >
                             Pricing
                         </Link>
@@ -80,28 +80,28 @@ export default function Navbar() {
                     <div className="px-4 py-4 space-y-3">
                         <Link
                             className="block text-sm font-medium text-slate-400 hover:text-white transition-all duration-300 py-2"
-                            href="#features"
-                            onClick={() => setMobileMenuOpen(false)}
-                        >
-                            Features
-                        </Link>
-                        <Link
-                            className="block text-sm font-medium text-slate-400 hover:text-white transition-all duration-300 py-2"
-                            href="#manifesto"
+                            href="/manifesto"
                             onClick={() => setMobileMenuOpen(false)}
                         >
                             Manifesto
                         </Link>
                         <Link
                             className="block text-sm font-medium text-slate-400 hover:text-white transition-all duration-300 py-2"
-                            href="#changelog"
+                            href="/changelog"
                             onClick={() => setMobileMenuOpen(false)}
                         >
                             Changelog
                         </Link>
                         <Link
                             className="block text-sm font-medium text-slate-400 hover:text-white transition-all duration-300 py-2"
-                            href="#pricing"
+                            href="/methodology"
+                            onClick={() => setMobileMenuOpen(false)}
+                        >
+                            Methodology
+                        </Link>
+                        <Link
+                            className="block text-sm font-medium text-slate-400 hover:text-white transition-all duration-300 py-2"
+                            href="/pricing"
                             onClick={() => setMobileMenuOpen(false)}
                         >
                             Pricing

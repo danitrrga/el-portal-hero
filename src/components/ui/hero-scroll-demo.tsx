@@ -23,13 +23,12 @@ export function HeroScrollDemo() {
                 }
             >
                 <Image
-                    src={`https://ui.aceternity.com/_next/image?url=%2Flinear.webp&w=3840&q=75`}
+                    src={`/assets/showcase/dashboard_black.png`}
                     alt="hero"
                     height={720}
                     width={1400}
                     className="mx-auto rounded-2xl object-cover h-full object-left-top"
                     draggable={false}
-                    unoptimized
                 />
             </ContainerScroll>
         </div>
