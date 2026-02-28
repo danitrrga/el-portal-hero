@@ -395,9 +395,11 @@ export default function PricingPage() {
                                 </p>
                             </div>
                             <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-                                <ShinyButton>
-                                    Start Version 1
-                                </ShinyButton>
+                                <Link href="https://el-portal-app.vercel.app">
+                                    <ShinyButton>
+                                        Start Version 1
+                                    </ShinyButton>
+                                </Link>
                                 <Link href="/methodology">
                                     <button
                                         className=" px-4 h-16 rounded-md font-medium text-lg tracking-tight transition-all duration-300 ease-out bg-zinc-900 hover:bg-zinc-800 text-zinc-100 border border-white/5 hover:border-blue-500/20"
