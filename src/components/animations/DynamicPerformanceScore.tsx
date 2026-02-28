@@ -46,7 +46,7 @@ export function DynamicPerformanceScore() {
             {/* Left Column: Habits List */}
             <div className="w-full md:w-[55%] glass-panel rounded-2xl p-6 md:p-8 border-border flex flex-col gap-4 relative overflow-hidden bg-white/[0.02]">
                 <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-2">
-                    <span className="text-xs font-bold text-muted-foreground tracking-widest uppercase">Daily Operations</span>
+                    <span className="text-xs font-bold text-muted-foreground tracking-widest uppercase">Habit Tracker</span>
                     <span className="text-xs text-primary font-bold bg-primary/10 px-2 py-0.5 rounded-sm border border-primary/20">Active Cycle</span>
                 </div>
 
@@ -115,7 +115,7 @@ export function DynamicPerformanceScore() {
 
                 <div className="relative flex flex-col items-center">
                     <span className="text-xs text-muted-foreground font-bold tracking-widest uppercase mb-1">
-                        P_daily Score
+                        Efficiency Score
                     </span>
                     <motion.div
                         className="font-serif text-[5rem] leading-none text-foreground relative z-10 transition-all duration-300"
