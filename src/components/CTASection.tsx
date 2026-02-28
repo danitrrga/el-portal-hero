@@ -17,7 +17,7 @@ export default function CTASection() {
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <ShinyButton asChild>
-                        <Link href="https://app.elportal.com">
+                        <Link href="https://el-portal-app.vercel.app">
                             Join for free
                         </Link>
                     </ShinyButton>
