@@ -18,7 +18,7 @@ export default function CTASection() {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <ShinyButton asChild>
                         <Link href="#">
-                            Start for free
+                            Join for free
                         </Link>
                     </ShinyButton>
                     <span className="text-sm text-slate-500">
