@@ -45,7 +45,7 @@ const principles = [
             "Optimization for the cognitive load. Every element earns its place in your field of focus.",
     },
     {
-        number: "07",
+        number: "08",
         title: "Elegant Restraint",
         description:
             "We add nothing that doesn't earn its place. Every pixel has purpose, every transition has intent. Simplicity is the ultimate sophistication.",
@@ -54,10 +54,13 @@ const principles = [
 
 export default function ManifestoPage() {
     return (
-        <>
+        <div className="relative w-full overflow-x-hidden bg-zinc-950 min-h-screen">
+            {/* Background grid texture */}
+            <div className="absolute inset-0 -z-10 h-full w-full bg-zinc-950 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+
             <Navbar />
 
-            <main className="flex-1 pt-24">
+            <main className="relative z-10 flex-1 pt-24">
                 <ReadingLayout>
                     {/* Hero */}
                     <ManifestoHero
@@ -128,6 +131,6 @@ export default function ManifestoPage() {
             </main>
 
             <Footer />
-        </>
+        </div>
     );
 }

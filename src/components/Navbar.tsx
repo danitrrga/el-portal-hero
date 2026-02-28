@@ -24,19 +24,19 @@ export default function Navbar() {
                 "bg-zinc-900/80 backdrop-blur-xl",
                 "border border-white/5",
                 "shadow-[0_0_30px_-5px_rgba(0,0,0,0.5)]",
-                mobileMenuOpen ? "rounded-2xl" : "rounded-2xl",
+                "rounded-2xl transition-all duration-300",
             ].join(" ")}
         >
             <div className="px-6">
-                <div className="flex justify-between h-12 items-center">
+                <div className="flex justify-between h-16 items-center">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2">
-                        <span className="font-bold text-xl text-white tracking-tighter relative z-10 flex items-center">
+                        <span className="font-bold text-2xl text-white tracking-tighter relative z-10 flex items-center">
                             P
                             <img
                                 src="/icon.svg"
                                 alt="El Portal Icon"
-                                className="w-[1em] h-[1em] mx-[1px]"
+                                className="w-[1.1em] h-[1.1em] mx-[2px]"
                             />
                             RTAL
                         </span>

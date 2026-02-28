@@ -3,13 +3,16 @@ import Footer from "@/components/Footer";
 
 export default function ChangelogPage() {
     return (
-        <div className="relative min-h-screen w-full flex-col overflow-x-hidden bg-[#0a0a0a]">
+        <div className="relative min-h-screen w-full flex-col overflow-x-hidden bg-zinc-950">
+            {/* Background grid texture */}
+            <div className="absolute inset-0 -z-10 h-full w-full bg-zinc-950 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+
             {/* Subtle Top Radial Gradient */}
             <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-blue-700/10 blur-[120px] rounded-full -z-10 pointer-events-none"></div>
 
             <Navbar />
 
-            <main className="mx-auto flex w-full max-w-[960px] flex-1 flex-col px-6 py-32 lg:px-10">
+            <main className="relative z-10 mx-auto flex w-full max-w-[960px] flex-1 flex-col px-6 py-32 lg:px-10">
                 {/* Title & Filter */}
                 <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
                     <div className="flex flex-col gap-2">
@@ -134,15 +137,6 @@ export default function ChangelogPage() {
 
                 </div>
 
-                {/* Footer Call to Action */}
-                <div className="mt-12 flex flex-col items-center justify-center rounded-2xl bg-blue-700/5 border border-blue-700/20 p-12 text-center">
-                    <h2 className="mb-4 text-2xl font-bold text-slate-100">Be the first to know</h2>
-                    <p className="mb-8 max-w-md text-slate-400">Subscribe to our developer mailing list to receive technical deep-dives and early access to beta features.</p>
-                    <div className="flex w-full max-w-sm flex-col gap-3 sm:flex-row">
-                        <input className="flex-1 rounded-lg border-slate-800 bg-slate-900 px-4 py-3 text-sm focus:border-blue-700 focus:ring-1 focus:ring-blue-700 placeholder:text-slate-600 outline-none" placeholder="your@email.com" type="email" />
-                        <button className="rounded-lg bg-blue-700 px-5 py-2.5 text-xs font-bold text-white hover:bg-blue-600 transition-all shadow-lg shadow-blue-700/20">Subscribe</button>
-                    </div>
-                </div>
             </main>
 
             <Footer />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ShinyButton } from "@/components/ui/shiny-button";
@@ -72,7 +73,6 @@ const tiers = [
             "Dual-Progression Goals (Streaks + Projects)",
             "Cinema Mode — 5 immersive slides",
             "The Archives — full knowledge base",
-            "Advanced analytics & heatmaps",
             "Early access to new features",
             "Founding Member badge",
             "Lifetime updates, zero renewals",
@@ -97,23 +97,18 @@ const comparisonFeatures: {
             lifetime: "Unlimited",
         },
         {
-            name: "Habit Tracking",
-            initiate: "Up to 5",
-            lifetime: "Unlimited",
-        },
-        {
-            name: "Goal System (Streaks + Projects)",
-            initiate: "—",
+            name: "Habit Tracking + Goal System",
+            initiate: true,
             lifetime: true,
         },
         {
             name: "Cinema Mode",
-            initiate: "—",
+            initiate: true,
             lifetime: true,
         },
         {
             name: "The Archives",
-            initiate: "—",
+            initiate: true,
             lifetime: true,
         },
         {
@@ -127,7 +122,17 @@ const comparisonFeatures: {
             lifetime: true,
         },
         {
-            name: "Founding Member Badge",
+            name: 'Weekly Review & Recap of Cycles',
+            initiate: "—",
+            lifetime: true,
+        },
+        {
+            name: 'Friction categorization & Trend analysis',
+            initiate: "—",
+            lifetime: true,
+        },
+        {
+            name: 'Keyboard Centric Design',
             initiate: "—",
             lifetime: true,
         },
@@ -144,7 +149,7 @@ const faqs = [
     },
     {
         q: "Why is it only $10?",
-        a: "El Portal is built for serious operators, not for profit margins. A one-time $10 payment unlocks everything — forever. No subscriptions, no renewals, no hidden fees. You pay once and the system is yours.",
+        a: "El Portal is built for serious operators, not for profit margins. A one-time $10 payment unlocks everything. Future updates are included. No subscriptions, no renewals, no hidden fees. You pay once and the whole system is yours, forever.",
     },
     {
         q: "What is the Dual-Progression Goal System?",
@@ -173,17 +178,11 @@ export default function PricingPage() {
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-950/40 via-zinc-950 to-zinc-950 pointer-events-none" />
 
             {/* Background grid texture */}
-            <div
-                className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"
-                style={{
-                    maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 100%)',
-                    WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 100%)',
-                }}
-            />
+            <div className="absolute inset-0 -z-10 h-full w-full bg-zinc-950 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
             <Navbar />
 
-            <main className="relative flex flex-col items-center">
+            <main className="relative z-10 flex flex-col items-center">
                 {/* ── Hero Header ──────────────────────────────────── */}
                 <div className="w-full max-w-5xl px-6 md:px-8 pt-28 pb-10 flex flex-col items-center text-center">
                     <h1 className="text-zinc-100 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter mb-5">
@@ -266,7 +265,7 @@ export default function PricingPage() {
                                     </ShinyButton>
                                 ) : (
                                     <button
-                                        className="w-full py-2.5 rounded-xl font-semibold text-xs transition-all duration-300 ease-out bg-zinc-900 hover:bg-zinc-800 text-zinc-100 border border-white/5 hover:border-blue-500/20"
+                                        className="w-full py-4 px-8 pb-1px rounded-md font-medium text-lg tracking-tight transition-all duration-300 ease-out bg-zinc-900 hover:bg-zinc-800 text-zinc-100 border border-white/5 hover:border-blue-500/20"
                                     >
                                         {tier.cta}
                                     </button>
@@ -389,19 +388,23 @@ export default function PricingPage() {
                                     Ready to architect your next Version?
                                 </h2>
                                 <p className="text-zinc-400 text-sm leading-relaxed">
-                                    Start your first 90-day Version today.
+                                    Start your first Version today.
                                     Define who you&apos;re becoming, set your
                                     macro goals, and let the system hold you
-                                    accountable — mathematically.
+                                    accountable, mathematically.
                                 </p>
                             </div>
                             <div className="flex flex-col sm:flex-row gap-4 shrink-0">
                                 <ShinyButton>
                                     Start Version 1
                                 </ShinyButton>
-                                <button className="px-5 py-2.5 bg-zinc-900/80 hover:bg-zinc-800 text-zinc-100 text-xs rounded-xl font-bold transition-all duration-300 ease-out border border-white/5 hover:border-blue-500/20">
-                                    Read the Methodology
-                                </button>
+                                <Link href="/methodology">
+                                    <button
+                                        className=" px-4 h-16 rounded-md font-medium text-lg tracking-tight transition-all duration-300 ease-out bg-zinc-900 hover:bg-zinc-800 text-zinc-100 border border-white/5 hover:border-blue-500/20"
+                                    >
+                                        Read the Methodology
+                                    </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
