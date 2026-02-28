@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ShinyButton } from "@/components/ui/shiny-button";
 
 export default function Hero() {
     return (
@@ -14,17 +15,16 @@ export default function Hero() {
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <ShinyButton asChild>
+                        <Link href="#">
+                            Get Started -&gt;
+                        </Link>
+                    </ShinyButton>
                     <Link
-                        className="w-full sm:w-auto px-8 py-3.5 bg-white text-black font-semibold rounded-xl hover:rounded-2xl transition-all duration-500 ease-out shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] text-sm md:text-base border border-transparent"
+                        className="w-full sm:w-auto px-6 py-2.5 bg-slate-900/50 hover:bg-slate-800/70 text-slate-300 font-medium rounded-xl border border-slate-800/50 hover:border-blue-500/30 transition-all duration-300 ease-out text-xs flex items-center justify-center gap-2 group backdrop-blur-sm shadow-lg shadow-black/20 hover:shadow-[0_0_20px_5px_rgba(30,64,175,0.15)]"
                         href="#"
                     >
-                        Get Started -&gt;
-                    </Link>
-                    <Link
-                        className="w-full sm:w-auto px-8 py-3.5 bg-slate-900/50 hover:bg-slate-800/70 text-slate-300 font-medium rounded-xl hover:rounded-2xl border border-slate-800/50 hover:border-blue-500/30 transition-all duration-500 ease-out text-sm md:text-base flex items-center justify-center gap-2 group backdrop-blur-sm shadow-lg shadow-black/20 hover:shadow-[0_0_20px_5px_rgba(30,64,175,0.15)]"
-                        href="#"
-                    >
-                        <span className="font-mono text-xs opacity-50 bg-black/30 px-1.5 py-0.5 rounded border border-slate-800/50 group-hover:border-slate-700/50 transition-all duration-300">
+                        <span className="font-mono text-[10px] opacity-50 bg-black/30 px-1.5 py-0.5 rounded border border-slate-800/50 group-hover:border-slate-700/50 transition-all duration-300">
                             ⌘K
                         </span>
                         Read Documentation

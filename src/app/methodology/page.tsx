@@ -1,235 +1,166 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Player } from "@remotion/player";
-import { AsymptoticCurve } from "@/components/remotion/AsymptoticCurve";
-import { CyclicalRings } from "@/components/remotion/CyclicalRings";
+import { CycleBentoCard } from "@/components/animations/CycleBentoCard";
+import { DynamicPerformanceScore } from "@/components/animations/DynamicPerformanceScore";
+import { TaskProgressionCard } from "@/components/animations/TaskProgressionCard";
+import { CycleProgressionChart } from "@/components/animations/CycleProgressionChart";
+import { VersionSelector } from "@/components/animations/VersionSelector";
+import { ShinyButton } from "@/components/ui/shiny-button";
 
 export default function MethodologyPage() {
     return (
-        <div className="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden bg-[#0a0a0a]">
-            {/* Subtle Top Radial Gradient */}
-            <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-blue-700/10 blur-[120px] rounded-full -z-10 pointer-events-none"></div>
+        <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden bg-zinc-950">
+            {/* Grain texture overlay (matching Pricing) */}
+            <div
+                className="fixed inset-0 z-50 pointer-events-none opacity-[0.02]"
+                style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                }}
+            />
+
+            {/* Top radial blue gradient (DESIGN.md §2) */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-950/40 via-zinc-950 to-zinc-950 pointer-events-none" />
+
+            {/* Background grid texture (matching Pricing) */}
+            <div
+                className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"
+                style={{
+                    maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 100%)',
+                    WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 100%)',
+                }}
+            />
 
             <Navbar />
 
-            <main className="flex-1 px-6 md:px-20 lg:px-40 py-24">
+            <main className="flex-1 px-6 md:px-8 max-w-5xl mx-auto w-full py-16 md:py-24 space-y-24 relative z-10">
+
                 {/* Hero Section */}
-                <section className="flex flex-col items-center text-center mb-20">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-700/10 border border-blue-700/20 mb-6">
-                        <span className="w-2 h-2 rounded-full bg-blue-700 animate-pulse"></span>
-                        <span className="text-xs font-bold text-blue-700 tracking-widest uppercase">Protocol v2.4</span>
+                <section className="flex flex-col items-center text-center max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-1000">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-6">
+                        <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                        <span className="text-xs font-bold text-primary tracking-widest uppercase">Protocol v2.4</span>
                     </div>
 
-                    <h1 className="text-slate-100 text-5xl md:text-7xl font-bold tracking-tighter mb-6">
-                        The How
+                    <h1 className="text-zinc-100 text-4xl md:text-5xl font-extrabold tracking-tighter mb-6">
+                        The Engine
                     </h1>
 
-                    <p className="text-slate-400 text-lg md:text-xl max-w-2xl leading-relaxed">
-                        Exploring the mathematical foundations of El Portal: CCH, Asymptotic Math, and Cycles. An authoritative framework for decentralized architectural scaling.
+                    <p className="text-zinc-400 text-lg md:text-xl leading-relaxed max-w-2xl">
+                        A high-fidelity behavioral feedback system designed for temporal hierarchy and peak performance optimization.
                     </p>
 
-                    <div className="mt-10 flex gap-4">
-                        <button className="bg-blue-700 text-white px-8 py-3 rounded-lg font-bold flex items-center gap-2 group hover:brightness-110 transition-all shadow-[0_0_20px_-5px_rgba(37,106,244,0.4)]">
-                            Explore Playbook
-                            <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                        </button>
-                        <button className="bg-slate-900 border border-slate-800 text-slate-100 px-8 py-3 rounded-lg font-bold hover:bg-slate-800 transition-colors">
-                            Whitepaper
-                        </button>
+                    <div className="mt-10">
+                        <ShinyButton>
+                            Explore Protocol
+                        </ShinyButton>
                     </div>
                 </section>
 
-                {/* Bento Grid */}
-                <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-
-                    {/* CCH Pillar Card */}
-                    <div className="md:col-span-1 bg-slate-900/40 border border-slate-800 rounded-xl p-8 shadow-[0_0_20px_-5px_rgba(37,106,244,0.2)] group hover:border-blue-700/30 transition-all flex flex-col justify-between">
-                        <div>
-                            <div className="size-12 rounded-lg bg-blue-700/10 border border-blue-700/20 flex items-center justify-center mb-6">
-                                <span className="material-symbols-outlined text-blue-700">account_tree</span>
-                            </div>
-                            <h3 className="text-2xl font-bold text-slate-100 mb-4 tracking-tight">CCH Pillar</h3>
-                            <p className="text-slate-400 leading-relaxed text-sm">
-                                Core Concept Hierarchy (CCH) defines the structural integrity of the protocol. It maps complex logical dependencies into a rigid, non-linear architectural framework designed for extreme fault tolerance.
-                            </p>
-                        </div>
-                        <div className="mt-8 pt-6 border-t border-slate-800">
-                            <ul className="space-y-3">
-                                <li className="flex items-center gap-2 text-xs text-slate-400">
-                                    <span className="material-symbols-outlined text-sm text-blue-700">check_circle</span>
-                                    Hierarchical Data Routing
-                                </li>
-                                <li className="flex items-center gap-2 text-xs text-slate-400">
-                                    <span className="material-symbols-outlined text-sm text-blue-700">check_circle</span>
-                                    Recursive Validation
-                                </li>
-                            </ul>
-                        </div>
+                {/* Temporal Hierarchy Grid */}
+                <section className="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-150 fill-mode-forwards">
+                    <div className="flex items-center justify-between mb-8">
+                        <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Temporal Hierarchy</h3>
+                        <span className="h-px flex-1 bg-zinc-800/50 ml-4"></span>
                     </div>
 
-                    {/* Asymptotic Math Pillar Card */}
-                    <div className="md:col-span-2 bg-slate-900/40 border border-slate-800 rounded-xl overflow-hidden shadow-[0_0_20px_-5px_rgba(37,106,244,0.2)] group hover:border-blue-700/30 transition-all">
-                        <div className="p-8 pb-0">
-                            <div className="flex justify-between items-start mb-6">
-                                <div>
-                                    <h3 className="text-2xl font-bold text-slate-100 tracking-tight">Asymptotic Math</h3>
-                                    <p className="text-slate-400 text-sm mt-1">Convergence through recursive limit-approaching models.</p>
-                                </div>
-                                <span className="px-3 py-1 rounded bg-slate-800 text-[10px] font-bold text-slate-400 uppercase tracking-widest border border-slate-700">Live Demo</span>
-                            </div>
-                        </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        {/* Version */}
+                        <VersionSelector />
 
-                        {/* Remotion Embed: Asymptotic Curve */}
-                        <div className="relative w-full aspect-video bg-slate-950 mt-4 mx-8 rounded-t-lg border-x border-t border-slate-800 overflow-hidden group-hover:bg-slate-900 transition-colors">
-                            <Player
-                                component={AsymptoticCurve}
-                                durationInFrames={300}
-                                compositionWidth={800}
-                                compositionHeight={450}
-                                fps={30}
-                                controls={false}
-                                autoPlay
-                                loop
-                                style={{
-                                    width: "100%",
-                                    height: "100%",
-                                }}
-                            />
-                        </div>
-                    </div>
+                        {/* Cycle */}
+                        <CycleBentoCard />
 
-                    {/* Cycles Pillar Card */}
-                    <div className="md:col-span-2 bg-slate-900/40 border border-slate-800 rounded-xl overflow-hidden shadow-[0_0_20px_-5px_rgba(37,106,244,0.2)] group hover:border-blue-700/30 transition-all flex flex-col md:flex-row">
-                        <div className="md:w-1/2 p-8">
-                            <div className="size-10 rounded-lg bg-blue-700/10 border border-blue-700/20 flex items-center justify-center mb-6">
-                                <span className="material-symbols-outlined text-blue-700">sync</span>
-                            </div>
-                            <h3 className="text-2xl font-bold text-slate-100 mb-4 tracking-tight">Cycles Pillar</h3>
-                            <p className="text-slate-400 leading-relaxed text-sm mb-6">
-                                Harmonic oscillations and systemic rotation patterns. Cycles ensure the perpetual motion of the internal economy, balancing inflation and utility through fixed algorithmic phases.
-                            </p>
-                            <button className="text-blue-700 text-xs font-bold uppercase tracking-widest flex items-center gap-2 hover:gap-3 transition-all">
-                                Documentation <span className="material-symbols-outlined text-sm">open_in_new</span>
-                            </button>
-                        </div>
-
-                        {/* Remotion Embed: Cyclical Rings */}
-                        <div className="md:w-1/2 h-64 md:h-auto bg-slate-950 border-l border-slate-800 relative overflow-hidden">
-                            <Player
-                                component={CyclicalRings}
-                                durationInFrames={300}
-                                compositionWidth={400}
-                                compositionHeight={400}
-                                fps={30}
-                                controls={false}
-                                autoPlay
-                                loop
-                                style={{
-                                    width: "100%",
-                                    height: "100%",
-                                }}
-                            />
-                        </div>
-                    </div>
-
-                    {/* Tech Summary Card */}
-                    <div className="md:col-span-1 bg-slate-900/40 border border-slate-800 rounded-xl p-8 shadow-[0_0_20px_-5px_rgba(37,106,244,0.2)] group hover:border-blue-700/30 transition-all flex flex-col justify-center">
-                        <h4 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-800 pb-2">System Health</h4>
-
-                        <div className="space-y-6">
+                        {/* Day */}
+                        <div className="group p-6 rounded-xl flex flex-col justify-between overflow-hidden relative transition-all duration-300 ease-out bg-zinc-950/80 backdrop-blur-xl border border-white/5 hover:border-blue-500/30 hover:shadow-[0_0_30px_-5px_rgba(30,64,175,0.15)]">
                             <div>
-                                <div className="flex justify-between text-xs mb-2">
-                                    <span className="text-slate-100">Node Sync</span>
-                                    <span className="text-blue-500">99.8%</span>
-                                </div>
-                                <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
-                                    <div className="h-full bg-blue-600 w-[99.8%]"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="flex justify-between text-xs mb-2">
-                                    <span className="text-slate-100">Math Proofs Validated</span>
-                                    <span className="text-blue-500">1,024</span>
-                                </div>
-                                <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
-                                    <div className="h-full bg-blue-600 w-[85%]"></div>
-                                </div>
-                            </div>
-
-                            <div className="pt-4 grid grid-cols-2 gap-4">
-                                <div className="p-3 bg-slate-800/50 rounded-lg text-center border border-slate-800">
-                                    <div className="text-xs text-slate-400 mb-1">Latency</div>
-                                    <div className="text-lg font-bold text-slate-100">12ms</div>
-                                </div>
-                                <div className="p-3 bg-slate-800/50 rounded-lg text-center border border-slate-800">
-                                    <div className="text-xs text-slate-400 mb-1">Stability</div>
-                                    <div className="text-lg font-bold text-blue-500">S++</div>
-                                </div>
+                                <span className="material-symbols-outlined text-blue-500 mb-4 opacity-80 text-3xl transition-transform group-hover:scale-110">event</span>
+                                <h4 className="font-serif text-3xl text-zinc-100 mb-2">Day</h4>
+                                <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-4">Execution Unit • Tactical</p>
+                                <p className="text-sm text-zinc-400">The pure unit of execution. Drives the foundational operations that compound over Cycles.</p>
                             </div>
                         </div>
                     </div>
-
                 </section>
 
-                {/* Deep-Dive Section (Accordions) */}
-                <section className="max-w-4xl mx-auto mb-20">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold text-slate-100 mb-4 tracking-tight">Technical Proofs</h2>
-                        <p className="text-slate-400">Expand the technical documentation for deep-dive analysis of the core pillars.</p>
+                {/* Performance Dashboard */}
+                <section className="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300 fill-mode-forwards">
+                    <DynamicPerformanceScore />
+                </section>
+
+                {/* Goal Architecture Grid */}
+                <section className="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500 fill-mode-forwards">
+                    <div className="flex items-center justify-between mb-8">
+                        <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Goal Architecture</h3>
+                        <span className="h-px flex-1 bg-zinc-800/50 ml-4"></span>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {/* Asymptotic Consistency */}
+                        <CycleProgressionChart />
+
+                        {/* Task-Based Projects */}
+                        <TaskProgressionCard />
+                    </div>
+                </section>
+
+                {/* Core Modalities Accordion */}
+                <section className="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-700 fill-mode-forwards max-w-4xl mx-auto w-full">
+                    <div className="text-center mb-10">
+                        <h2 className="font-serif text-4xl text-zinc-100 mb-4">Core Modalities</h2>
+                        <p className="text-zinc-400 text-lg">The distinct interaction paradigms governing the El Portal system.</p>
                     </div>
 
                     <div className="space-y-4">
-
-                        {/* Accordion Item 1 */}
-                        <div className="border border-white/5 bg-slate-900/30 rounded-lg overflow-hidden group">
-                            <button className="w-full flex items-center justify-between p-6 text-left focus:outline-none">
-                                <span className="text-lg font-semibold text-slate-100 flex items-center gap-3">
-                                    <span className="material-symbols-outlined text-blue-700">data_object</span>
-                                    CCH Architectural Proofs
-                                </span>
-                                <span className="material-symbols-outlined text-slate-500 group-hover:text-blue-700 transition-colors transform group-focus:-rotate-180">expand_more</span>
-                            </button>
-                            <div className="px-6 pb-6 pt-0 border-t border-slate-800/50 mt-2 p-4">
-                                <div className="text-slate-400 text-sm leading-relaxed space-y-4 pt-4">
-                                    <p>The Core Concept Hierarchy (CCH) functions as a directed acyclic graph (DAG) where each node represents a fundamental axiom of the system. The proof of architectural stability rests on the non-reversibility of transaction lineage within the DAG.</p>
-                                    <pre className="bg-black/50 p-4 rounded-lg font-mono text-xs text-blue-400 overflow-x-auto border border-blue-900/30">
-                                        {`Function ValidateNode(nodeID, proofSet):
-  Result = recursive_hash_verify(nodeID.parents)
-  If Result < threshold_asymptotic THEN
-    Return Error_Convergence_Failure
-  Return SUCCESS`}
-                                    </pre>
+                        {/* Cinema Mode */}
+                        <details className="group rounded-xl overflow-hidden transition-all duration-300 ease-out [&_summary::-webkit-details-marker]:hidden bg-zinc-950/80 backdrop-blur-xl border border-white/5 hover:border-blue-500/30" open>
+                            <summary className="flex items-center justify-between p-6 cursor-pointer hover:bg-white/[0.02]">
+                                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                                    <span className="material-symbols-outlined text-blue-500 text-2xl">theater_comedy</span>
+                                    <span className="font-bold text-lg text-zinc-100">Visualization (Cinema Mode)</span>
                                 </div>
+                                <span className="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-zinc-500 shrink-0 ml-4">expand_more</span>
+                            </summary>
+                            <div className="px-6 pb-6 text-sm text-zinc-400 leading-relaxed border-t border-zinc-800/50 pt-4 sm:ml-12 mt-2">
+                                A full-screen, minimalist, Zen-mode environment. Features 5 persistent slides: <strong>Me, Her, Purpose, Social, Material Life</strong>. Each slide consists of an editable image (pulled via signed URLs) and dynamic caption text.
                             </div>
-                        </div>
+                        </details>
 
-                        {/* Accordion Item 2 - Collapsed UI for demo */}
-                        <div className="border border-white/5 bg-slate-900/30 rounded-lg overflow-hidden hover:border-white/10 transition-colors cursor-pointer">
-                            <div className="w-full flex items-center justify-between p-6 text-left">
-                                <span className="text-lg font-semibold text-slate-100 flex items-center gap-3">
-                                    <span className="material-symbols-outlined text-blue-700">functions</span>
-                                    Asymptotic Convergence Models
-                                </span>
-                                <span className="material-symbols-outlined text-slate-500 transition-colors">expand_more</span>
+                        {/* Archives */}
+                        <details className="group rounded-xl overflow-hidden transition-all duration-300 ease-out [&_summary::-webkit-details-marker]:hidden bg-zinc-950/80 backdrop-blur-xl border border-white/5 hover:border-blue-500/30">
+                            <summary className="flex items-center justify-between p-6 cursor-pointer hover:bg-white/[0.02]">
+                                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                                    <span className="material-symbols-outlined text-blue-500 text-2xl">inventory_2</span>
+                                    <span className="font-bold text-lg text-zinc-100">The Archives (Knowledge Base)</span>
+                                </div>
+                                <span className="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-zinc-500 shrink-0 ml-4">expand_more</span>
+                            </summary>
+                            <div className="px-6 pb-6 text-sm text-zinc-400 leading-relaxed border-t border-zinc-800/50 pt-4 sm:ml-12 mt-2">
+                                Text/Markdown-driven database entries that act as the permanent mental cache. Includes: My Routines, Mantra Archive, Life To-Do List, 5-Year Vision, and Theory Notes. Operates distinctly from daily tactical execution.
                             </div>
-                        </div>
+                        </details>
 
-                        {/* Accordion Item 3 - Collapsed UI for demo */}
-                        <div className="border border-white/5 bg-slate-900/30 rounded-lg overflow-hidden hover:border-white/10 transition-colors cursor-pointer">
-                            <div className="w-full flex items-center justify-between p-6 text-left">
-                                <span className="text-lg font-semibold text-slate-100 flex items-center gap-3">
-                                    <span className="material-symbols-outlined text-blue-700">history_toggle_off</span>
-                                    Cyclical Rotation Dynamics
-                                </span>
-                                <span className="material-symbols-outlined text-slate-500 transition-colors">expand_more</span>
+                        {/* Analytics */}
+                        <details className="group rounded-xl overflow-hidden transition-all duration-300 ease-out [&_summary::-webkit-details-marker]:hidden bg-zinc-950/80 backdrop-blur-xl border border-white/5 hover:border-blue-500/30">
+                            <summary className="flex items-center justify-between p-6 cursor-pointer hover:bg-white/[0.02]">
+                                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                                    <span className="material-symbols-outlined text-blue-500 text-2xl">monitoring</span>
+                                    <span className="font-bold text-lg text-zinc-100">Analytics & Intelligence</span>
+                                </div>
+                                <span className="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-zinc-500 shrink-0 ml-4">expand_more</span>
+                            </summary>
+                            <div className="px-6 pb-6 text-sm text-zinc-400 leading-relaxed border-t border-zinc-800/50 pt-4 sm:ml-12 mt-2">
+                                In-depth visualization of consistency: weekly progress plots, GitHub-style heatmaps, and aggregated 15-day / 90-day performance reviews. Robustly handles edge-cases like missing cycle data dynamically.
                             </div>
-                        </div>
-
+                        </details>
                     </div>
                 </section>
             </main>
 
-            <Footer />
+            <div className="relative z-10 w-full mt-auto">
+                <Footer />
+            </div>
         </div>
     );
 }

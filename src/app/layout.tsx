@@ -36,6 +36,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <head>
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
       </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable} bg-gradient-to-br from-slate-950 via-black to-slate-950 text-slate-300 font-sans antialiased selection:bg-primary/30 selection:text-white overflow-x-hidden`}

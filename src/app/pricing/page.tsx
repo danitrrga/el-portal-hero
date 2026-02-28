@@ -1,248 +1,411 @@
+"use client";
+
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { ShinyButton } from "@/components/ui/shiny-button";
+
+/* ─── Inline SVG icons ────────────────────────────────────────────── */
+
+function CheckIcon({ filled = false }: { filled?: boolean }) {
+    return (
+        <svg
+            className={`w-4 h-4 shrink-0 ${filled ? "text-blue-400" : "text-blue-500/70"}`}
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+        >
+            <path
+                fillRule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                clipRule="evenodd"
+            />
+        </svg>
+    );
+}
+
+function ChevronIcon() {
+    return (
+        <svg
+            className="w-5 h-5 text-zinc-500 transition-transform duration-300 group-open:rotate-180"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+        >
+            <path
+                fillRule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                clipRule="evenodd"
+            />
+        </svg>
+    );
+}
+
+/* ─── Data ────────────────────────────────────────────────────────── */
+
+const tiers = [
+    {
+        name: "Initiate",
+        description: "Start building your first identity version.",
+        price: "$0",
+        period: "forever free",
+        cta: "Begin Your Journey",
+        featured: false,
+        features: [
+            "1 Active Version (90-Day cycle)",
+            "1 Cycle at a time (15-Day sprint)",
+            "Basic habit tracking (up to 5 habits)",
+            "Daily performance scoring (P_daily)",
+            "Community access",
+        ],
+    },
+    {
+        name: "Lifetime",
+        description: "One payment. Full access. Forever.",
+        price: "$10",
+        period: "one-time",
+        cta: "Claim Lifetime Access",
+        featured: true,
+        badge: "Best Value",
+        features: [
+            "Unlimited Versions & Cycles",
+            "Dual-Progression Goals (Streaks + Projects)",
+            "Cinema Mode — 5 immersive slides",
+            "The Archives — full knowledge base",
+            "Advanced analytics & heatmaps",
+            "Early access to new features",
+            "Founding Member badge",
+            "Lifetime updates, zero renewals",
+            "Direct line to the creator",
+        ],
+    },
+];
+
+const comparisonFeatures: {
+    name: string;
+    initiate: string | boolean;
+    lifetime: string | boolean;
+}[] = [
+        {
+            name: "Active Versions",
+            initiate: "1",
+            lifetime: "Unlimited",
+        },
+        {
+            name: "Cycles per Version",
+            initiate: "1",
+            lifetime: "Unlimited",
+        },
+        {
+            name: "Habit Tracking",
+            initiate: "Up to 5",
+            lifetime: "Unlimited",
+        },
+        {
+            name: "Goal System (Streaks + Projects)",
+            initiate: "—",
+            lifetime: true,
+        },
+        {
+            name: "Cinema Mode",
+            initiate: "—",
+            lifetime: true,
+        },
+        {
+            name: "The Archives",
+            initiate: "—",
+            lifetime: true,
+        },
+        {
+            name: "Advanced Analytics",
+            initiate: "—",
+            lifetime: true,
+        },
+        {
+            name: "Priority Support",
+            initiate: "—",
+            lifetime: true,
+        },
+        {
+            name: "Founding Member Badge",
+            initiate: "—",
+            lifetime: true,
+        },
+    ];
+
+const faqs = [
+    {
+        q: "What is a Version?",
+        a: "A Version is a 90-day identity phase — a deliberate container for who you're becoming. Each Version has its own title, persona, macro goals, and habits. When it ends, it's permanently archived so you can see how you've evolved.",
+    },
+    {
+        q: "How do Cycles work inside a Version?",
+        a: "Each Version is divided into 15-day Cycles — tactical sprints where you define mini-priorities, select habits, and execute daily. At the end of every Cycle, your performance is snapshotted and you decide which habits to carry forward or kill.",
+    },
+    {
+        q: "Why is it only $10?",
+        a: "El Portal is built for serious operators, not for profit margins. A one-time $10 payment unlocks everything — forever. No subscriptions, no renewals, no hidden fees. You pay once and the system is yours.",
+    },
+    {
+        q: "What is the Dual-Progression Goal System?",
+        a: "Goals in El Portal are tracked mathematically. Type A goals are powered by habit streaks and follow an asymptotic curve (early consistency is heavily rewarded). Type B goals are project-based with linear subtask completion. Both are always quantified.",
+    },
+    {
+        q: "What happens to my data if I stay on the free tier?",
+        a: "Your data is never deleted. On the Initiate tier, advanced features like Cinema Mode and The Archives are not available, but your Versions, Cycles, and performance history remain fully intact.",
+    },
+];
+
+/* ─── Component ───────────────────────────────────────────────────── */
 
 export default function PricingPage() {
     return (
-        <div className="relative w-full overflow-x-hidden bg-[#0a0a0a] bg-[radial-gradient(circle_at_top,rgba(14,59,164,0.15)_0%,rgba(10,10,10,1)_70%)]">
+        <div className="relative w-full overflow-x-hidden bg-zinc-950 min-h-screen">
+            {/* Grain texture overlay */}
+            <div
+                className="fixed inset-0 z-50 pointer-events-none opacity-[0.02]"
+                style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                }}
+            />
+
+            {/* Top radial blue gradient (DESIGN.md §2) */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-950/40 via-zinc-950 to-zinc-950 pointer-events-none" />
+
+            {/* Background grid texture */}
+            <div
+                className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"
+                style={{
+                    maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 100%)',
+                    WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 100%)',
+                }}
+            />
+
             <Navbar />
 
-            <main className="max-w-7xl mx-auto px-6 pt-32 pb-32">
-                {/* Hero Header */}
-                <div className="text-center mb-16 space-y-6">
-                    <h1 className="text-5xl md:text-6xl font-bold tracking-tighter text-slate-100">Pricing</h1>
-                    <p className="text-slate-400 text-lg max-w-xl mx-auto">
-                        Choose the plan that fits your workflow. Flexible options for teams of all sizes.
+            <main className="relative flex flex-col items-center">
+                {/* ── Hero Header ──────────────────────────────────── */}
+                <div className="w-full max-w-5xl px-6 md:px-8 pt-28 pb-10 flex flex-col items-center text-center">
+                    <h1 className="text-zinc-100 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter mb-5">
+                        Invest in your identity architecture
+                    </h1>
+                    <p className="text-zinc-400 text-sm md:text-base max-w-lg leading-relaxed mb-12">
+                        El Portal is the bridge between your Current Self and your Future
+                        Self. Start free, or unlock everything — forever — for a single
+                        payment.
                     </p>
 
-                    {/* Toggle Switch */}
-                    <div className="flex items-center justify-center gap-4 pt-4">
-                        <span className="text-sm font-medium text-slate-400">Monthly</span>
-                        <div className="flex h-10 w-64 items-center justify-center rounded-full bg-slate-900 border border-slate-800 p-1">
-                            <button className="flex h-full flex-1 items-center justify-center rounded-full text-sm font-medium text-slate-400 transition-all">
-                                Monthly
-                            </button>
-                            <button className="flex h-full flex-1 items-center justify-center rounded-full bg-blue-700 text-white text-sm font-medium shadow-sm transition-all">
-                                Yearly
-                            </button>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <span className="text-sm font-medium text-slate-400">Yearly</span>
-                            <span className="bg-blue-700/20 text-blue-500 text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full border border-blue-700/30">
-                                Save 20%
-                            </span>
-                        </div>
+                    {/* ── Pricing Cards Grid ───────────────────────── */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full max-w-3xl items-stretch">
+                        {tiers.map((tier) => (
+                            <div
+                                key={tier.name}
+                                className={`
+                                    relative flex flex-col p-6 rounded-2xl text-left
+                                    transition-all duration-300 ease-out
+                                    bg-zinc-950/80 backdrop-blur-xl border
+                                    ${tier.featured
+                                        ? "border-blue-500/20 shadow-[0_0_30px_-5px_rgba(30,64,175,0.15)] hover:shadow-[0_0_40px_-5px_rgba(30,64,175,0.25)] hover:border-blue-500/30"
+                                        : "border-white/5 hover:border-blue-500/20 hover:shadow-[0_0_30px_-5px_rgba(30,64,175,0.1)]"
+                                    }
+                                `}
+                            >
+                                {/* Badge */}
+                                {tier.badge && (
+                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-blue-500/10 text-blue-400 text-[10px] font-bold uppercase tracking-wider rounded-full whitespace-nowrap border border-blue-500/20">
+                                        {tier.badge}
+                                    </div>
+                                )}
+
+                                {/* Tier Name & Price */}
+                                <div className="mb-2">
+                                    <h3 className="text-zinc-100 text-lg font-semibold tracking-tight mb-1">
+                                        {tier.name}
+                                    </h3>
+                                    <p className="text-zinc-500 text-xs leading-relaxed mb-3">
+                                        {tier.description}
+                                    </p>
+                                    <div className="flex items-baseline gap-2">
+                                        <span className="text-zinc-100 text-4xl font-bold tracking-tight">
+                                            {tier.price}
+                                        </span>
+                                        <span className="text-zinc-500 text-xs">
+                                            {tier.period}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                {/* Separator */}
+                                <div className="w-full h-px bg-zinc-800/50 my-4" />
+
+                                {/* Features */}
+                                <ul className="space-y-2.5 mb-6 flex-grow">
+                                    {tier.features.map((feature) => (
+                                        <li
+                                            key={feature}
+                                            className="flex items-start gap-2.5 text-xs leading-relaxed"
+                                        >
+                                            <CheckIcon filled={tier.featured} />
+                                            <span
+                                                className={
+                                                    tier.featured
+                                                        ? "text-zinc-300"
+                                                        : "text-zinc-400"
+                                                }
+                                            >
+                                                {feature}
+                                            </span>
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                {/* CTA Button */}
+                                {tier.featured ? (
+                                    <ShinyButton className="w-full text-xs py-2.5 px-5">
+                                        {tier.cta}
+                                    </ShinyButton>
+                                ) : (
+                                    <button
+                                        className="w-full py-2.5 rounded-xl font-semibold text-xs transition-all duration-300 ease-out bg-zinc-900 hover:bg-zinc-800 text-zinc-100 border border-white/5 hover:border-blue-500/20"
+                                    >
+                                        {tier.cta}
+                                    </button>
+                                )}
+                            </div>
+                        ))}
                     </div>
                 </div>
 
-                {/* Tier Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
-
-                    {/* Starter */}
-                    <div className="flex flex-col p-8 rounded-2xl bg-slate-900/40 border border-white/5 hover:border-white/10 transition-all">
-                        <div className="mb-8">
-                            <h3 className="text-lg font-bold text-slate-100 mb-2">Starter</h3>
-                            <div className="flex items-baseline gap-1">
-                                <span className="text-4xl font-bold text-white">$0</span>
-                                <span className="text-slate-500 text-sm">/mo</span>
-                            </div>
-                            <p className="text-slate-400 text-sm mt-4 italic">Perfect for side projects</p>
-                        </div>
-                        <ul className="space-y-4 mb-8 flex-grow">
-                            <li className="flex items-center gap-3 text-sm text-slate-300">
-                                <span className="material-symbols-outlined text-blue-700 text-lg">check</span>
-                                Basic task management
-                            </li>
-                            <li className="flex items-center gap-3 text-sm text-slate-300">
-                                <span className="material-symbols-outlined text-blue-700 text-lg">check</span>
-                                5GB secure storage
-                            </li>
-                            <li className="flex items-center gap-3 text-sm text-slate-300">
-                                <span className="material-symbols-outlined text-blue-700 text-lg">check</span>
-                                3 active projects
-                            </li>
-                            <li className="flex items-center gap-3 text-sm text-slate-300 opacity-50">
-                                <span className="material-symbols-outlined text-lg">close</span>
-                                Priority support
-                            </li>
-                        </ul>
-                        <button className="w-full py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm transition-all">
-                            Get Started
-                        </button>
-                    </div>
-
-                    {/* Pro (Featured) */}
-                    <div className="relative flex flex-col p-8 rounded-2xl bg-slate-900/60 border-2 border-blue-700 shadow-[0_0_30px_-5px_rgba(30,64,175,0.15)] transform md:scale-105 z-10">
-                        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-700 text-white text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full whitespace-nowrap">
-                            Most Popular
-                        </div>
-                        <div className="mb-8">
-                            <h3 className="text-lg font-bold text-slate-100 mb-2">Pro</h3>
-                            <div className="flex items-baseline gap-1">
-                                <span className="text-4xl font-bold text-white">$19</span>
-                                <span className="text-slate-500 text-sm">/mo</span>
-                            </div>
-                            <p className="text-slate-400 text-sm mt-4 italic">For power users & small teams</p>
-                        </div>
-                        <ul className="space-y-4 mb-8 flex-grow">
-                            <li className="flex items-center gap-3 text-sm text-slate-100">
-                                <span className="material-symbols-outlined text-blue-700 text-lg">check</span>
-                                Unlimited projects
-                            </li>
-                            <li className="flex items-center gap-3 text-sm text-slate-100">
-                                <span className="material-symbols-outlined text-blue-700 text-lg">check</span>
-                                50GB secure storage
-                            </li>
-                            <li className="flex items-center gap-3 text-sm text-slate-100">
-                                <span className="material-symbols-outlined text-blue-700 text-lg">check</span>
-                                Advanced analytics
-                            </li>
-                            <li className="flex items-center gap-3 text-sm text-slate-100">
-                                <span className="material-symbols-outlined text-blue-700 text-lg">check</span>
-                                Priority support
-                            </li>
-                            <li className="flex items-center gap-3 text-sm text-slate-100">
-                                <span className="material-symbols-outlined text-blue-700 text-lg">check</span>
-                                Custom integrations
-                            </li>
-                        </ul>
-                        <button className="w-full py-3 px-4 rounded-xl bg-blue-700 hover:bg-blue-600 text-white font-bold text-sm transition-all shadow-lg shadow-blue-700/20">
-                            Go Pro
-                        </button>
-                    </div>
-
-                    {/* Enterprise */}
-                    <div className="flex flex-col p-8 rounded-2xl bg-slate-900/40 border border-white/5 hover:border-white/10 transition-all">
-                        <div className="mb-8">
-                            <h3 className="text-lg font-bold text-slate-100 mb-2">Enterprise</h3>
-                            <div className="flex items-baseline gap-1">
-                                <span className="text-4xl font-bold text-white">$49</span>
-                                <span className="text-slate-500 text-sm">/mo</span>
-                            </div>
-                            <p className="text-slate-400 text-sm mt-4 italic">For scaling organizations</p>
-                        </div>
-                        <ul className="space-y-4 mb-8 flex-grow">
-                            <li className="flex items-center gap-3 text-sm text-slate-300">
-                                <span className="material-symbols-outlined text-blue-700 text-lg">check</span>
-                                Everything in Pro
-                            </li>
-                            <li className="flex items-center gap-3 text-sm text-slate-300">
-                                <span className="material-symbols-outlined text-blue-700 text-lg">check</span>
-                                Unlimited storage
-                            </li>
-                            <li className="flex items-center gap-3 text-sm text-slate-300">
-                                <span className="material-symbols-outlined text-blue-700 text-lg">check</span>
-                                SSO & SAML Login
-                            </li>
-                            <li className="flex items-center gap-3 text-sm text-slate-300">
-                                <span className="material-symbols-outlined text-blue-700 text-lg">check</span>
-                                Dedicated account manager
-                            </li>
-                        </ul>
-                        <button className="w-full py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm transition-all">
-                            Contact Sales
-                        </button>
-                    </div>
-                </div>
-
-                {/* Comparison Table */}
-                <div className="mb-32">
-                    <h2 className="text-3xl font-bold mb-10 text-center">Detailed Comparison</h2>
-                    <div className="overflow-x-auto rounded-xl border border-slate-800">
+                {/* ── Feature Comparison Table ─────────────────────── */}
+                <section className="w-full max-w-3xl px-6 md:px-8 py-16">
+                    <h2 className="text-zinc-100 text-2xl font-bold tracking-tight mb-10 text-center">
+                        Feature Comparison
+                    </h2>
+                    <div className="bg-zinc-950/80 backdrop-blur-xl border border-white/5 rounded-2xl overflow-hidden">
                         <table className="w-full text-left border-collapse">
                             <thead>
-                                <tr className="bg-slate-900/50">
-                                    <th className="p-6 text-sm font-semibold text-slate-400 border-b border-slate-800">Feature</th>
-                                    <th className="p-6 text-sm font-semibold text-slate-100 border-b border-slate-800">Starter</th>
-                                    <th className="p-6 text-sm font-semibold text-blue-500 border-b border-slate-800">Pro</th>
-                                    <th className="p-6 text-sm font-semibold text-slate-100 border-b border-slate-800">Enterprise</th>
+                                <tr className="border-b border-zinc-800/50">
+                                    <th className="p-4 md:p-5 text-zinc-100 font-semibold text-xs tracking-tight">
+                                        Feature
+                                    </th>
+                                    <th className="p-4 md:p-5 text-zinc-400 font-medium text-xs text-center">
+                                        Initiate
+                                    </th>
+                                    <th className="p-4 md:p-5 text-blue-400 font-semibold text-xs text-center">
+                                        Lifetime
+                                    </th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-slate-800">
-                                <tr>
-                                    <td className="p-6 text-sm font-medium text-slate-100">Projects Limit</td>
-                                    <td className="p-6 text-sm text-slate-400">3 Projects</td>
-                                    <td className="p-6 text-sm text-slate-100">Unlimited</td>
-                                    <td className="p-6 text-sm text-slate-100">Unlimited</td>
-                                </tr>
-                                <tr>
-                                    <td className="p-6 text-sm font-medium text-slate-100">API Access</td>
-                                    <td className="p-6 text-sm text-slate-400">Read-only</td>
-                                    <td className="p-6 text-sm text-slate-100">Full Access</td>
-                                    <td className="p-6 text-sm text-slate-100">Custom High-Rate</td>
-                                </tr>
-                                <tr>
-                                    <td className="p-6 text-sm font-medium text-slate-100">Data Analytics</td>
-                                    <td className="p-6 text-sm text-slate-400">Basic</td>
-                                    <td className="p-6 text-sm text-slate-100"><span className="material-symbols-outlined text-blue-500">check</span></td>
-                                    <td className="p-6 text-sm text-slate-100"><span className="material-symbols-outlined text-blue-500">check</span></td>
-                                </tr>
-                                <tr>
-                                    <td className="p-6 text-sm font-medium text-slate-100">Custom Domain</td>
-                                    <td className="p-6 text-sm text-slate-400">-</td>
-                                    <td className="p-6 text-sm text-slate-400">-</td>
-                                    <td className="p-6 text-sm text-slate-100"><span className="material-symbols-outlined text-blue-500">check</span></td>
-                                </tr>
-                                <tr>
-                                    <td className="p-6 text-sm font-medium text-slate-100">SLA Support</td>
-                                    <td className="p-6 text-sm text-slate-400">Best effort</td>
-                                    <td className="p-6 text-sm text-slate-400">24h Response</td>
-                                    <td className="p-6 text-sm text-slate-100">99.9% Uptime</td>
-                                </tr>
+                            <tbody className="divide-y divide-zinc-800/50">
+                                {comparisonFeatures.map((row, i) => (
+                                    <tr
+                                        key={row.name}
+                                        className={`transition-colors hover:bg-white/[0.02] ${i % 2 === 1
+                                            ? "bg-white/[0.01]"
+                                            : ""
+                                            }`}
+                                    >
+                                        <td className="p-4 md:p-5 text-zinc-300 text-xs leading-relaxed">
+                                            {row.name}
+                                        </td>
+                                        {(
+                                            [
+                                                "initiate",
+                                                "lifetime",
+                                            ] as const
+                                        ).map((tier) => {
+                                            const val = row[tier];
+                                            return (
+                                                <td
+                                                    key={tier}
+                                                    className="p-4 md:p-5 text-center"
+                                                >
+                                                    {val === true ? (
+                                                        <span className="inline-flex justify-center">
+                                                            <CheckIcon
+                                                                filled={
+                                                                    tier ===
+                                                                    "lifetime"
+                                                                }
+                                                            />
+                                                        </span>
+                                                    ) : (
+                                                        <span
+                                                            className={`text-xs ${val === "—"
+                                                                ? "text-zinc-600"
+                                                                : tier ===
+                                                                    "lifetime"
+                                                                    ? "text-zinc-100 font-medium"
+                                                                    : "text-zinc-400"
+                                                                }`}
+                                                        >
+                                                            {val as string}
+                                                        </span>
+                                                    )}
+                                                </td>
+                                            );
+                                        })}
+                                    </tr>
+                                ))}
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </section>
 
-                {/* FAQ Section */}
-                <div className="max-w-3xl mx-auto mb-32">
-                    <h2 className="text-3xl font-bold mb-10 text-center">Frequently Asked Questions</h2>
-                    <div className="space-y-4">
-                        <details className="group rounded-xl border border-slate-800 bg-slate-900/20 px-6 py-4">
-                            <summary className="flex cursor-pointer items-center justify-between font-medium text-slate-100 list-none">
-                                <span>Can I switch plans anytime?</span>
-                                <span className="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
-                            </summary>
-                            <p className="mt-4 text-sm text-slate-400 leading-relaxed">
-                                Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate any payments for the remainder of the billing cycle.
-                            </p>
-                        </details>
-                        <details className="group rounded-xl border border-slate-800 bg-slate-900/20 px-6 py-4">
-                            <summary className="flex cursor-pointer items-center justify-between font-medium text-slate-100 list-none">
-                                <span>Do you offer a free trial?</span>
-                                <span className="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
-                            </summary>
-                            <p className="mt-4 text-sm text-slate-400 leading-relaxed">
-                                We offer a 14-day free trial on our Pro plan. No credit card is required to start your trial. After 14 days, you can choose a plan or stick with the Starter plan.
-                            </p>
-                        </details>
-                        <details className="group rounded-xl border border-slate-800 bg-slate-900/20 px-6 py-4">
-                            <summary className="flex cursor-pointer items-center justify-between font-medium text-slate-100 list-none">
-                                <span>What happens to my data if I cancel?</span>
-                                <span className="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
-                            </summary>
-                            <p className="mt-4 text-sm text-slate-400 leading-relaxed">
-                                If you cancel your paid subscription, your account will revert to the Starter plan. You will still have access to your data, but certain features may be limited according to plan restrictions.
-                            </p>
-                        </details>
+                {/* ── FAQ Section ──────────────────────────────────── */}
+                <section className="w-full max-w-2xl px-6 md:px-8 py-16">
+                    <h2 className="text-zinc-100 text-2xl font-bold tracking-tight mb-10 text-center">
+                        Common Questions
+                    </h2>
+                    <div className="space-y-3">
+                        {faqs.map((faq) => (
+                            <details
+                                key={faq.q}
+                                className="group rounded-xl border border-white/5 bg-zinc-950/80 backdrop-blur-xl px-5 py-4 transition-all duration-300 ease-out hover:border-blue-500/20 cursor-pointer"
+                            >
+                                <summary className="flex items-center justify-between font-medium text-sm text-zinc-100 list-none tracking-tight">
+                                    <span>{faq.q}</span>
+                                    <ChevronIcon />
+                                </summary>
+                                <p className="mt-3 text-xs text-zinc-400 leading-relaxed">
+                                    {faq.a}
+                                </p>
+                            </details>
+                        ))}
                     </div>
-                </div>
+                </section>
 
-                {/* Final CTA glass panel */}
-                <div className="bg-white/5 backdrop-blur-md border border-white/5 p-12 rounded-[2rem] text-center relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-700 to-transparent opacity-50"></div>
-                    <h2 className="text-4xl font-bold mb-6">Need a custom solution?</h2>
-                    <p className="text-slate-400 max-w-2xl mx-auto mb-10">
-                        We offer specialized configurations for large-scale operations requiring high security, custom compliance, and dedicated infrastructure.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <button className="bg-blue-700 hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-xl shadow-blue-700/30">
-                            Contact Enterprise Sales
-                        </button>
-                        <button className="bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-xl font-bold transition-all border border-white/10">
-                            View Technical Docs
-                        </button>
+                {/* ── Bottom CTA Glass Panel ───────────────────────── */}
+                <section className="w-full max-w-4xl px-6 md:px-8 pb-24">
+                    <div className="relative p-8 md:p-10 rounded-2xl bg-zinc-950/80 backdrop-blur-xl border border-white/5 overflow-hidden">
+                        {/* Top gradient line */}
+                        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-700/50 to-transparent" />
+                        {/* Background glow */}
+                        <div className="absolute inset-0 bg-gradient-to-b from-blue-950/10 to-transparent pointer-events-none" />
+
+                        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+                            <div className="max-w-lg">
+                                <h2 className="text-zinc-100 text-2xl md:text-3xl font-bold tracking-tight mb-3">
+                                    Ready to architect your next Version?
+                                </h2>
+                                <p className="text-zinc-400 text-sm leading-relaxed">
+                                    Start your first 90-day Version today.
+                                    Define who you&apos;re becoming, set your
+                                    macro goals, and let the system hold you
+                                    accountable — mathematically.
+                                </p>
+                            </div>
+                            <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+                                <ShinyButton>
+                                    Start Version 1
+                                </ShinyButton>
+                                <button className="px-5 py-2.5 bg-zinc-900/80 hover:bg-zinc-800 text-zinc-100 text-xs rounded-xl font-bold transition-all duration-300 ease-out border border-white/5 hover:border-blue-500/20">
+                                    Read the Methodology
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </section>
             </main>
 
             <Footer />

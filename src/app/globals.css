@@ -4,6 +4,31 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ── ShinyButton CSS Houdini Properties ─────────────────────────── */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --gradient-angle-offset {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --gradient-percent {
+  syntax: "<percentage>";
+  initial-value: 5%;
+  inherits: false;
+}
+
+@property --gradient-shine {
+  syntax: "<color>";
+  initial-value: white;
+  inherits: false;
+}
+
 @theme inline {
   --color-primary: #1E40AF;
   --color-primary-glow: #3B82F6;

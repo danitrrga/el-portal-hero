@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ShinyButton } from "@/components/ui/shiny-button";
 
 export default function CTASection() {
     return (
@@ -15,12 +16,11 @@ export default function CTASection() {
                     manage their life&apos;s work.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <Link
-                        className="px-8 py-4 bg-primary hover:bg-blue-600 text-white font-semibold rounded-full transition-all duration-500 ease-out shadow-[0_0_30px_rgba(30,64,175,0.4)] hover:shadow-[0_0_50px_rgba(30,64,175,0.6)] text-lg w-full sm:w-auto"
-                        href="#"
-                    >
-                        Start for free
-                    </Link>
+                    <ShinyButton asChild>
+                        <Link href="#">
+                            Start for free
+                        </Link>
+                    </ShinyButton>
                     <span className="text-sm text-slate-500">
                         No credit card required
                     </span>

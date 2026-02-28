@@ -18,10 +18,10 @@ export default function ChangelogPage() {
                     </div>
 
                     {/* Segmented Control (Shadcn Style) */}
-                    <div className="flex h-11 items-center rounded-xl bg-slate-900/80 p-1 border border-slate-800 shadow-inner">
-                        <button className="flex h-full flex-1 items-center justify-center rounded-lg bg-slate-800 px-6 text-sm font-semibold text-white shadow-sm transition-colors">All</button>
-                        <button className="flex h-full flex-1 items-center justify-center rounded-lg px-6 text-sm font-medium text-slate-500 hover:text-slate-300 transition-colors">Features</button>
-                        <button className="flex h-full flex-1 items-center justify-center rounded-lg px-6 text-sm font-medium text-slate-500 hover:text-slate-300 transition-colors">Fixes</button>
+                    <div className="flex h-9 items-center rounded-xl bg-slate-900/80 p-1 border border-slate-800 shadow-inner">
+                        <button className="flex h-full flex-1 items-center justify-center rounded-lg bg-slate-800 px-5 text-xs font-semibold text-white shadow-sm transition-colors">All</button>
+                        <button className="flex h-full flex-1 items-center justify-center rounded-lg px-5 text-xs font-medium text-slate-500 hover:text-slate-300 transition-colors">Features</button>
+                        <button className="flex h-full flex-1 items-center justify-center rounded-lg px-5 text-xs font-medium text-slate-500 hover:text-slate-300 transition-colors">Fixes</button>
                     </div>
                 </div>
 
@@ -140,7 +140,7 @@ export default function ChangelogPage() {
                     <p className="mb-8 max-w-md text-slate-400">Subscribe to our developer mailing list to receive technical deep-dives and early access to beta features.</p>
                     <div className="flex w-full max-w-sm flex-col gap-3 sm:flex-row">
                         <input className="flex-1 rounded-lg border-slate-800 bg-slate-900 px-4 py-3 text-sm focus:border-blue-700 focus:ring-1 focus:ring-blue-700 placeholder:text-slate-600 outline-none" placeholder="your@email.com" type="email" />
-                        <button className="rounded-lg bg-blue-700 px-6 py-3 text-sm font-bold text-white hover:bg-blue-600 transition-all shadow-lg shadow-blue-700/20">Subscribe</button>
+                        <button className="rounded-lg bg-blue-700 px-5 py-2.5 text-xs font-bold text-white hover:bg-blue-600 transition-all shadow-lg shadow-blue-700/20">Subscribe</button>
                     </div>
                 </div>
             </main>
