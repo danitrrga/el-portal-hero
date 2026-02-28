@@ -18,7 +18,7 @@ const principles = [
         number: "02",
         title: "The Speed of Thought",
         description:
-            "Software should respond before you've even finished the action. Low latency isn't a feature; it's a fundamental requirement for creative momentum.",
+            "Software should respond before you've even finished the action. Low latency isn't a feature; it's a fundamental requirement for excellence.",
     },
     {
         number: "03",
@@ -42,16 +42,10 @@ const principles = [
         number: "06",
         title: "Flow State First",
         description:
-            "Optimization for the cognitive load. No unnecessary clicks, no distracting animations. Every element earns its place in your field of focus.",
+            "Optimization for the cognitive load. Every element earns its place in your field of focus.",
     },
     {
         number: "07",
-        title: "Keyboard Sovereignty",
-        description:
-            "Every action accessible without leaving the keyboard. Speed is native, not an afterthought. The command palette is your cockpit.",
-    },
-    {
-        number: "08",
         title: "Elegant Restraint",
         description:
             "We add nothing that doesn't earn its place. Every pixel has purpose, every transition has intent. Simplicity is the ultimate sophistication.",
