@@ -9,7 +9,10 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
     return (
-        <div className="flex flex-col overflow-hidden relative z-10">
+        <div className="flex flex-col overflow-hidden relative z-10 w-full">
+            {/* Ambient Top Glow */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-[radial-gradient(circle_at_50%_0%,_rgba(30,64,175,0.18)_0%,_rgba(2,6,23,0)_70%)] pointer-events-none opacity-80 -z-10"></div>
+
             <ContainerScroll
                 titleComponent={
                     <motion.div
@@ -27,9 +30,7 @@ export default function Hero() {
                         }}
                         className="flex flex-col items-center max-w-4xl mx-auto relative z-10 text-center"
                     >
-                        {/* Radial Background */}
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-[radial-gradient(circle_at_50%_0%,_rgba(30,64,175,0.18)_0%,_rgba(2,6,23,0)_70%)] pointer-events-none opacity-80 -z-10"></div>
-
+                        {/* Ambient Glow has been moved to top edge of the page */}
                         <motion.div
                             variants={{
                                 hidden: { opacity: 0, y: 30 },
@@ -38,7 +39,7 @@ export default function Hero() {
                             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[11px] uppercase tracking-widest font-semibold mb-6 shadow-[0_0_20px_rgba(30,64,175,0.15)]"
                         >
                             <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]"></span>
-                            v2.0 Beta Live
+                            V1.0 Access
                         </motion.div>
 
                         <motion.h1

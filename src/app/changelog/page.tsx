@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { ChangelogItem } from "@/components/ChangelogItem";
 
 // Filter type
-type FilterType = "All" | "Features" | "Fixes";
+type FilterType = "All" | "Features" | "Fixes" | "Release";
 
 export default function ChangelogPage() {
     const [filter, setFilter] = useState<FilterType>("All");
@@ -14,7 +14,7 @@ export default function ChangelogPage() {
     const changelogData = [
         {
             version: "1.2.0",
-            date: "March 15, 2024",
+            date: "March 15, 2026",
             tags: ["New Feature", "Optimization"],
             type: "Features",
             title: "Performance Heatmaps & Dual-Progression System V2",
@@ -31,7 +31,7 @@ export default function ChangelogPage() {
         },
         {
             version: "1.1.5",
-            date: "March 02, 2024",
+            date: "March 02, 2026",
             tags: ["Improvement"],
             type: "Features",
             title: "Cinema Mode Enhancements",
@@ -51,33 +51,31 @@ export default function ChangelogPage() {
         },
         {
             version: "1.1.0",
-            date: "February 18, 2024",
+            date: "February 18, 2026",
             tags: ["New Feature"],
             type: "Features",
             title: "The Archives: Advanced Search Syntax",
             description: (
                 <>
-                    <p>Unlock the power of your persistent mental cache with our new search query language across My Routines, Mantra Archive, and Theory Notes.</p>
-                    <code className="block bg-zinc-900 border border-white/5 p-4 rounded-lg text-sm text-pink-400 overflow-x-auto font-mono mt-3">
-                        type:document AND status:active AND (author:me OR label:urgent)
-                    </code>
+                    <p>Unlock the power of writing across My Routines, Mantra Archive, and Theory Notes.</p>
+                    <div className="flex items-center gap-2 p-3 rounded-lg bg-blue-950/30 border border-blue-900/50 mt-4">
+                        <span className="material-symbols-outlined text-blue-200">edit_note</span>
+                        <p className="text-sm font-medium text-blue-200">
+                            Unleash the power of reflecting on your life and growth.
+                        </p>
+                    </div>
                 </>
             ),
         },
         {
-            version: "1.0.4",
-            date: "February 10, 2024",
-            tags: ["Hotfix"],
-            type: "Fixes",
-            title: "Analytics Hotfix",
+            version: "1.0.0",
+            date: "January 26, 2026",
+            tags: ["Release"],
+            type: "Release",
+            title: "Deployment of Version 1",
             description: (
                 <>
-                    <p>Resolving edge-cases within The Engine's performance calculations.</p>
-                    <ul className="list-none space-y-2 mt-3 text-sm">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-0.5">-</span><span>Fixed a bug causing self-healing components to crash when mid-cycle habit transitions occurred.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-0.5">-</span><span>Corrected timestamp formatting for users in GMT+13 timezone during cycle transitions.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-0.5">-</span><span>Resolved a UI glitch where the heatmap would flicker on mobile Safari.</span></li>
-                    </ul>
+                    <p>The initial release of El Portal.</p>
                 </>
             ),
         },
