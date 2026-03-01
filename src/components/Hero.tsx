@@ -54,19 +54,6 @@ export default function Hero() {
                                 high performance.
                             </span>
                         </motion.h1>
-
-                        <motion.p
-                            variants={{
-                                hidden: { opacity: 0, y: 30 },
-                                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-                            }}
-                            className="max-w-xl mx-auto text-base md:text-lg text-zinc-400 font-medium mb-8 leading-relaxed"
-                        >
-                            EL PORTAL is the all-in-one productivity engine for teams and agents.
-                            Manage habits, track deep work cycles, and align your foundational
-                            goals in one keyboard-centric interface.
-                        </motion.p>
-
                         <motion.div
                             variants={{
                                 hidden: { opacity: 0, y: 30 },
