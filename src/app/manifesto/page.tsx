@@ -96,9 +96,6 @@ export default function ManifestoPage() {
                     {/* North Star Redesign */}
                     <NorthStarSection />
                 </ReadingLayout>
-
-                {/* CTA — reused from Home for funnel consistency */}
-                <CTASection />
             </main>
 
             <Footer />

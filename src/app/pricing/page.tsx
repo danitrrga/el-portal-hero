@@ -400,7 +400,10 @@ export default function PricingPage() {
                                     accountable, mathematically.
                                 </p>
                             </div>
-                            <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+                            <div
+                                className="flex flex-col sm:flex-row gap-4 shrink-0 origin-center md:origin-right"
+                                style={{ transform: "scale(0.7)" }}
+                            >
                                 <Link href="https://el-portal-app.vercel.app">
                                     <ShinyButton>
                                         Start Version 1

@@ -61,14 +61,17 @@ export default function SystemBlueprintSection({ className = "" }: ReadonlySyste
             <div
                 className="absolute inset-0 pointer-events-none opacity-[0.03]"
                 style={{
-                    backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")"
+                    backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%15noiseFilter)'/%3E%3C/svg%3E\")"
                 }}
             ></div>
 
             {/* Radial soft glow matching the Hero section */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-[radial-gradient(circle_at_50%_50%,_rgba(30,64,175,0.05)_0%,_rgba(9,9,11,0)_60%)] pointer-events-none -z-10"></div>
 
-            <main className="w-full max-w-6xl flex flex-col gap-16 relative z-10 selection:bg-primary/30 mx-auto">
+            <main
+                className="w-full max-w-6xl flex flex-col gap-16 relative z-10 selection:bg-primary/30 mx-auto transition-transform duration-500"
+                style={{ transform: "scale(0.8)", transformOrigin: "top center", marginBottom: "-120px" }}
+            >
 
                 {/* Header - Centered for cinematic impact */}
                 <motion.section
