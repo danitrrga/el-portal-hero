@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>El Portal: The Engine</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1d4fd7",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#09090b",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased selection:bg-primary/30">
+<main class="min-h-screen p-8 md:p-16 lg:p-24 max-w-7xl mx-auto">
+<!-- Header Section -->
+<header class="mb-16">
+<div class="flex items-center gap-3 mb-4">
+<div class="relative flex items-center justify-center">
+<span class="absolute inline-flex h-3 w-3 rounded-full bg-primary opacity-75 animate-ping"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</div>
+<span class="text-xs font-mono uppercase tracking-[0.2em] text-primary">System Operational</span>
+</div>
+<h1 class="text-5xl font-bold tracking-tighter text-slate-900 dark:text-slate-100 mb-4">The Engine</h1>
+<p class="text-slate-500 dark:text-slate-400 max-w-xl text-lg leading-relaxed">
+                A recursive architecture designed for hyper-growth. Mapping the convergence of asymptotic habits and linear progression cycles.
+            </p>
+</header>
+<!-- Bento Grid: Temporal Hierarchy -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<!-- Card 1: Version (90D) -->
+<div class="bg-slate-50/50 dark:bg-zinc-950/80 backdrop-blur-xl border border-slate-200 dark:border-white/5 p-6 rounded-xl shadow-2xl">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="text-xs font-mono text-slate-400 dark:text-slate-500 uppercase tracking-widest">Version</h3>
+<p class="text-xl font-semibold mt-1">90D Horizon</p>
+</div>
+<span class="text-primary text-xs font-mono bg-primary/10 px-2 py-1 rounded">v4.2</span>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4 group">
+<div class="h-1 w-8 bg-primary/40 rounded-full group-hover:bg-primary transition-colors"></div>
+<span class="text-sm text-slate-400 dark:text-zinc-400 font-mono">Infrastructure Rebuild</span>
+</div>
+<div class="flex items-center gap-4 group">
+<div class="h-1 w-12 bg-primary/40 rounded-full group-hover:bg-primary transition-colors"></div>
+<span class="text-sm text-slate-400 dark:text-zinc-400 font-mono">Cognitive Refinement</span>
+</div>
+<div class="flex items-center gap-4 group">
+<div class="h-1 w-6 bg-primary/40 rounded-full group-hover:bg-primary transition-colors"></div>
+<span class="text-sm text-slate-400 dark:text-zinc-400 font-mono">Market Expansion</span>
+</div>
+<div class="flex items-center gap-4 group">
+<div class="h-1 w-10 bg-primary/20 rounded-full group-hover:bg-primary transition-colors"></div>
+<span class="text-sm text-slate-600 dark:text-zinc-600 font-mono">Synthesis Phase</span>
+</div>
+</div>
+</div>
+<!-- Card 2: Cycle (15D) -->
+<div class="bg-slate-50/50 dark:bg-zinc-950/80 backdrop-blur-xl border border-slate-200 dark:border-white/5 p-6 rounded-xl shadow-2xl relative overflow-hidden">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="text-xs font-mono text-slate-400 dark:text-slate-500 uppercase tracking-widest">Cycle</h3>
+<p class="text-xl font-semibold mt-1">15D Sprint</p>
+</div>
+<span class="material-icons text-slate-400 text-sm">refresh</span>
+</div>
+<div class="flex justify-center items-center h-32 relative">
+<!-- Progress Ring Placeholder -->
+<svg class="w-28 h-28 transform -rotate-90">
+<circle class="text-slate-200 dark:text-white/5" cx="56" cy="56" fill="transparent" r="48" stroke="currentColor" stroke-width="6"></circle>
+<circle class="text-primary" cx="56" cy="56" fill="transparent" r="48" stroke="currentColor" stroke-dasharray="301.59" stroke-dashoffset="120" stroke-width="6"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-bold font-mono">65%</span>
+<span class="text-[10px] uppercase font-mono text-slate-500">Day 10</span>
+</div>
+</div>
+</div>
+<!-- Card 3: Day (24H) -->
+<div class="bg-slate-50/50 dark:bg-zinc-950/80 backdrop-blur-xl border border-slate-200 dark:border-white/5 p-6 rounded-xl shadow-2xl">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="text-xs font-mono text-slate-400 dark:text-slate-500 uppercase tracking-widest">Day</h3>
+<p class="text-xl font-semibold mt-1">24H Flow</p>
+</div>
+<span class="material-icons text-slate-400 text-sm">schedule</span>
+</div>
+<div class="h-32 flex items-end gap-1 px-2">
+<!-- Sine Wave Sweep Visual -->
+<div class="flex-1 bg-primary/20 h-1/4 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/30 h-1/3 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/40 h-1/2 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/60 h-3/4 rounded-t-sm"></div>
+<div class="flex-1 bg-primary h-full rounded-t-sm"></div>
+<div class="flex-1 bg-primary/60 h-3/4 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/40 h-1/2 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/30 h-1/3 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-1/4 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/10 h-1/6 rounded-t-sm"></div>
+</div>
+<div class="mt-4 flex justify-between text-[10px] font-mono text-slate-500 uppercase">
+<span>00:00</span>
+<span>Noon</span>
+<span>23:59</span>
+</div>
+</div>
+</div>
+<!-- Data Progression Architecture -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-16">
+<!-- Left: Asymptotic Habits -->
+<div>
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-xl font-semibold flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                        Asymptotic Habits
+                    </h2>
+<div class="flex gap-4">
+<div class="text-right">
+<p class="text-[10px] font-mono text-slate-500 uppercase">Consistency</p>
+<p class="text-sm font-mono text-slate-900 dark:text-slate-200">98.4%</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-mono text-slate-500 uppercase">Streak</p>
+<p class="text-sm font-mono text-slate-900 dark:text-slate-200">14</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-mono text-slate-500 uppercase">Decay</p>
+<p class="text-sm font-mono text-rose-500">-0.01</p>
+</div>
+</div>
+</div>
+<div class="bg-slate-50/50 dark:bg-zinc-950/40 p-1 rounded-xl border border-slate-200 dark:border-white/5">
+<div class="h-64 relative overflow-hidden rounded-lg bg-slate-100/50 dark:bg-zinc-900/50">
+<!-- Area Chart Placeholder with data-alt -->
+<div class="absolute inset-0 flex items-end">
+<svg class="w-full h-full opacity-60" preserveaspectratio="none" viewbox="0 0 400 200">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#1d4fd7" stop-opacity="0.4"></stop>
+<stop offset="100%" stop-color="#1d4fd7" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,200 L0,180 Q50,170 100,140 T200,80 T300,50 T400,20 L400,200 Z" fill="url(#chartGradient)"></path>
+<path d="M0,180 Q50,170 100,140 T200,80 T300,50 T400,20" fill="none" stroke="#1d4fd7" stroke-width="2"></path>
+</svg>
+</div>
+<!-- UI Overlays -->
+<div class="absolute top-4 left-4 flex gap-2">
+<div class="w-2 h-2 rounded-full bg-primary/20"></div>
+<div class="w-2 h-2 rounded-full bg-primary/40"></div>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Linear Projects -->
+<div>
+<h2 class="text-xl font-semibold flex items-center gap-3 mb-8">
+<span class="w-2 h-2 rounded-full bg-slate-400"></span>
+                    Linear Projects
+                </h2>
+<div class="space-y-6">
+<div class="bg-slate-50/50 dark:bg-zinc-950/80 p-5 rounded-xl border border-slate-200 dark:border-white/5 hover:border-primary/50 transition-all cursor-default">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-4">
+<div class="w-5 h-5 rounded border border-primary flex items-center justify-center">
+<div class="w-2.5 h-2.5 bg-primary rounded-sm"></div>
+</div>
+<span class="text-sm font-medium">Neural Engine Alpha Testing</span>
+</div>
+<span class="text-[10px] font-mono text-slate-500">Critical</span>
+</div>
+<div class="w-full h-1 bg-slate-200 dark:bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[88%] rounded-full"></div>
+</div>
+</div>
+<div class="bg-slate-50/50 dark:bg-zinc-950/80 p-5 rounded-xl border border-slate-200 dark:border-white/5 hover:border-primary/50 transition-all cursor-default">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-4">
+<div class="w-5 h-5 rounded border border-slate-300 dark:border-white/10 flex items-center justify-center">
+</div>
+<span class="text-sm font-medium text-slate-500">API Documentation Synthesis</span>
+</div>
+<span class="text-[10px] font-mono text-slate-500">Secondary</span>
+</div>
+<div class="w-full h-1 bg-slate-200 dark:bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-slate-400 dark:bg-zinc-600 w-[42%] rounded-full"></div>
+</div>
+</div>
+<div class="bg-slate-50/50 dark:bg-zinc-950/80 p-5 rounded-xl border border-slate-200 dark:border-white/5 hover:border-primary/50 transition-all cursor-default">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-4">
+<div class="w-5 h-5 rounded border border-slate-300 dark:border-white/10 flex items-center justify-center">
+</div>
+<span class="text-sm font-medium text-slate-500">Spatial Interface Deployment</span>
+</div>
+<span class="text-[10px] font-mono text-slate-500">Backlog</span>
+</div>
+<div class="w-full h-1 bg-slate-200 dark:bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-slate-400 dark:bg-zinc-600 w-[12%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Grid Decoration -->
+<div class="mt-24 pt-8 border-t border-slate-200 dark:border-white/5 grid grid-cols-4 gap-4">
+<div class="flex flex-col">
+<span class="text-[10px] font-mono text-slate-400 uppercase">Core Latency</span>
+<span class="text-xs font-mono">14ms</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] font-mono text-slate-400 uppercase">Node Sync</span>
+<span class="text-xs font-mono text-primary">Active</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] font-mono text-slate-400 uppercase">Architecture</span>
+<span class="text-xs font-mono">El Portal v2</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[10px] font-mono text-slate-400 uppercase">Temporal Drift</span>
+<span class="text-xs font-mono">± 0.0004</span>
+</div>
+</div>
+</main>
+<!-- Abstract Background Element -->
+<div class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden opacity-20">
+<div class="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/20 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[-5%] left-[-5%] w-[40%] h-[40%] bg-primary/10 blur-[100px] rounded-full"></div>
+</div>
+<style>
+        @keyframes sweep {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        /* Custom scrollbar for clean aesthetic */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(29, 79, 215, 0.2);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(29, 79, 215, 0.4);
+        }
+    </style>
+</body></html>

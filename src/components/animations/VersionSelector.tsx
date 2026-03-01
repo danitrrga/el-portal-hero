@@ -16,7 +16,7 @@ export function VersionSelector() {
         <div className="group p-6 rounded-xl flex flex-col justify-between overflow-hidden relative transition-all duration-300 ease-out bg-zinc-950/80 backdrop-blur-xl border border-white/5 hover:border-blue-500/30 hover:shadow-[0_0_30px_-5px_rgba(30,64,175,0.15)] h-full">
             <div>
                 <span className="material-symbols-outlined text-blue-500 mb-4 opacity-80 text-3xl transition-transform group-hover:scale-110">
-                    layers
+                    fingerprint
                 </span>
                 <h4 className="font-serif text-3xl text-zinc-100 mb-2">Version</h4>
                 <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-4">

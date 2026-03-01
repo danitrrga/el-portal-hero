@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
+import { motion, useInView, useMotionValue, useTransform, animate as framerAnimate, useAnimate } from "framer-motion";
 
 const mockHabits = [
     { id: 1, label: "Deep Work (4hrs)", weight: 4 },
@@ -16,6 +16,7 @@ export function DynamicPerformanceScore() {
 
     const countValue = useMotionValue(0);
     const displayCount = useTransform(countValue, (latest) => Math.round(latest));
+    const [scope, animateSequence] = useAnimate();
 
     useEffect(() => {
         if (!isInView) {
@@ -24,37 +25,91 @@ export function DynamicPerformanceScore() {
             return;
         }
 
-        // Sequence the check-offs
+        let isMounted = true;
+
         const sequence = async () => {
+            // Initial reset
+            setCheckedIds([]);
+            countValue.set(0);
+            await framerAnimate(scope.current, { opacity: 1 }, { duration: 0 }); // ensure scope starts fresh
+            await animateSequence(".cursor-svg", { x: 200, y: 300, opacity: 0 }, { duration: 0 });
+            await new Promise((resolve) => setTimeout(resolve, 600));
+
+            if (!isMounted) return;
+
+            // Move cursor into view near the first row
+            await animateSequence(".cursor-svg", { x: 40, y: 100, opacity: 1 }, { duration: 0.8, ease: "easeOut" });
+
             for (let i = 0; i < mockHabits.length; i++) {
-                await new Promise((resolve) => setTimeout(resolve, i === 0 ? 800 : 600));
-                setCheckedIds((prev) => [...prev, mockHabits[i].id]);
+                if (!isMounted) return;
+                const habit = mockHabits[i];
+                // Approximate row position
+                const yPos = 100 + i * 56;
+
+                // Move cursor to the specific row
+                await animateSequence(".cursor-svg", { x: 40, y: yPos }, { duration: 0.5, ease: "easeInOut" });
+
+                // "Click" depress
+                await animateSequence(".cursor-svg", { scale: 0.9 }, { duration: 0.1 });
+
+                // Ripple / scale down effect on the row itself
+                animateSequence(`#row-${habit.id}`, { scale: 0.97 }, { duration: 0.1 }).then(() => {
+                    if (isMounted) animateSequence(`#row-${habit.id}`, { scale: 1 }, { duration: 0.3, type: "spring" });
+                });
+
+                setCheckedIds((prev) => [...prev, habit.id]);
 
                 // Target percentage up to this point
                 const currentPoints = mockHabits.slice(0, i + 1).reduce((acc, h) => acc + h.weight, 0);
                 const targetPercent = (currentPoints / 7) * 100;
 
-                animate(countValue, targetPercent, { duration: 0.5, ease: "easeOut" });
+                framerAnimate(countValue, targetPercent, { duration: 0.5, ease: "easeOut" });
+
+                // Release "Click"
+                await animateSequence(".cursor-svg", { scale: 1 }, { duration: 0.1 });
+                await new Promise((resolve) => setTimeout(resolve, 400));
             }
+
+            if (!isMounted) return;
+            // Cursor leaves
+            await animateSequence(".cursor-svg", { x: 200, y: 400, opacity: 0 }, { duration: 0.8, ease: "easeIn" });
         };
 
         sequence();
-    }, [isInView, countValue]);
+
+        return () => { isMounted = false; };
+    }, [isInView, countValue, animateSequence, scope]);
 
     return (
         <div ref={containerRef} className="flex flex-col md:flex-row gap-8 w-full group">
             {/* Left Column: Habits List */}
-            <div className="w-full md:w-[55%] glass-panel rounded-2xl p-6 md:p-8 border-border flex flex-col gap-4 relative overflow-hidden bg-white/[0.02]">
+            <div ref={scope} className="w-full md:w-[55%] glass-panel rounded-2xl p-6 md:p-8 border-border flex flex-col gap-4 relative overflow-hidden bg-white/[0.02]">
+
+                {/* Custom SVG Cursor */}
+                <motion.div
+                    className="cursor-svg absolute z-50 text-white pointer-events-none drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]"
+                    initial={{ opacity: 0 }}
+                    style={{ marginLeft: '-12px', marginTop: '-12px' }}
+                >
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-900">
+                        <path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z" />
+                    </svg>
+                </motion.div>
+
                 <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-2">
                     <span className="text-xs font-bold text-muted-foreground tracking-widest uppercase">Habit Tracker</span>
                     <span className="text-xs text-primary font-bold bg-primary/10 px-2 py-0.5 rounded-sm border border-primary/20">Active Cycle</span>
                 </div>
 
-                <div className="flex flex-col gap-4 relative z-10">
+                <div className="flex flex-col gap-3 relative z-10">
                     {mockHabits.map((habit) => {
                         const isChecked = checkedIds.includes(habit.id);
                         return (
-                            <div key={habit.id} className="flex items-center justify-between p-3 rounded-xl bg-white/[0.02] border border-white/5 relative overflow-hidden">
+                            <motion.div
+                                id={`row-${habit.id}`}
+                                key={habit.id}
+                                className={`flex items-center justify-between p-3 rounded-xl border relative overflow-hidden transition-colors duration-300 ${isChecked ? 'bg-white/[0.04] border-primary/20 shadow-[0_0_15px_-5px_rgba(30,64,175,0.3)]' : 'bg-white/[0.02] border-white/5'}`}
+                            >
                                 <div className="flex items-center gap-4 relative z-10">
                                     <motion.div
                                         layout
@@ -84,9 +139,9 @@ export function DynamicPerformanceScore() {
                                     initial={{ scaleX: 0, opacity: 0 }}
                                     animate={{ scaleX: isChecked ? 1 : 0, opacity: isChecked ? 1 : 0 }}
                                     transition={{ duration: 0.4, ease: "easeOut" }}
-                                    className="absolute inset-0 bg-primary/5 origin-left pointer-events-none"
+                                    className="absolute inset-0 bg-primary/10 origin-left pointer-events-none"
                                 />
-                            </div>
+                            </motion.div>
                         );
                     })}
                 </div>
@@ -134,3 +189,4 @@ export function DynamicPerformanceScore() {
         </div>
     );
 }
+

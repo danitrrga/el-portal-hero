@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import { ShinyButton } from "./ui/shiny-button";
 
 const navLinks = [
     { href: "/manifesto", label: "Manifesto" },
@@ -63,23 +64,15 @@ export default function Navbar() {
                     {/* Right Actions */}
                     <div className="flex items-center space-x-4">
                         <Link
-                            className="text-sm font-medium text-zinc-400 hover:text-zinc-100 transition-colors duration-300 hidden sm:block"
+                            className="text-sm font-medium text-zinc-400 hover:text-zinc-100 transition-colors duration-300 hidden sm:block pr-4"
                             href="https://app-el-portal-os.vercel.app/login"
                         >
                             Log in
                         </Link>
-                        <Link
-                            className={[
-                                "bg-zinc-800 hover:bg-zinc-700 text-zinc-100 text-sm font-medium",
-                                "h-8 px-4 rounded-lg",
-                                "border border-white/5 hover:border-blue-500/30",
-                                "transition-all duration-300",
-                                "shadow-lg shadow-black/20 hover:shadow-[0_0_20px_5px_rgba(30,64,175,0.15)]",
-                                "inline-flex items-center",
-                            ].join(" ")}
-                            href="#"
-                        >
-                            Download
+                        <Link href="https://app-el-portal-os.vercel.app">
+                            <ShinyButton className="!px-6 !py-3 !text-sm !rounded-xl !h-[44px] !font-medium">
+                                Get Started
+                            </ShinyButton>
                         </Link>
                         {/* Mobile Hamburger */}
                         <button

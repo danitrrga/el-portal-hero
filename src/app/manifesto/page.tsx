@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import ReadingLayout from "@/components/ReadingLayout";
 import ManifestoHero from "@/components/ManifestoHero";
 import PrincipleSection from "@/components/PrincipleSection";
-import CalloutCard from "@/components/CalloutCard";
+import NorthStarSection from "@/components/NorthStarSection";
 import CTASection from "@/components/CTASection";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -56,7 +56,13 @@ export default function ManifestoPage() {
     return (
         <div className="relative w-full overflow-x-hidden bg-zinc-950 min-h-screen">
             {/* Background grid texture */}
-            <div className="absolute inset-0 -z-10 h-full w-full bg-zinc-950 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+            <div
+                className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"
+                style={{
+                    maskImage: "radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%)",
+                    WebkitMaskImage: "radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%)"
+                }}
+            />
 
             <Navbar />
 
@@ -87,43 +93,8 @@ export default function ManifestoPage() {
                         <div className="h-px w-24 bg-gradient-to-l from-transparent to-zinc-700/30" />
                     </div>
 
-                    {/* North Star Callout */}
-                    <section className="py-12">
-                        <CalloutCard
-                            title="Our North Star"
-                            quote="Build tools so refined they disappear — leaving only the creator and the craft."
-                        />
-                    </section>
-
-                    {/* Values Mini-Grid */}
-                    <section className="py-16">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <Card className="group/card card-glow relative overflow-hidden border-zinc-800 bg-zinc-950/50 backdrop-blur-sm shadow-[0_0_30px_-5px_rgba(30,64,175,0.15)] transition-all duration-300 ease-out hover:border-blue-500/30">
-                                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-blue-700/[0.03] to-transparent" />
-                                <CardContent className="relative p-8">
-                                    <div className="w-2 h-2 rounded-full bg-blue-700 mb-4 transition-transform duration-[2000ms] ease-in-out group-hover/card:scale-150" />
-                                    <h3 className="text-white font-bold text-lg mb-2">
-                                        Flow State First
-                                    </h3>
-                                    <p className="text-zinc-400 text-sm leading-relaxed">
-                                        Optimization for the cognitive load. No unnecessary clicks, no distracting animations.
-                                    </p>
-                                </CardContent>
-                            </Card>
-                            <Card className="group/card card-glow relative overflow-hidden border-zinc-800 bg-zinc-950/50 backdrop-blur-sm shadow-[0_0_30px_-5px_rgba(30,64,175,0.15)] transition-all duration-300 ease-out hover:border-blue-500/30">
-                                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-blue-700/[0.03] to-transparent" />
-                                <CardContent className="relative p-8">
-                                    <div className="w-2 h-2 rounded-full bg-blue-700 mb-4 transition-transform duration-[2000ms] ease-in-out group-hover/card:scale-150" />
-                                    <h3 className="text-white font-bold text-lg mb-2">
-                                        Digital Sanctuary
-                                    </h3>
-                                    <p className="text-zinc-400 text-sm leading-relaxed">
-                                        A private space designed for clarity. Your data is yours, your focus is protected.
-                                    </p>
-                                </CardContent>
-                            </Card>
-                        </div>
-                    </section>
+                    {/* North Star Redesign */}
+                    <NorthStarSection />
                 </ReadingLayout>
 
                 {/* CTA — reused from Home for funnel consistency */}

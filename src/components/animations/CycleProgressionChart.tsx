@@ -10,7 +10,7 @@ export function CycleProgressionChart() {
     useEffect(() => {
         const interval = setInterval(() => {
             setResetCount((prev) => prev + 1);
-        }, 6000); // 15 nodes + reset buffer
+        }, 11000); // Increased to 11s to allow slower build-up and deliberate decay
         return () => clearInterval(interval);
     }, []);
 
@@ -35,7 +35,7 @@ export function CycleProgressionChart() {
                 key={`pulse-${resetCount}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: [0, 0, 1, 0, 0] }}
-                transition={{ duration: 6, times: [0, 0.8, 0.85, 0.9, 1], ease: "easeOut" }}
+                transition={{ duration: 11, times: [0, 0.8, 0.85, 0.9, 1], ease: "easeOut" }}
                 className="absolute inset-0 border-[3px] border-primary/50 rounded-xl pointer-events-none z-20"
             />
 
@@ -48,7 +48,7 @@ export function CycleProgressionChart() {
                         key={`badge-${resetCount}`}
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: [0, 0, 1, 0], scale: [0.8, 0.8, 1, 0.8] }}
-                        transition={{ duration: 6, times: [0, 0.8, 0.85, 0.95] }}
+                        transition={{ duration: 11, times: [0, 0.8, 0.85, 0.95] }}
                         className="px-3 py-1 rounded-full bg-primary/20 text-primary text-[10px] font-bold tracking-widest uppercase border border-primary/30 shadow-[0_0_15px_-3px_rgba(30,64,175,0.5)]"
                     >
                         Cycle Reset
@@ -87,10 +87,10 @@ export function CycleProgressionChart() {
                             {/* Bar Graph Fill */}
                             <motion.div
                                 initial={{ height: "0%", opacity: 0 }}
-                                animate={{ height: ["0%", `${h}%`, "0%"], opacity: [0, 1, 0] }}
+                                animate={{ height: ["0%", `${h}%`, `${h}%`, "0%"], opacity: [0, 1, 1, 0] }}
                                 transition={{
-                                    height: { duration: 5, times: [0, 0.1, 0.95], delay: i * 0.25, ease: "backOut" },
-                                    opacity: { duration: 5, times: [0, 0.1, 0.95], delay: i * 0.25 }
+                                    height: { duration: 8, times: [0, 0.2, 0.85, 1], delay: i * 0.15, ease: "easeInOut" },
+                                    opacity: { duration: 8, times: [0, 0.2, 0.85, 1], delay: i * 0.15 }
                                 }}
                                 className={`w-full max-w-[12px] rounded-sm relative overflow-hidden ${h === 100 ? 'bg-primary' : 'bg-white/20'}`}
                             >
@@ -98,7 +98,7 @@ export function CycleProgressionChart() {
                                     <motion.div
                                         initial={{ y: "100%" }}
                                         animate={{ y: "-100%" }}
-                                        transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.25 }}
+                                        transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.15 }}
                                         className="absolute inset-0 bg-gradient-to-t from-transparent via-white/50 to-transparent w-full h-full"
                                     />
                                 )}
@@ -108,10 +108,10 @@ export function CycleProgressionChart() {
                             <motion.div
                                 initial={{ backgroundColor: "#27272a" }} // zinc-800
                                 animate={{
-                                    backgroundColor: ["#27272a", "hsl(222, 84%, 35%)", "#27272a"],
-                                    scale: [1, 1.5, 1]
+                                    backgroundColor: ["#27272a", "hsl(222, 84%, 35%)", "hsl(222, 84%, 35%)", "#27272a"],
+                                    scale: [1, 1.5, 1.5, 1]
                                 }}
-                                transition={{ duration: 5, times: [0, 0.1, 0.95], delay: i * 0.25 }}
+                                transition={{ duration: 8, times: [0, 0.2, 0.85, 1], delay: i * 0.15, ease: "easeInOut" }}
                                 className="w-1.5 h-1.5 rounded-full z-10"
                             />
                         </div>
@@ -121,3 +121,4 @@ export function CycleProgressionChart() {
         </motion.div>
     );
 }
+

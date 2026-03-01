@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>El Portal: System Architecture UI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1d4ed8",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#000000",
+                        "zinc": {
+                            100: "#f4f4f5",
+                            400: "#a1a1aa",
+                            800: "#27272a",
+                            900: "#18181b",
+                        }
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["Geist Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #000000;
+        }
+        .ghost-border {
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .mono-text {
+            font-family: 'Geist Mono', monospace;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-zinc-100 antialiased selection:bg-primary selection:text-white">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between border-b border-white/5 px-8 py-4">
+<div class="flex items-center gap-4">
+<div class="size-5 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z"></path>
+</svg>
+</div>
+<h2 class="text-sm font-bold leading-tight tracking-widest mono-text uppercase">EL PORTAL</h2>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<nav class="flex items-center gap-6 mono-text text-[10px] uppercase tracking-tighter text-zinc-400">
+<a class="hover:text-zinc-100 transition-colors" href="#">OS</a>
+<a class="text-zinc-100" href="#">ARCHITECTURE</a>
+<a class="hover:text-zinc-100 transition-colors" href="#">NETWORK</a>
+<a class="hover:text-zinc-100 transition-colors" href="#">TERMINAL</a>
+</nav>
+<div class="h-4 w-px bg-white/10"></div>
+<button class="flex items-center justify-center rounded bg-primary/10 px-3 py-1.5 text-primary mono-text text-[10px] font-bold tracking-tight border border-primary/20">
+                    SYSTEM_STATUS: OK
+                </button>
+<div class="bg-zinc-800 rounded-full size-6 border border-white/10" data-alt="User avatar placeholder profile circle"></div>
+</div>
+</header>
+<main class="mx-auto flex w-full max-w-6xl flex-1 flex-col px-8 py-12">
+<!-- Header Section -->
+<div class="mb-12 flex flex-col gap-1">
+<div class="flex items-center gap-3">
+<h1 class="text-xs font-black tracking-[0.2em] text-zinc-100 uppercase mono-text">SYSTEM ARCHITECTURE</h1>
+<div class="size-1 rounded-full bg-primary shadow-[0_0_8px_rgba(29,78,216,0.6)]"></div>
+</div>
+<p class="text-[11px] text-zinc-400 mono-text">Rigid feedback loops. Non-negotiable hierarchies.</p>
+</div>
+<!-- Temporal Hierarchy Row -->
+<div class="grid grid-cols-1 gap-4 md:grid-cols-3 mb-8">
+<div class="ghost-border p-5 flex flex-col gap-4 bg-white/[0.02]">
+<div class="flex flex-col gap-1">
+<span class="mono-text text-[10px] text-zinc-400 uppercase tracking-widest">Temporal Hierarchy_01</span>
+<h3 class="text-sm font-bold text-zinc-100">Version (90D)</h3>
+</div>
+<div class="h-px w-full bg-white/5"></div>
+<p class="text-[11px] leading-relaxed text-zinc-400 mono-text">Identity layer. Long-term structural integrity and foundational values alignment.</p>
+<div class="mt-2 flex items-center justify-between text-[9px] mono-text text-zinc-500">
+<span>L0_ROOT</span>
+<span>[ ACTIVE ]</span>
+</div>
+</div>
+<div class="ghost-border p-5 flex flex-col gap-4 bg-white/[0.02]">
+<div class="flex flex-col gap-1">
+<span class="mono-text text-[10px] text-zinc-400 uppercase tracking-widest">Temporal Hierarchy_02</span>
+<h3 class="text-sm font-bold text-zinc-100">Cycle (15D)</h3>
+</div>
+<div class="h-px w-full bg-white/5"></div>
+<p class="text-[11px] leading-relaxed text-zinc-400 mono-text">Strategy layer. Mid-range tactical alignment and resource allocation vectors.</p>
+<div class="mt-2 flex items-center justify-between text-[9px] mono-text text-zinc-500">
+<span>L1_STRAT</span>
+<span>[ ACTIVE ]</span>
+</div>
+</div>
+<div class="ghost-border p-5 flex flex-col gap-4 bg-white/[0.02]">
+<div class="flex flex-col gap-1">
+<span class="mono-text text-[10px] text-zinc-400 uppercase tracking-widest">Temporal Hierarchy_03</span>
+<h3 class="text-sm font-bold text-zinc-100">Day (24H)</h3>
+</div>
+<div class="h-px w-full bg-white/5"></div>
+<p class="text-[11px] leading-relaxed text-zinc-400 mono-text">Execution layer. Daily high-fidelity output and atomic task completion.</p>
+<div class="mt-2 flex items-center justify-between text-[9px] mono-text text-zinc-500">
+<span>L2_EXEC</span>
+<span>[ ACTIVE ]</span>
+</div>
+</div>
+</div>
+<!-- Data Progression Row -->
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+<!-- Asymptotic Habits -->
+<div class="ghost-border bg-white/[0.01]">
+<div class="border-b border-white/5 px-5 py-3 flex justify-between items-center">
+<h2 class="text-[10px] font-bold tracking-[0.1em] text-zinc-400 uppercase mono-text">Asymptotic Habits</h2>
+<span class="material-symbols-outlined text-[14px] text-zinc-600">terminal</span>
+</div>
+<div class="p-5">
+<div class="flex flex-col gap-0 mono-text text-[11px]">
+<div class="flex justify-between py-2 border-b border-white/[0.03]">
+<span class="text-zinc-500">Consistency</span>
+<span class="text-zinc-100">98%</span>
+</div>
+<div class="flex justify-between py-2 border-b border-white/[0.03]">
+<span class="text-zinc-500">Streak</span>
+<span class="text-zinc-100">12</span>
+</div>
+<div class="flex justify-between py-2 border-b border-white/[0.03]">
+<span class="text-zinc-500">Decay Rate</span>
+<span class="text-zinc-100">0.02</span>
+</div>
+<div class="flex justify-between py-2 border-b border-white/[0.03]">
+<span class="text-zinc-500">System_Load</span>
+<span class="text-zinc-100">Minimal</span>
+</div>
+<div class="flex justify-between py-2 border-b border-white/[0.03]">
+<span class="text-zinc-500">Uptime</span>
+<span class="text-zinc-100">1,440m</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Linear Projects -->
+<div class="ghost-border bg-white/[0.01]">
+<div class="border-b border-white/5 px-5 py-3 flex justify-between items-center">
+<h2 class="text-[10px] font-bold tracking-[0.1em] text-zinc-400 uppercase mono-text">Linear Projects</h2>
+<span class="material-symbols-outlined text-[14px] text-zinc-600">list_alt</span>
+</div>
+<div class="p-5">
+<div class="flex flex-col gap-3 mono-text text-[11px]">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-3 border border-zinc-700 rounded-sm flex items-center justify-center">
+<div class="size-1.5 bg-primary"></div>
+</div>
+<span class="text-zinc-100">Neural Link Refinement</span>
+</div>
+<span class="text-[9px] text-primary uppercase font-bold">[ active ]</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-3 border border-zinc-700 rounded-sm"></div>
+<span class="text-zinc-400">Sub-Kernel Migration</span>
+</div>
+<span class="text-[9px] text-zinc-600 uppercase">[ pending ]</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-3 border border-zinc-700 rounded-sm flex items-center justify-center">
+<div class="size-1.5 bg-primary"></div>
+</div>
+<span class="text-zinc-100">Architecture Audit v2</span>
+</div>
+<span class="text-[9px] text-primary uppercase font-bold">[ active ]</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-3 border border-zinc-700 rounded-sm"></div>
+<span class="text-zinc-400">Protocol Dampening</span>
+</div>
+<span class="text-[9px] text-zinc-600 uppercase">[ pending ]</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-3 border border-zinc-700 rounded-sm"></div>
+<span class="text-zinc-400">Buffer Flush</span>
+</div>
+<span class="text-[9px] text-zinc-600 uppercase">[ pending ]</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Meta -->
+<footer class="mt-auto pt-12 border-t border-white/5 flex justify-between items-center opacity-40">
+<div class="mono-text text-[9px] uppercase tracking-tighter">
+                    Last update: 2023-10-24 04:12:01 UTC
+                </div>
+<div class="mono-text text-[9px] uppercase tracking-tighter">
+                    PORTAL_ARCH_VER: 4.0.1
+                </div>
+</footer>
+</main>
+</div>
+</div>
+</body></html>

@@ -1,36 +1,98 @@
+"use client";
+import React from "react";
+import { ContainerScroll } from "@/components/ui/container-scroll-animation";
+import Image from "next/image";
 import Link from "next/link";
 import { ShinyButton } from "@/components/ui/shiny-button";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 export default function Hero() {
     return (
-        <div className="relative py-20 lg:py-32 overflow-hidden">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-[radial-gradient(circle_at_50%_0%,_rgba(30,64,175,0.18)_0%,_rgba(2,6,23,0)_70%)] pointer-events-none opacity-80"></div>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-                {/* Subtext */}
-                <p className="max-w-2xl mx-auto text-lg md:text-xl text-slate-300 font-medium mb-10 leading-relaxed">
-                    EL PORTAL is the all-in-one productivity engine for teams and agents.
-                    Manage habits, track deep work cycles, and align your foundational
-                    goals in one keyboard-centric interface.
-                </p>
-
-                {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <ShinyButton asChild>
-                        <Link href="#">
-                            Get Started -&gt;
-                        </Link>
-                    </ShinyButton>
-                    <Link
-                        className="w-full sm:w-auto px-6 py-2.5 bg-slate-900/50 hover:bg-slate-800/70 text-slate-300 font-medium rounded-xl border border-slate-800/50 hover:border-blue-500/30 transition-all duration-300 ease-out text-xs flex items-center justify-center gap-2 group backdrop-blur-sm shadow-lg shadow-black/20 hover:shadow-[0_0_20px_5px_rgba(30,64,175,0.15)]"
-                        href="#"
+        <div className="flex flex-col overflow-hidden relative z-10">
+            <ContainerScroll
+                titleComponent={
+                    <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        variants={{
+                            hidden: { opacity: 0 },
+                            visible: {
+                                opacity: 1,
+                                transition: {
+                                    staggerChildren: 0.1,
+                                    delayChildren: 0.2,
+                                },
+                            },
+                        }}
+                        className="flex flex-col items-center max-w-4xl mx-auto relative z-10 text-center"
                     >
-                        <span className="font-mono text-[10px] opacity-50 bg-black/30 px-1.5 py-0.5 rounded border border-slate-800/50 group-hover:border-slate-700/50 transition-all duration-300">
-                            ⌘K
-                        </span>
-                        Read Documentation
-                    </Link>
-                </div>
-            </div>
+                        {/* Radial Background */}
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-[radial-gradient(circle_at_50%_0%,_rgba(30,64,175,0.18)_0%,_rgba(2,6,23,0)_70%)] pointer-events-none opacity-80 -z-10"></div>
+
+                        <motion.div
+                            variants={{
+                                hidden: { opacity: 0, y: 30 },
+                                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+                            }}
+                            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[11px] uppercase tracking-widest font-semibold mb-6 shadow-[0_0_20px_rgba(30,64,175,0.15)]"
+                        >
+                            <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]"></span>
+                            v2.0 Beta Live
+                        </motion.div>
+
+                        <motion.h1
+                            variants={{
+                                hidden: { opacity: 0, y: 30 },
+                                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+                            }}
+                            className="text-5xl md:text-7xl font-black tracking-[-0.04em] bg-gradient-to-r from-white to-slate-200 bg-clip-text text-transparent mb-6 leading-tight text-glow-hero"
+                        >
+                            Your shortcut to <br />
+                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-glow via-blue-200 to-accent-neon-green">
+                                high performance.
+                            </span>
+                        </motion.h1>
+
+                        <motion.p
+                            variants={{
+                                hidden: { opacity: 0, y: 30 },
+                                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+                            }}
+                            className="max-w-xl mx-auto text-base md:text-lg text-zinc-400 font-medium mb-8 leading-relaxed"
+                        >
+                            EL PORTAL is the all-in-one productivity engine for teams and agents.
+                            Manage habits, track deep work cycles, and align your foundational
+                            goals in one keyboard-centric interface.
+                        </motion.p>
+
+                        <motion.div
+                            variants={{
+                                hidden: { opacity: 0, y: 30 },
+                                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+                            }}
+                            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+                        >
+                        </motion.div>
+                    </motion.div>
+                }
+            >
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+                    className="h-full w-full rounded-2xl shadow-[0_0_30px_-5px_rgba(30,64,175,0.15)] relative"
+                >
+                    <Image
+                        src={`/assets/showcase/dashboard_black.png`}
+                        alt="hero"
+                        height={720}
+                        width={1400}
+                        className="mx-auto rounded-2xl object-cover h-full object-left-top"
+                        draggable={false}
+                    />
+                </motion.div>
+            </ContainerScroll>
         </div>
     );
 }
