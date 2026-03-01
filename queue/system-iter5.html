@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>El Portal: Engineering Blueprint UI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#257bf4",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#09090b", // zinc-950 equivalent
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .mono-text {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .glass-card {
+            background-color: rgba(24, 24, 27, 0.8); /* zinc-900/80 */
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen antialiased">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-white/5 bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-10">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1">deployed_code</span>
+<h1 class="text-slate-100 text-lg font-bold tracking-tight">El Portal</h1>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-zinc-400 hover:text-primary text-sm font-medium transition-colors" href="#">Architecture</a>
+<a class="text-zinc-400 hover:text-primary text-sm font-medium transition-colors" href="#">Temporal</a>
+<a class="text-zinc-400 hover:text-primary text-sm font-medium transition-colors" href="#">Cycles</a>
+<a class="text-zinc-400 hover:text-primary text-sm font-medium transition-colors" href="#">Execution</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500 text-xl">search</span>
+<input class="bg-zinc-900 border-white/5 rounded-lg pl-10 pr-4 py-1.5 text-sm w-64 focus:ring-1 focus:ring-primary focus:border-primary placeholder:text-zinc-600 transition-all" placeholder="Search Kernel..." type="text"/>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-1.5 rounded-lg text-sm font-bold transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">bolt</span>
+                    Deploy
+                </button>
+<div class="size-8 rounded-full bg-zinc-800 border border-white/10 overflow-hidden" data-alt="User profile avatar icon placeholder">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Abstract geometric user avatar pattern" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUWgjuc1Gn4Q9juXE-b4lXeeDCGNkS_ZuLY_ajhYK52QPUWL2DN8JHEhmECXDOpH8p7E9A-2ijW6py7BA_BJK6ApuggtK1Woq3IByZ6-fKSXjiIP29r9vm5xIODgNM_8_QTCpX9gIPxuNJgQTYSXQ4lRWy2QyeR7_cKWWs1MdrzbhdjoD1a4n3LCd08vQ_Eyb66oKVHJvwS6yUZqNRYMr2-x1Okhs1nvl0oGCDuoRmZ3Sur3DKB190PY6Sk5qczEbzAdOxIlKNPjs"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 py-12 space-y-12">
+<!-- Hero Section -->
+<section class="max-w-3xl">
+<h2 class="text-zinc-100 text-5xl md:text-6xl font-black leading-[1.1] tracking-tighter mb-4">
+                Identity modeled through strict temporal hierarchies.
+            </h2>
+<div class="flex items-center gap-3">
+<span class="mono-text text-primary text-sm font-medium bg-primary/10 px-2 py-0.5 rounded">v4.0.2</span>
+<p class="text-zinc-400 text-lg font-normal">System Architecture Substrate — Active Execution Layer</p>
+</div>
+</section>
+<!-- Temporal Hierarchy (3-Col Bento Grid) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1: Version -->
+<div class="glass-card p-8 rounded-xl shadow-[0_0_30px_-5px_rgba(30,64,175,0.15)] flex flex-col justify-between min-h-[220px]">
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<p class="text-zinc-400 text-xs font-bold uppercase tracking-widest mono-text">Version (90D)</p>
+<h3 class="text-zinc-100 text-4xl font-black tracking-tight">v4.0</h3>
+</div>
+<span class="material-symbols-outlined text-zinc-500">fingerprint</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="mono-text text-emerald-500 text-sm font-medium">+2.4%</span>
+<div class="h-1 flex-1 bg-zinc-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-3/4"></div>
+</div>
+</div>
+</div>
+<!-- Card 2: Cycle -->
+<div class="glass-card p-8 rounded-xl shadow-[0_0_30px_-5px_rgba(30,64,175,0.15)] flex flex-col justify-between min-h-[220px]">
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<p class="text-zinc-400 text-xs font-bold uppercase tracking-widest mono-text">Cycle (15D)</p>
+<h3 class="text-zinc-100 text-4xl font-black tracking-tight">C-12</h3>
+</div>
+<span class="material-symbols-outlined text-zinc-500">memory</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="mono-text text-emerald-500 text-sm font-medium">+0.8%</span>
+<div class="h-1 flex-1 bg-zinc-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-1/2"></div>
+</div>
+</div>
+</div>
+<!-- Card 3: Day -->
+<div class="glass-card p-8 rounded-xl shadow-[0_0_30px_-5px_rgba(30,64,175,0.15)] flex flex-col justify-between min-h-[220px]">
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<p class="text-zinc-400 text-xs font-bold uppercase tracking-widest mono-text">Day (Execution)</p>
+<h3 class="text-zinc-100 text-4xl font-black tracking-tight">Active</h3>
+</div>
+<span class="material-symbols-outlined text-zinc-500">terminal</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="mono-text text-orange-500 text-sm font-medium">-0.2%</span>
+<div class="h-1 flex-1 bg-zinc-800 rounded-full overflow-hidden">
+<div class="h-full bg-orange-500 w-1/3"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Goal Architecture (2-Col Grid) -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Left Card: Asymptotic Streaks -->
+<div class="glass-card p-8 rounded-xl shadow-[0_0_30px_-5px_rgba(30,64,175,0.15)] space-y-6">
+<div class="flex justify-between items-end">
+<div>
+<h4 class="text-zinc-100 text-xl font-bold tracking-tight">Asymptotic Streaks</h4>
+<p class="text-zinc-500 text-sm mono-text">Real-time performance metrics</p>
+</div>
+<div class="text-right">
+<p class="text-primary text-3xl font-black mono-text">98.42</p>
+<p class="text-emerald-500 text-xs mono-text">+0.04% Δ</p>
+</div>
+</div>
+<div class="relative pt-4 pb-2">
+<svg class="w-full h-48 overflow-visible" viewbox="0 0 500 150">
+<defs>
+<lineargradient id="line-gradient" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#257bf4"></stop>
+<stop offset="100%" stop-color="#3b82f6"></stop>
+</lineargradient>
+</defs>
+<path d="M0 120 Q 50 110, 100 130 T 200 80 T 300 100 T 400 40 T 500 60" fill="none" stroke="url(#line-gradient)" stroke-linecap="round" stroke-width="1.5"></path>
+<!-- Data Points -->
+<g class="mono-text text-[10px] fill-zinc-600">
+<text x="0" y="145">00:00</text>
+<text x="120" y="145">06:00</text>
+<text x="240" y="145">12:00</text>
+<text x="360" y="145">18:00</text>
+<text x="460" y="145">23:59</text>
+</g>
+<!-- Grid Lines -->
+<line stroke="white" stroke-dasharray="4" stroke-opacity="0.03" x1="0" x2="500" y1="20" y2="20"></line>
+<line stroke="white" stroke-dasharray="4" stroke-opacity="0.03" x1="0" x2="500" y1="70" y2="70"></line>
+<line stroke="white" stroke-dasharray="4" stroke-opacity="0.03" x1="0" x2="500" y1="120" y2="120"></line>
+</svg>
+</div>
+</div>
+<!-- Right Card: Linear Projects -->
+<div class="glass-card p-8 rounded-xl shadow-[0_0_30px_-5px_rgba(30,64,175,0.15)] flex flex-col">
+<div class="mb-6">
+<h4 class="text-zinc-100 text-xl font-bold tracking-tight">Linear Projects</h4>
+<p class="text-zinc-500 text-sm mono-text">Task orchestration stack</p>
+</div>
+<div class="space-y-4 mono-text text-sm">
+<div class="flex items-center gap-4 group cursor-default">
+<span class="text-primary font-bold">[x]</span>
+<span class="text-zinc-100 border-b border-transparent group-hover:border-zinc-700 transition-colors">Initialize Kernel Substrate</span>
+<span class="ml-auto text-zinc-600 text-[10px] uppercase">Done</span>
+</div>
+<div class="flex items-center gap-4 group cursor-default">
+<span class="text-primary font-bold">[x]</span>
+<span class="text-zinc-100 border-b border-transparent group-hover:border-zinc-700 transition-colors">Temporal Sync Protocols</span>
+<span class="ml-auto text-zinc-600 text-[10px] uppercase">Done</span>
+</div>
+<div class="flex items-center gap-4 group cursor-default">
+<span class="text-zinc-500">[ ]</span>
+<span class="text-zinc-400 border-b border-transparent group-hover:border-zinc-700 transition-colors">Build UI/UX Assets (v4)</span>
+<span class="ml-auto text-zinc-600 text-[10px] uppercase">Queued</span>
+</div>
+<div class="flex items-center gap-4 group cursor-default">
+<span class="text-zinc-500">[ ]</span>
+<span class="text-zinc-400 border-b border-transparent group-hover:border-zinc-700 transition-colors">Deploy Shards to Edge</span>
+<span class="ml-auto text-zinc-600 text-[10px] uppercase">Pending</span>
+</div>
+<div class="flex items-center gap-4 group cursor-default">
+<span class="text-zinc-500">[ ]</span>
+<span class="text-zinc-400 border-b border-transparent group-hover:border-zinc-700 transition-colors">Audit Execution Logs</span>
+<span class="ml-auto text-zinc-600 text-[10px] uppercase">Pending</span>
+</div>
+</div>
+<div class="mt-auto pt-6 flex justify-between items-center border-t border-white/5">
+<span class="text-zinc-600 text-[10px] mono-text">STATUS: 40% COMPLETE</span>
+<button class="text-primary hover:text-primary/80 transition-colors">
+<span class="material-symbols-outlined text-xl">add_circle</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Global Footer Status -->
+<footer class="fixed bottom-0 w-full bg-zinc-950 border-t border-white/5 py-2 px-6">
+<div class="max-w-7xl mx-auto flex justify-between items-center mono-text text-[10px] text-zinc-500 uppercase tracking-widest">
+<div class="flex gap-4">
+<span>System: Online</span>
+<span>Latency: 12ms</span>
+</div>
+<div>
+                © 2024 El Portal Engineering
+            </div>
+</div>
+</footer>
+</body></html>

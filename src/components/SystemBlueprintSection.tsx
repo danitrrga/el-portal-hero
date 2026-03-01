@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation, Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { RefreshCcw, Clock, Layers, Terminal, ListTodo, Check } from "lucide-react";
+import { Fingerprint, Cpu, Terminal } from "lucide-react";
 
 // Stagger variants for the Bento grid
 const containerVariants: Variants = {
@@ -11,19 +11,26 @@ const containerVariants: Variants = {
     visible: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.2
+            staggerChildren: 0.15
         }
     }
 };
 
 const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1]
+        }
+    }
 };
 
 export default function SystemBlueprintSection() {
     const controls = useAnimation();
-    const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
+    const [ref, inView] = useInView({ threshold: 0.15, triggerOnce: true });
 
     useEffect(() => {
         if (inView) {
@@ -32,315 +39,180 @@ export default function SystemBlueprintSection() {
     }, [controls, inView]);
 
     return (
-        <section id="methodology" className="py-24 bg-zinc-950 relative z-10 border-t border-white/5 font-sans overflow-hidden">
-            {/* Abstract Background Element */}
-            <div className="absolute inset-0 pointer-events-none z-[-1] overflow-hidden opacity-20">
-                <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-600/20 blur-[120px] rounded-full"></div>
-                <div className="absolute bottom-[-5%] left-[-5%] w-[40%] h-[40%] bg-blue-600/10 blur-[100px] rounded-full"></div>
-            </div>
-
-            <div className="mx-auto flex w-full max-w-6xl flex-col px-8">
+        <section id="methodology" className="py-24 lg:py-32 bg-zinc-950 relative z-10 border-t border-white/5 font-sans overflow-hidden">
+            <div className="mx-auto flex w-full max-w-6xl flex-col px-4 sm:px-6">
 
                 {/* Header Section */}
-                <motion.header
+                <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={controls}
-                    variants={{ visible: { opacity: 1, y: 0, transition: { duration: 0.8 } } }}
-                    className="mb-16"
+                    variants={{ visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } } }}
+                    className="mb-20 space-y-6"
                 >
-                    <div className="flex items-center gap-3 mb-4">
-                        <div className="relative flex items-center justify-center">
-                            <span className="absolute inline-flex h-3 w-3 rounded-full bg-blue-600 opacity-75 animate-ping"></span>
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
-                        </div>
-                        <span className="text-xs font-mono uppercase tracking-[0.2em] text-blue-500">System Operational</span>
+                    <h2 className="text-4xl md:text-5xl lg:text-5xl text-zinc-100 font-bold leading-[1.05] tracking-tighter max-w-3xl">
+                        Identity modeled through strict temporal hierarchies.
+                    </h2>
+                    <div className="flex items-center gap-3">
+                        <span className="font-mono text-zinc-400 text-[11px] font-medium border border-zinc-800 px-1.5 py-0.5 rounded uppercase tracking-wider">
+                            v4.0.2
+                        </span>
+                        <p className="text-zinc-500 text-sm font-normal">
+                            System Architecture Substrate — Active Execution Layer
+                        </p>
                     </div>
-                    <h2 className="text-5xl font-bold tracking-tighter text-zinc-100 mb-4">The Engine</h2>
-                    <p className="text-zinc-500 max-w-xl text-lg leading-relaxed">
-                        A recursive architecture designed for hyper-growth. Mapping the convergence of asymptotic habits and linear progression cycles.
-                    </p>
-                </motion.header>
+                </motion.div>
 
-                {/* Bento Grid: Temporal Hierarchy */}
+                {/* Temporal Hierarchy (3-Column Bento Grid) */}
                 <motion.div
                     ref={ref}
                     variants={containerVariants}
                     initial="hidden"
                     animate={controls}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
+                    className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4"
                 >
-                    {/* Card 1: Version (90D) */}
-                    <motion.div variants={itemVariants} className="bg-zinc-950/80 backdrop-blur-xl border border-white/5 p-6 rounded-xl hover:border-blue-500/30 transition-all duration-300">
-                        <div className="flex justify-between items-start mb-8">
-                            <div>
-                                <h3 className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Version</h3>
-                                <p className="text-xl font-semibold mt-1 text-zinc-100">90D Horizon</p>
+                    {/* Version */}
+                    <motion.div variants={itemVariants}>
+                        <div className="h-full group relative overflow-hidden bg-zinc-900/40 backdrop-blur-xl border border-white/5 rounded p-5 flex flex-col justify-between min-h-[160px] transition-all duration-300 ease-out hover:bg-zinc-900/60 shadow-[0_0_20px_-10px_rgba(255,255,255,0.05)]">
+                            <div className="flex justify-between items-start mb-6">
+                                <div className="space-y-0.5">
+                                    <p className="text-zinc-500 text-[10px] font-bold uppercase tracking-widest font-mono">Version (90D)</p>
+                                    <h3 className="text-zinc-100 text-3xl font-black tracking-tight group-hover:text-zinc-50 transition-colors">v4.0</h3>
+                                </div>
+                                <Fingerprint className="w-5 h-5 text-zinc-600 group-hover:text-zinc-400 transition-colors duration-300" />
                             </div>
-                            <span className="text-blue-400 text-xs font-mono bg-blue-500/10 border border-blue-500/20 px-2 py-1 rounded">v4.2</span>
-                        </div>
-                        <div className="space-y-4">
-                            {[
-                                { width: "w-8", text: "Infrastructure Rebuild" },
-                                { width: "w-12", text: "Cognitive Refinement" },
-                                { width: "w-6", text: "Market Expansion" },
-                                { width: "w-10", text: "Synthesis Phase", dim: true }
-                            ].map((item, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, x: -10 }}
-                                    animate={controls}
-                                    variants={{ visible: { opacity: 1, x: 0, transition: { delay: 0.6 + (i * 0.1) } } }}
-                                    className="flex items-center gap-4 group"
-                                >
-                                    <div className={`h-1 ${item.width} ${item.dim ? 'bg-blue-600/20' : 'bg-blue-600/40'} rounded-full group-hover:bg-blue-500 transition-colors`}></div>
-                                    <span className={`text-sm ${item.dim ? 'text-zinc-600' : 'text-zinc-400'} font-mono`}>{item.text}</span>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </motion.div>
-
-                    {/* Card 2: Cycle (15D) */}
-                    <motion.div variants={itemVariants} className="bg-zinc-950/80 backdrop-blur-xl border border-white/5 p-6 rounded-xl hover:border-blue-500/30 transition-all duration-300 relative overflow-hidden">
-                        <div className="flex justify-between items-start mb-8">
-                            <div>
-                                <h3 className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Cycle</h3>
-                                <p className="text-xl font-semibold mt-1 text-zinc-100">15D Sprint</p>
-                            </div>
-                            <RefreshCcw className="text-zinc-500" size={16} />
-                        </div>
-                        <div className="flex justify-center items-center h-32 relative">
-                            {/* Animated Progress Ring */}
-                            <svg className="w-28 h-28 transform -rotate-90">
-                                <circle className="text-white/5" cx="56" cy="56" fill="transparent" r="48" stroke="currentColor" strokeWidth="6"></circle>
-                                <motion.circle
-                                    initial={{ strokeDashoffset: 301.59 }}
-                                    animate={inView ? { strokeDashoffset: 105.55 } : { strokeDashoffset: 301.59 }} // 65% of 301.59
-                                    transition={{ duration: 1.5, ease: "easeOut", delay: 0.8 }}
-                                    className="text-blue-600"
-                                    cx="56" cy="56" fill="transparent" r="48" stroke="currentColor"
-                                    strokeDasharray="301.59"
-                                    strokeWidth="6"
-                                    strokeLinecap="round"
-                                ></motion.circle>
-                            </svg>
-                            <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                <motion.span
-                                    initial={{ opacity: 0, scale: 0.8 }}
-                                    animate={controls}
-                                    variants={{ visible: { opacity: 1, scale: 1, transition: { delay: 1.2 } } }}
-                                    className="text-2xl font-bold font-mono text-zinc-100"
-                                >
-                                    65%
-                                </motion.span>
-                                <span className="text-[10px] uppercase font-mono text-zinc-500">Day 10</span>
+                            <div className="flex items-center gap-2">
+                                <span className="font-mono text-zinc-500 text-[11px] font-medium group-hover:text-zinc-400 transition-colors">+2.4%</span>
+                                <div className="h-0.5 flex-1 bg-zinc-800/50 rounded-full overflow-hidden">
+                                    <div className="h-full bg-zinc-600 w-3/4 group-hover:bg-zinc-500 transition-colors duration-500"></div>
+                                </div>
                             </div>
                         </div>
                     </motion.div>
 
-                    {/* Card 3: Day (24H) */}
-                    <motion.div variants={itemVariants} className="bg-zinc-950/80 backdrop-blur-xl border border-white/5 p-6 rounded-xl hover:border-blue-500/30 transition-all duration-300">
-                        <div className="flex justify-between items-start mb-8">
-                            <div>
-                                <h3 className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Day</h3>
-                                <p className="text-xl font-semibold mt-1 text-zinc-100">24H Flow</p>
+                    {/* Cycle */}
+                    <motion.div variants={itemVariants}>
+                        <div className="h-full group relative overflow-hidden bg-zinc-900/40 backdrop-blur-xl border border-white/5 rounded p-5 flex flex-col justify-between min-h-[160px] transition-all duration-300 ease-out hover:bg-zinc-900/60 shadow-[0_0_20px_-10px_rgba(255,255,255,0.05)]">
+                            <div className="flex justify-between items-start mb-6">
+                                <div className="space-y-0.5">
+                                    <p className="text-zinc-500 text-[10px] font-bold uppercase tracking-widest font-mono">Cycle (15D)</p>
+                                    <h3 className="text-zinc-100 text-3xl font-black tracking-tight group-hover:text-zinc-50 transition-colors">C-12</h3>
+                                </div>
+                                <Cpu className="w-5 h-5 text-zinc-600 group-hover:text-zinc-400 transition-colors duration-300" />
                             </div>
-                            <Clock className="text-zinc-500" size={16} />
+                            <div className="flex items-center gap-2">
+                                <span className="font-mono text-zinc-500 text-[11px] font-medium group-hover:text-zinc-400 transition-colors">+0.8%</span>
+                                <div className="h-0.5 flex-1 bg-zinc-800/50 rounded-full overflow-hidden">
+                                    <div className="h-full bg-zinc-600 w-1/2 group-hover:bg-zinc-500 transition-colors duration-500"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div className="h-32 flex items-end gap-1 px-2 relative overflow-hidden">
-                            {/* Animated Sine Wave Sweep */}
-                            {[1 / 4, 1 / 3, 1 / 2, 3 / 4, 1, 3 / 4, 1 / 2, 1 / 3, 1 / 4, 1 / 6].map((height, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ height: 0 }}
-                                    animate={inView ? { height: `${height * 100}%` } : { height: 0 }}
-                                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 + (i * 0.05) }}
-                                    className="flex-1 rounded-t-sm"
-                                    style={{ backgroundColor: `rgba(37, 99, 235, ${height * 0.8})` }}
-                                ></motion.div>
-                            ))}
-                        </div>
-                        <div className="mt-4 flex justify-between text-[10px] font-mono text-zinc-600 uppercase">
-                            <span>00:00</span>
-                            <span>Noon</span>
-                            <span>23:59</span>
+                    </motion.div>
+
+                    {/* Day */}
+                    <motion.div variants={itemVariants}>
+                        <div className="h-full group relative overflow-hidden bg-zinc-900/40 backdrop-blur-xl border border-white/5 rounded p-5 flex flex-col justify-between min-h-[160px] transition-all duration-300 ease-out hover:bg-zinc-900/60 shadow-[0_0_20px_-10px_rgba(255,255,255,0.05)]">
+                            <div className="flex justify-between items-start mb-6">
+                                <div className="space-y-0.5">
+                                    <p className="text-zinc-500 text-[10px] font-bold uppercase tracking-widest font-mono">Day (Execution)</p>
+                                    <h3 className="text-zinc-100 text-3xl font-black tracking-tight group-hover:text-zinc-50 transition-colors">Active</h3>
+                                </div>
+                                <Terminal className="w-5 h-5 text-zinc-600 group-hover:text-zinc-400 transition-colors duration-300" />
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <span className="font-mono text-zinc-500 text-[11px] font-medium group-hover:text-zinc-400 transition-colors">-0.2%</span>
+                                <div className="h-0.5 flex-1 bg-zinc-800/50 rounded-full overflow-hidden">
+                                    <div className="h-full bg-zinc-600 w-1/3 group-hover:bg-zinc-500 transition-colors duration-500"></div>
+                                </div>
+                            </div>
                         </div>
                     </motion.div>
                 </motion.div>
 
-                {/* Data Progression Architecture */}
+                {/* Goal Architecture (2 Columns below) */}
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
                     animate={controls}
-                    className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-16"
+                    className="grid grid-cols-1 lg:grid-cols-2 gap-4"
                 >
-                    {/* Left: Asymptotic Habits */}
+                    {/* Left: Type A (Asymptotic Consistency) */}
                     <motion.div variants={itemVariants}>
-                        <div className="flex items-center justify-between mb-8">
-                            <h3 className="text-xl font-semibold flex items-center gap-3 text-zinc-100">
-                                <span className="w-2 h-2 rounded-full bg-blue-600"></span>
-                                Asymptotic Habits
-                            </h3>
-                            <div className="flex gap-4">
-                                <div className="text-right">
-                                    <p className="text-[10px] font-mono text-zinc-500 uppercase">Consistency</p>
-                                    <p className="text-sm font-mono text-zinc-200">98.4%</p>
+                        <div className="h-full bg-zinc-900/40 backdrop-blur-xl rounded border border-white/5 p-6 shadow-[0_0_20px_-10px_rgba(255,255,255,0.05)] space-y-4 hover:bg-zinc-900/60 transition-colors duration-300">
+                            <div className="flex justify-between items-end">
+                                <div>
+                                    <h4 className="text-zinc-100 text-lg font-bold tracking-tight">Asymptotic Streaks</h4>
+                                    <p className="text-zinc-600 text-[11px] font-mono uppercase tracking-tight mt-1">Real-time performance metrics</p>
                                 </div>
                                 <div className="text-right">
-                                    <p className="text-[10px] font-mono text-zinc-500 uppercase">Streak</p>
-                                    <p className="text-sm font-mono text-zinc-200">14</p>
-                                </div>
-                                <div className="text-right">
-                                    <p className="text-[10px] font-mono text-zinc-500 uppercase">Decay</p>
-                                    <p className="text-sm font-mono text-rose-500">-0.01</p>
+                                    <p className="text-zinc-100 text-2xl font-black font-mono tracking-tighter">98.42</p>
+                                    <p className="text-zinc-500 text-[10px] font-mono">+0.04% Δ</p>
                                 </div>
                             </div>
-                        </div>
 
-                        <div className="bg-zinc-950/40 p-1 rounded-xl border border-white/5">
-                            <div className="h-64 relative overflow-hidden rounded-lg bg-zinc-900/50">
-                                {/* Animated Area Chart */}
-                                <div className="absolute inset-0 flex items-end">
-                                    <svg className="w-full h-full opacity-60" preserveAspectRatio="none" viewBox="0 0 400 200">
-                                        <defs>
-                                            <linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
-                                                <stop offset="0%" stopColor="#1d4fd7" stopOpacity="0.4"></stop>
-                                                <stop offset="100%" stopColor="#1d4fd7" stopOpacity="0"></stop>
-                                            </linearGradient>
-                                        </defs>
-                                        <motion.path
-                                            initial={{ pathLength: 0, opacity: 0 }}
-                                            animate={inView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
-                                            transition={{ duration: 1.5, ease: "easeInOut", delay: 1 }}
-                                            d="M0,200 L0,180 Q50,170 100,140 T200,80 T300,50 T400,20 L400,200 Z"
-                                            fill="url(#chartGradient)"
-                                        ></motion.path>
-                                        <motion.path
-                                            initial={{ pathLength: 0 }}
-                                            animate={inView ? { pathLength: 1 } : { pathLength: 0 }}
-                                            transition={{ duration: 1.5, ease: "easeInOut", delay: 1 }}
-                                            d="M0,180 Q50,170 100,140 T200,80 T300,50 T400,20"
-                                            fill="none" stroke="#1d4fd7" strokeWidth="2"
-                                        ></motion.path>
-                                    </svg>
-                                </div>
-                                {/* UI Overlays */}
-                                <div className="absolute top-4 left-4 flex gap-2">
-                                    <div className="w-2 h-2 rounded-full bg-blue-600/20"></div>
-                                    <div className="w-2 h-2 rounded-full bg-blue-600/40"></div>
-                                    <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                                </div>
+                            {/* Vector Graph */}
+                            <div className="relative pt-2 pb-1">
+                                <svg className="w-full h-32 overflow-visible" viewBox="0 0 500 150">
+                                    <motion.path
+                                        initial={{ pathLength: 0, opacity: 0 }}
+                                        animate={inView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
+                                        transition={{ duration: 2, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
+                                        d="M0 120 Q 50 110, 100 130 T 200 80 T 300 100 T 400 40 T 500 60"
+                                        fill="none"
+                                        stroke="rgba(255,255,255,0.15)"
+                                        strokeLinecap="round"
+                                        strokeWidth="1.5"
+                                    ></motion.path>
+                                    <g className="font-mono text-[11px] fill-zinc-500">
+                                        <text x="0" y="145">00:00</text>
+                                        <text x="125" y="145">06:00</text>
+                                        <text x="250" y="145">12:00</text>
+                                        <text x="375" y="145">18:00</text>
+                                        <text x="465" y="145">23:59</text>
+                                    </g>
+                                    <line stroke="white" strokeDasharray="2" strokeOpacity="0.03" x1="0" x2="500" y1="20" y2="20"></line>
+                                    <line stroke="white" strokeDasharray="2" strokeOpacity="0.03" x1="0" x2="500" y1="70" y2="70"></line>
+                                    <line stroke="white" strokeDasharray="2" strokeOpacity="0.03" x1="0" x2="500" y1="120" y2="120"></line>
+                                </svg>
                             </div>
                         </div>
                     </motion.div>
 
-                    {/* Right: Linear Projects */}
+                    {/* Right: Type B (Linear Projects) */}
                     <motion.div variants={itemVariants}>
-                        <h3 className="text-xl font-semibold flex items-center gap-3 mb-8 text-zinc-100">
-                            <span className="w-2 h-2 rounded-full bg-zinc-600"></span>
-                            Linear Projects
-                        </h3>
-
-                        <div className="space-y-6">
-                            {/* Project 1 */}
-                            <motion.div
-                                whileHover={{ scale: 1.02 }}
-                                className="bg-zinc-950/80 p-5 rounded-xl border border-white/5 hover:border-blue-500/50 transition-all cursor-default"
-                            >
-                                <div className="flex items-center justify-between mb-3">
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-5 h-5 rounded border border-blue-600 flex items-center justify-center">
-                                            <motion.div
-                                                initial={{ scale: 0 }}
-                                                animate={inView ? { scale: 1 } : { scale: 0 }}
-                                                transition={{ type: "spring", delay: 1.5 }}
-                                                className="w-2.5 h-2.5 bg-blue-600 rounded-sm"
-                                            ></motion.div>
-                                        </div>
-                                        <span className="text-sm font-medium text-zinc-100">Neural Engine Alpha Testing</span>
-                                    </div>
-                                    <span className="text-[10px] font-mono text-zinc-500">Critical</span>
-                                </div>
-                                <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+                        <div className="h-full bg-zinc-900/40 backdrop-blur-xl rounded border border-white/5 p-6 shadow-[0_0_20px_-10px_rgba(255,255,255,0.05)] flex flex-col hover:bg-zinc-900/60 transition-colors duration-300">
+                            <div className="mb-5">
+                                <h4 className="text-zinc-100 text-lg font-bold tracking-tight">Linear Projects</h4>
+                                <p className="text-zinc-600 text-[11px] font-mono uppercase tracking-tight mt-1">Task orchestration stack</p>
+                            </div>
+                            <div className="space-y-3 font-mono text-[12px]">
+                                {[
+                                    { status: "[x]", text: "Initialize Kernel Substrate", state: "DONE", color: "text-zinc-500", highlight: "text-zinc-300" },
+                                    { status: "[x]", text: "Temporal Sync Protocols", state: "DONE", color: "text-zinc-500", highlight: "text-zinc-300" },
+                                    { status: "[ ]", text: "Build UI/UX Assets (v4)", state: "QUEUED", color: "text-zinc-700", highlight: "text-zinc-500" },
+                                    { status: "[ ]", text: "Deploy Shards to Edge", state: "PENDING", color: "text-zinc-700", highlight: "text-zinc-500" },
+                                    { status: "[ ]", text: "Audit Execution Logs", state: "PENDING", color: "text-zinc-700", highlight: "text-zinc-500" }
+                                ].map((task, i) => (
                                     <motion.div
-                                        initial={{ width: 0 }}
-                                        animate={inView ? { width: "88%" } : { width: 0 }}
-                                        transition={{ duration: 1, delay: 1.2 }}
-                                        className="h-full bg-blue-600 rounded-full"
-                                    ></motion.div>
+                                        key={i}
+                                        initial={{ opacity: 0, x: -5 }}
+                                        animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -5 }}
+                                        transition={{ duration: 0.4, delay: 0.6 + (i * 0.1) }}
+                                        className="flex items-center gap-3 group cursor-default"
+                                    >
+                                        <span className={task.color}>{task.status}</span>
+                                        <span className={`${task.highlight} group-hover:text-zinc-100 transition-colors duration-300 tracking-tight`}>{task.text}</span>
+                                        <span className={`ml-auto ${task.color} text-[10px] uppercase`}>{task.state}</span>
+                                    </motion.div>
+                                ))}
+                            </div>
+                            <div className="mt-auto pt-6 flex justify-between items-center border-t border-white/5">
+                                <span className="text-zinc-600 text-[10px] font-mono tracking-widest uppercase">Kernel Progress: 40%</span>
+                                <div className="w-4 h-4 rounded text-zinc-500 hover:text-zinc-300 transition-colors flex items-center justify-center cursor-pointer">
+                                    <span className="text-lg leading-none">+</span>
                                 </div>
-                            </motion.div>
-
-                            {/* Project 2 */}
-                            <motion.div
-                                whileHover={{ scale: 1.02 }}
-                                className="bg-zinc-950/80 p-5 rounded-xl border border-white/5 hover:border-blue-500/50 transition-all cursor-default"
-                            >
-                                <div className="flex items-center justify-between mb-3">
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-5 h-5 rounded border border-white/10 flex items-center justify-center"></div>
-                                        <span className="text-sm font-medium text-zinc-500">API Documentation Synthesis</span>
-                                    </div>
-                                    <span className="text-[10px] font-mono text-zinc-500">Secondary</span>
-                                </div>
-                                <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
-                                    <motion.div
-                                        initial={{ width: 0 }}
-                                        animate={inView ? { width: "42%" } : { width: 0 }}
-                                        transition={{ duration: 1, delay: 1.4 }}
-                                        className="h-full bg-zinc-600 rounded-full"
-                                    ></motion.div>
-                                </div>
-                            </motion.div>
-
-                            {/* Project 3 */}
-                            <motion.div
-                                whileHover={{ scale: 1.02 }}
-                                className="bg-zinc-950/80 p-5 rounded-xl border border-white/5 hover:border-blue-500/50 transition-all cursor-default"
-                            >
-                                <div className="flex items-center justify-between mb-3">
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-5 h-5 rounded border border-white/10 flex items-center justify-center"></div>
-                                        <span className="text-sm font-medium text-zinc-500">Spatial Interface Deployment</span>
-                                    </div>
-                                    <span className="text-[10px] font-mono text-zinc-500">Backlog</span>
-                                </div>
-                                <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
-                                    <motion.div
-                                        initial={{ width: 0 }}
-                                        animate={inView ? { width: "12%" } : { width: 0 }}
-                                        transition={{ duration: 1, delay: 1.6 }}
-                                        className="h-full bg-zinc-600 rounded-full"
-                                    ></motion.div>
-                                </div>
-                            </motion.div>
+                            </div>
                         </div>
                     </motion.div>
-                </motion.div>
-
-                {/* Footer Grid Decoration */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={inView ? { opacity: 1 } : { opacity: 0 }}
-                    transition={{ duration: 1, delay: 2 }}
-                    className="mt-24 pt-8 border-t border-white/5 grid grid-cols-4 gap-4"
-                >
-                    <div className="flex flex-col">
-                        <span className="text-[10px] font-mono text-zinc-600 uppercase">Core Latency</span>
-                        <span className="text-xs font-mono text-zinc-400">14ms</span>
-                    </div>
-                    <div className="flex flex-col">
-                        <span className="text-[10px] font-mono text-zinc-600 uppercase">Node Sync</span>
-                        <span className="text-xs font-mono text-blue-500">Active</span>
-                    </div>
-                    <div className="flex flex-col">
-                        <span className="text-[10px] font-mono text-zinc-600 uppercase">Architecture</span>
-                        <span className="text-xs font-mono text-zinc-400">El Portal v2</span>
-                    </div>
-                    <div className="flex flex-col items-end">
-                        <span className="text-[10px] font-mono text-zinc-600 uppercase">Temporal Drift</span>
-                        <span className="text-xs font-mono text-zinc-400">± 0.0004</span>
-                    </div>
                 </motion.div>
 
             </div>
