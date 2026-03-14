@@ -19,7 +19,7 @@ export default function CTASection() {
                     manage their life&apos;s work.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                    <ShinyButton asChild className="px-8 py-3 text-sm" style={{ transform: "scale(0.7)" }}>
+                    <ShinyButton asChild className="!px-8 !py-3 !text-sm !rounded-xl !h-[44px] !font-medium">
                         <Link href="https://el-portal-app.vercel.app">
                             Join for free
                         </Link>
