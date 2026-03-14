@@ -73,6 +73,7 @@ const tiers = [
             "Dual-Progression Goals (Streaks + Projects)",
             "Cinema Mode — 5 immersive slides",
             "The Archives — full knowledge base",
+            "5-language internationalization",
             "Mobile-optimized experience",
             "Drag-and-drop reordering",
             "Early access to new features",
@@ -145,6 +146,11 @@ const comparisonFeatures: {
         },
         {
             name: "Drag-and-Drop Reordering",
+            initiate: "—",
+            lifetime: true,
+        },
+        {
+            name: "Internationalization (5 Languages)",
             initiate: "—",
             lifetime: true,
         },

@@ -47,6 +47,60 @@ export default function ChangelogPage() {
             ),
         },
         {
+            version: "2.0.7",
+            date: "March 14, 2026",
+            tags: ["New Feature"],
+            type: "Features",
+            title: "Internationalization — 5 Languages",
+            description: (
+                <>
+                    <p>El Portal now speaks your language. Full internationalization powered by next-intl with 670+ translation keys across every screen.</p>
+                    <ul className="list-none space-y-2 mt-3">
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Supports <strong className="text-zinc-200">English, Spanish, Chinese (Simplified), Portuguese, and French</strong>.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Language preference syncs between localStorage and your database settings — persists across devices.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>670+ translation keys organized across 12 namespaces for complete UI coverage.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Added Noto Sans SC font for proper Chinese character rendering.</span></li>
+                    </ul>
+                </>
+            ),
+        },
+        {
+            version: "2.0.6",
+            date: "March 14, 2026",
+            tags: ["New Feature", "Fix"],
+            type: "Features",
+            title: "Password Reset Flow & Security Hardening",
+            description: (
+                <>
+                    <p>A complete forgot/reset password system and critical security improvements to the authentication layer.</p>
+                    <ul className="list-none space-y-2 mt-3">
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Password reset flow</strong> — Forgot password link on login, secure token-based API endpoint, branded email with 1-hour expiring tokens, and a dedicated reset page with confirmation validation.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Security hardening</strong> — Removed hardcoded Supabase anon key fallback. Replaced signed URL tokens in email templates with public bucket URLs for static assets.</span></li>
+                    </ul>
+                    <div className="flex items-center gap-2 p-3 rounded-lg bg-blue-950/30 border border-blue-900/50 mt-4">
+                        <span className="material-symbols-outlined text-blue-200">lock</span>
+                        <p className="text-sm font-medium text-blue-200">Security-first: no credentials are ever exposed in client-side code.</p>
+                    </div>
+                </>
+            ),
+        },
+        {
+            version: "2.0.5",
+            date: "March 14, 2026",
+            tags: ["Improvement"],
+            type: "Features",
+            title: "Tempo Redesign & Custom Components",
+            description: (
+                <>
+                    <p>A visual overhaul of the Tempo settings and a new custom Select component for a more polished interaction model.</p>
+                    <ul className="list-none space-y-2 mt-3">
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Tempo UI redesign</strong> — Hero sprint length display as centerpiece, color-coded valid/invalid division indicators, inline day input and cycle stepper, and an animated timeline bar visualizing version division into cycles.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Custom Select component</strong> — Styled dropdown replacing native HTML selects across settings and history pages, with full accessibility support.</span></li>
+                    </ul>
+                </>
+            ),
+        },
+        {
             version: "2.0.3",
             date: "March 10, 2026",
             tags: ["New Feature", "Improvement"],
