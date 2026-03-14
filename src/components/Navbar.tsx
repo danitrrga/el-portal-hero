@@ -65,11 +65,11 @@ export default function Navbar() {
                     <div className="flex items-center space-x-4">
                         <Link
                             className="text-sm font-medium text-zinc-400 hover:text-zinc-100 transition-colors duration-300 hidden sm:block pr-4"
-                            href="https://app-el-portal-os.vercel.app/login"
+                            href="https://el-portal-app.vercel.app/login"
                         >
                             Log in
                         </Link>
-                        <Link href="https://app-el-portal-os.vercel.app">
+                        <Link href="https://el-portal-app.vercel.app">
                             <ShinyButton className="!px-6 !py-3 !text-sm !rounded-xl !h-[44px] !font-medium">
                                 Get Started
                             </ShinyButton>
@@ -111,7 +111,7 @@ export default function Navbar() {
                         ))}
                         <Link
                             className="block text-sm font-medium text-zinc-400 hover:text-zinc-100 transition-colors duration-300 py-2"
-                            href="https://app-el-portal-os.vercel.app/login"
+                            href="https://el-portal-app.vercel.app/login"
                             onClick={() => setMobileMenuOpen(false)}
                         >
                             Log in

@@ -73,6 +73,8 @@ const tiers = [
             "Dual-Progression Goals (Streaks + Projects)",
             "Cinema Mode — 5 immersive slides",
             "The Archives — full knowledge base",
+            "Mobile-optimized experience",
+            "Drag-and-drop reordering",
             "Early access to new features",
             "Founding Member badge",
             "Lifetime updates, zero renewals",
@@ -133,6 +135,16 @@ const comparisonFeatures: {
         },
         {
             name: 'Keyboard Centric Design',
+            initiate: "—",
+            lifetime: true,
+        },
+        {
+            name: "Mobile Experience",
+            initiate: true,
+            lifetime: true,
+        },
+        {
+            name: "Drag-and-Drop Reordering",
             initiate: "—",
             lifetime: true,
         },

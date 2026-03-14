@@ -39,7 +39,7 @@ export default function Hero() {
                             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[11px] uppercase tracking-widest font-semibold mb-6 shadow-[0_0_20px_rgba(30,64,175,0.15)]"
                         >
                             <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]"></span>
-                            V1.0 Access
+                            V2.0 Access
                         </motion.div>
 
                         <motion.h1

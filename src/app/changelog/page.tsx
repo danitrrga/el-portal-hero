@@ -13,6 +13,93 @@ export default function ChangelogPage() {
     // Extracted changelog data to cleanly filter and map
     const changelogData = [
         {
+            version: "2.0.0",
+            date: "March 14, 2026",
+            tags: ["Release"],
+            type: "Release",
+            title: "Version 2.0 — Official Release",
+            description: (
+                <>
+                    <p>El Portal V2 is live. A ground-up rebuild delivering a mobile-first experience, unified architecture, semantic design system, and a completely overhauled interaction model. Every layer of the stack has been touched.</p>
+                    <div className="flex items-center gap-2 p-3 rounded-lg bg-blue-950/30 border border-blue-900/50 mt-4">
+                        <span className="material-symbols-outlined text-blue-200">rocket_launch</span>
+                        <p className="text-sm font-medium text-blue-200">All existing user data has been seamlessly migrated. No action required.</p>
+                    </div>
+                </>
+            ),
+        },
+        {
+            version: "2.0.4",
+            date: "March 12, 2026",
+            tags: ["New Feature"],
+            type: "Features",
+            title: "Mobile-First Experience",
+            description: (
+                <>
+                    <p>El Portal is no longer desktop-only. A full mobile experience has been built from the ground up with dedicated routes and native-feeling navigation.</p>
+                    <ul className="list-none space-y-2 mt-3">
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Dedicated <code className="text-blue-400/80 text-xs">/m/</code> routes for habits, goals, and analytics — optimized for touch and small screens.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>New <strong className="text-zinc-200">BottomTabBar</strong> navigation for fast context switching on mobile.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Responsive dialog system replacing desktop modals with mobile-friendly sheets.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Automatic mobile detection with screen-width and user-agent based redirect logic.</span></li>
+                    </ul>
+                </>
+            ),
+        },
+        {
+            version: "2.0.3",
+            date: "March 10, 2026",
+            tags: ["New Feature", "Improvement"],
+            type: "Features",
+            title: "Drag-and-Drop & Unified Settings",
+            description: (
+                <>
+                    <p>Two major UX upgrades that eliminate friction in daily workflows.</p>
+                    <ul className="list-none space-y-2 mt-3">
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Drag-and-drop reordering</strong> — Reorder habits and goals with smooth dnd-kit interactions. Ordering is persisted to the database instantly.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Unified Settings modal</strong> — Three separate modals (Account, Tempo, General) consolidated into one tabbed interface. Password changes, avatar uploads, and account deletion all in one place.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Secure account deletion</strong> — New API endpoint with session verification and FK-safe cascade deletion order.</span></li>
+                    </ul>
+                </>
+            ),
+        },
+        {
+            version: "2.0.2",
+            date: "March 07, 2026",
+            tags: ["Improvement"],
+            type: "Features",
+            title: "Semantic Design Tokens & Dashboard Polish",
+            description: (
+                <>
+                    <p>A visual consistency pass across the entire app, replacing scattered hardcoded colors with a unified token system.</p>
+                    <ul className="list-none space-y-2 mt-3">
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Semantic design tokens</strong> — CSS variable-based system (<code className="text-blue-400/80 text-xs">bg-surface</code>, <code className="text-blue-400/80 text-xs">text-fg</code>, <code className="text-blue-400/80 text-xs">border-border</code>) with automatic light/dark mode switching.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Dashboard viewport fix</strong> — Dashboard no longer forces unnecessary scrolling.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Replaced monospace font with Inter on all charts and numeric indicators for visual consistency.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Chart tooltips now position above the data point to prevent triggering page scroll.</span></li>
+                    </ul>
+                </>
+            ),
+        },
+        {
+            version: "2.0.1",
+            date: "March 04, 2026",
+            tags: ["Fix", "Improvement"],
+            type: "Features",
+            title: "Auth Migration & Architecture Modernization",
+            description: (
+                <>
+                    <p>Infrastructure-level changes that make El Portal faster, more secure, and easier to evolve.</p>
+                    <ul className="list-none space-y-2 mt-3">
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Local authentication</strong> — Migrated from n8n workflow automation to native Next.js API routes. Uses Supabase Admin SDK for server-side user creation and Nodemailer for branded verification emails.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Next.js 16 modernization</strong> — Migrated from <code className="text-blue-400/80 text-xs">middleware.ts</code> to <code className="text-blue-400/80 text-xs">proxy.ts</code> for modern request handling.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Data model refinements</strong> — Beliefs fused with Mantras for simplified knowledge management. User settings consolidated into a single JSONB column.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Codebase cleanup: removed unused documentation, test files, and improved overall project organization.</span></li>
+                    </ul>
+                </>
+            ),
+        },
+        {
             version: "1.2.0",
             date: "March 15, 2026",
             tags: ["New Feature", "Optimization"],

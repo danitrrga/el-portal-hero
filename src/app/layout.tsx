@@ -24,7 +24,7 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   title: "El Portal - The personal OS",
   description:
-    "El Portal is the all-in-one productivity engine for teams and agents. Manage habits, track deep work cycles, and align your foundational goals in one beautifully crafted interface.",
+    "El Portal is a mobile-first personal operating system. Manage habits with drag-and-drop, track deep work cycles, and align your goals — now with a unified architecture and semantic design system.",
 };
 
 export default function RootLayout({
