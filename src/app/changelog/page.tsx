@@ -29,6 +29,41 @@ export default function ChangelogPage() {
             ),
         },
         {
+            version: "2.0.9",
+            date: "March 16, 2026",
+            tags: ["Improvement"],
+            type: "Features",
+            title: "Database Page Refactor & Unified Actions",
+            description: (
+                <>
+                    <p>The Database page has been rebuilt with consolidated actions, memoized lookups, and full type safety across all four tabs.</p>
+                    <ul className="list-none space-y-2 mt-3">
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Unified entity actions</strong> — Duplicate, edit, and delete handlers consolidated into single reusable functions across versions, cycles, habits, and goals.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Performance</strong> — Memoized lookup maps (<code className="text-blue-400/80 text-xs">versionMap</code>, <code className="text-blue-400/80 text-xs">cycleMap</code>, <code className="text-blue-400/80 text-xs">logIndex</code>) for O(1) access, plus <code className="text-blue-400/80 text-xs">useCallback</code>-wrapped handlers.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>New <code className="text-blue-400/80 text-xs">addVersion()</code> and <code className="text-blue-400/80 text-xs">addCycle()</code> service helpers. SegmentedToggle secondary variant with graphite theme.</span></li>
+                    </ul>
+                </>
+            ),
+        },
+        {
+            version: "2.0.8",
+            date: "March 15, 2026",
+            tags: ["Fix", "Optimization"],
+            type: "Features",
+            title: "Codebase Review — Type Safety, Hooks & Dead Code",
+            description: (
+                <>
+                    <p>A comprehensive codebase review pass fixing React hook violations, removing dead code, and eliminating unsafe types across all portal pages.</p>
+                    <ul className="list-none space-y-2 mt-3">
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Critical hook fix</strong> — Resolved conditional <code className="text-blue-400/80 text-xs">useMemo</code> violation on the dashboard where chart data was computed after an early return guard.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Type safety</strong> — Extended Goal interface with missing <code className="text-blue-400/80 text-xs">priority</code> and <code className="text-blue-400/80 text-xs">goal_lineage_id</code> fields, replaced <code className="text-blue-400/80 text-xs">any</code> casts, extracted <code className="text-blue-400/80 text-xs">LabPageData</code> interface, and added null-safety guards throughout.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Dead code removal</strong> — Cleaned up console.logs, stale localStorage refs, unused imports, and commented-out <code className="text-blue-400/80 text-xs">unstable_cache</code> from cinema page.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Added missing <code className="text-blue-400/80 text-xs">&quot;use client&quot;</code> directives to 5 components. Extracted <code className="text-blue-400/80 text-xs">parseSubtaskLines</code> helper to deduplicate regex logic. Fixed hardcoded English string with i18n key.</span></li>
+                    </ul>
+                </>
+            ),
+        },
+        {
             version: "2.0.4",
             date: "March 12, 2026",
             tags: ["New Feature"],
