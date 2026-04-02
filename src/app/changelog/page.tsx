@@ -29,6 +29,61 @@ export default function ChangelogPage() {
             ),
         },
         {
+            version: "2.0.12",
+            date: "April 01, 2026",
+            tags: ["New Feature"],
+            type: "Features",
+            title: "Archives WYSIWYG Editor & Checklists",
+            description: (
+                <>
+                    <p>The Archives have been rebuilt with a rich-text WYSIWYG editor and interactive checklists, replacing the raw Markdown workflow with a polished writing experience.</p>
+                    <ul className="list-none space-y-2 mt-3">
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">MDXEditor integration</strong> — Floating toolbar with bold, italic, headings, quotes, lists, links, and code blocks. Fully themed to match the El Portal glass design.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Interactive checklists</strong> — Type <code className="text-blue-400/80 text-xs">- [ ]</code> and it auto-converts into a toggleable checklist with dark-mode theming and accessible focus states.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Component extraction</strong> — Archives page decomposed from a monolith into 8 focused components (ArchiveEditorView, EntriesSidebar, MantraBankView, LifeChecklistView, and more).</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Proper Unicode typography across all 5 locales — curly quotes, en dashes, and ellipses replacing ASCII approximations.</span></li>
+                    </ul>
+                </>
+            ),
+        },
+        {
+            version: "2.0.11",
+            date: "March 29, 2026",
+            tags: ["New Feature", "Improvement"],
+            type: "Features",
+            title: "Dashboard Day Inspector & Multi-Cycle Goals",
+            description: (
+                <>
+                    <p>The standalone History page has been merged into the Dashboard as an inline Day Inspector, and the Goals page now supports multi-cycle viewing with past-cycle intelligence.</p>
+                    <ul className="list-none space-y-2 mt-3">
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Day Inspector</strong> — Click any data point on the performance chart to view and edit that day&apos;s habits inline. URL-synced state with <code className="text-blue-400/80 text-xs">?view=week|30d|cycle&amp;date=YYYY-MM-DD</code> for shareable views.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Multi-cycle goals</strong> — Select multiple cycles via pill toggles to view goals across time. Past-cycle goals are read-only with carry-forward capability. Metric stats frozen at cycle boundaries to prevent retroactive score inflation.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Chart reactivity fix</strong> — Progress chart now updates instantly on habit toggle via synchronous optimistic scoring.</span></li>
+                    </ul>
+                </>
+            ),
+        },
+        {
+            version: "2.0.10",
+            date: "March 28, 2026",
+            tags: ["Improvement", "Fix"],
+            type: "Features",
+            title: "Architecture, Accessibility & Performance",
+            description: (
+                <>
+                    <p>A sweeping refactor pass decomposing monolithic pages, adding WCAG 2.1 AA compliance, and parallelizing data fetching across the app.</p>
+                    <ul className="list-none space-y-2 mt-3">
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Lab page decomposition</strong> — Split into 6 focused components (VersionBar, CycleCard, CycleList, CycleGoalsPanel, HabitSelectorModal, VersionEditorModal) with version activate/edit/delete management.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Settings modal extraction</strong> — 1,259-line monolith split into 5 tab components (Account, General, Appearance, Pulse, Storage).</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Accessibility audit</strong> — ARIA roles, labels, and keyboard navigation added to 12 components. Cycle editor uses <code className="text-blue-400/80 text-xs">listbox/option</code> roles, forms use <code className="text-blue-400/80 text-xs">aria-invalid</code> + <code className="text-blue-400/80 text-xs">aria-describedby</code>.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Performance</strong> — <code className="text-blue-400/80 text-xs">Promise.all</code> for parallel data fetching, Google SDK moved to <code className="text-blue-400/80 text-xs">afterInteractive</code>, react-markdown dynamically imported (~60KB saved).</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Identity system toggle</strong> — Restored in Settings with reactive UI hiding across Lab, Dashboard, Archives, and CycleEditor when disabled.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>TypeScript strict mode enabled (removed <code className="text-blue-400/80 text-xs">ignoreBuildErrors</code>), Version modal redesigned with stepper, Raycast-style hover states on habit list.</span></li>
+                    </ul>
+                </>
+            ),
+        },
+        {
             version: "2.0.9",
             date: "March 16, 2026",
             tags: ["Improvement"],
