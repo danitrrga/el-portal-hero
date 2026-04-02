@@ -73,6 +73,8 @@ const tiers = [
             "Dual-Progression Goals (Streaks + Projects)",
             "Cinema Mode — 5 immersive slides",
             "The Archives — full knowledge base",
+            "Daily Pulse — mood & vitals tracking",
+            "Trends — analytics & insights",
             "5-language internationalization",
             "Mobile-optimized experience",
             "Drag-and-drop reordering",
@@ -151,6 +153,16 @@ const comparisonFeatures: {
         },
         {
             name: "Internationalization (5 Languages)",
+            initiate: "—",
+            lifetime: true,
+        },
+        {
+            name: "Daily Pulse Check-Ins",
+            initiate: "—",
+            lifetime: true,
+        },
+        {
+            name: "Trends & Mood Analytics",
             initiate: "—",
             lifetime: true,
         },

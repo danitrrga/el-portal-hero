@@ -29,6 +29,85 @@ export default function ChangelogPage() {
             ),
         },
         {
+            version: "2.0.16",
+            date: "April 02, 2026",
+            tags: ["Improvement", "Optimization"],
+            type: "Features",
+            title: "Trends Mobile, Performance & Polish",
+            description: (
+                <>
+                    <p>The Trends analytics dashboard has been optimized for mobile and polished for speed — lazy-loaded sections, single-pass computation, and a redesigned empty state.</p>
+                    <ul className="list-none space-y-2 mt-3">
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Mobile trends page</strong> — Fully responsive layout with a floating pill time navigator, single-column chart grid, and week-only mood calendar with larger touch targets.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Performance</strong> — Skeleton loading during data fetch, lazy below-fold sections via <code className="text-blue-400/80 text-xs">useInView</code>, single-pass vitals computation, and a pre-built DOW map for O(1) lookups across all charts.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Monochromatic palette</strong> — All charts and mood indicators unified under a portal-derived blue gradient, from deep navy to bright cyan.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Redesigned empty state with gradient overlay and progress bar. Reduced motion support. Mood calendar dots now scale by size based on mood intensity.</span></li>
+                    </ul>
+                </>
+            ),
+        },
+        {
+            version: "2.0.15",
+            date: "March 19, 2026",
+            tags: ["New Feature"],
+            type: "Features",
+            title: "Trends — Analytics Dashboard",
+            description: (
+                <>
+                    <p>A full analytics dashboard for visualizing your Pulse data over time — mood trajectories, vitals, sleep, activities, emotions, and behavioral correlations across 5 time scales.</p>
+                    <ul className="list-none space-y-2 mt-3">
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">9 visualization sections</strong> — Mood trend chart, 6 vitals charts (sleep, energy, stress, performance, motivation, connectedness), mood calendar, sleep duration bars, activities and emotions pie charts, and consistency streaks.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">5 time scales</strong> — Week, month, year, cycle, and version. Time navigator with previous/next navigation and dynamic period labels.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Correlation insights</strong> — &quot;What makes you shine&quot; and &quot;What makes you down&quot; cards that surface activities statistically linked to high or low mood days.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Previous-period comparison on all charts. Blurred sample data when insufficient check-ins. Keyboard hotkeys and full i18n across 5 locales.</span></li>
+                    </ul>
+                    <div className="flex items-center gap-2 p-3 rounded-lg bg-blue-950/30 border border-blue-900/50 mt-4">
+                        <span className="material-symbols-outlined text-blue-200">lock</span>
+                        <p className="text-sm font-medium text-blue-200">Trends is a Pro-exclusive feature available to Lifetime members.</p>
+                    </div>
+                </>
+            ),
+        },
+        {
+            version: "2.0.14",
+            date: "March 19, 2026",
+            tags: ["New Feature"],
+            type: "Features",
+            title: "Feedback Page & White-Mode Emails",
+            description: (
+                <>
+                    <p>A new in-app feedback channel and a redesigned email template that works beautifully in light-mode email clients.</p>
+                    <ul className="list-none space-y-2 mt-3">
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Feedback page</strong> — Submit feedback directly from the app with auto-filled name, email, and plan. Wrapped in the cinematic auth layout with a success animation.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">White-mode email templates</strong> — Light background redesign for verification and auth emails. Inter font with responsive fallback and branded footer with social links.</span></li>
+                    </ul>
+                </>
+            ),
+        },
+        {
+            version: "2.0.13",
+            date: "March 18, 2026",
+            tags: ["New Feature"],
+            type: "Features",
+            title: "Daily Pulse — Check-In System",
+            description: (
+                <>
+                    <p>Track your daily well-being through structured morning and evening check-ins. Daily Pulse captures mood, vitals, emotions, and activities to build a rich picture of your life over time.</p>
+                    <ul className="list-none space-y-2 mt-3">
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Morning check-in</strong> — 4 steps: mood via the interactive MoodOrb (0–100), sleep quality, feelings (choose from 24 emotions across positive, neutral, and negative sentiments), and focus tags for the day.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Evening check-in</strong> — 8 steps: mood, productivity, stress, motivation, energy, and connectedness (all 0–100 vital sliders), plus feelings and activity tags.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">MoodOrb</strong> — A 7-ring animated glass sphere using portal logo colors. Internal color masses drift and scale with mood. Eyes open progressively, mouth curves from frown to smile, and specular highlights shimmer.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">PulseCard</strong> — Split morning/evening card with animated sky and night gradients, breathing sun and twinkling moon, and completion status badges.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Dashboard <code className="text-blue-400/80 text-xs">PulseSignal</code> indicators, mobile <code className="text-blue-400/80 text-xs">PulseFAB</code> that auto-shows when a check-in is pending, and reminder settings in the Pulse tab.</span></li>
+                    </ul>
+                    <div className="flex items-center gap-2 p-3 rounded-lg bg-blue-950/30 border border-blue-900/50 mt-4">
+                        <span className="material-symbols-outlined text-blue-200">lock</span>
+                        <p className="text-sm font-medium text-blue-200">Daily Pulse is a Pro-exclusive feature available to Lifetime members.</p>
+                    </div>
+                </>
+            ),
+        },
+        {
             version: "2.0.12",
             date: "April 01, 2026",
             tags: ["New Feature"],
