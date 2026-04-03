@@ -92,16 +92,6 @@ const comparisonFeatures: {
     lifetime: string | boolean;
 }[] = [
         {
-            name: "Active Versions",
-            initiate: "1",
-            lifetime: "Unlimited",
-        },
-        {
-            name: "Cycles per Version",
-            initiate: "1",
-            lifetime: "Unlimited",
-        },
-        {
             name: "Habit Tracking + Goal System",
             initiate: true,
             lifetime: true,
@@ -117,28 +107,13 @@ const comparisonFeatures: {
             lifetime: true,
         },
         {
-            name: "Advanced Analytics",
-            initiate: "—",
-            lifetime: true,
-        },
-        {
-            name: "Priority Support",
-            initiate: "—",
-            lifetime: true,
-        },
-        {
             name: 'Weekly Review & Recap of Cycles',
-            initiate: "—",
-            lifetime: true,
-        },
-        {
-            name: 'Friction categorization & Trend analysis',
-            initiate: "—",
+            initiate: true,
             lifetime: true,
         },
         {
             name: 'Keyboard Centric Design',
-            initiate: "—",
+            initiate: true,
             lifetime: true,
         },
         {
@@ -148,21 +123,31 @@ const comparisonFeatures: {
         },
         {
             name: "Drag-and-Drop Reordering",
-            initiate: "—",
+            initiate: true,
             lifetime: true,
         },
         {
             name: "Internationalization (5 Languages)",
-            initiate: "—",
+            initiate: true,
             lifetime: true,
         },
         {
             name: "Daily Pulse Check-Ins",
+            initiate: true,
+            lifetime: true,
+        },
+        {
+            name: "Storage",
+            initiate: "60MB",
+            lifetime: "Unlimited",
+        },
+        {
+            name: "Priority Support",
             initiate: "—",
             lifetime: true,
         },
         {
-            name: "Trends & Mood Analytics",
+            name: "Trends & Advanced Mood Analytics",
             initiate: "—",
             lifetime: true,
         },
@@ -171,11 +156,11 @@ const comparisonFeatures: {
 const faqs = [
     {
         q: "What is a Version?",
-        a: "A Version is a 90-day identity phase — a deliberate container for who you're becoming. Each Version has its own title, persona, macro goals, and habits. When it ends, it's permanently archived so you can see how you've evolved.",
+        a: "A Version is a 90-day identity phase, a deliberate container for who you're becoming. Each Version has its own title, persona, macro goals, and habits. When it ends, it's permanently archived so you can see how you've evolved.",
     },
     {
         q: "How do Cycles work inside a Version?",
-        a: "Each Version is divided into 15-day Cycles — tactical sprints where you define mini-priorities, select habits, and execute daily. At the end of every Cycle, your performance is snapshotted and you decide which habits to carry forward or kill.",
+        a: "Each Version is divided into 15-day Cycles, tactical sprints where you define mini-priorities, select habits, and execute daily. At the end of every Cycle, your performance is snapshotted and you decide which habits to carry forward or kill.",
     },
     {
         q: "Why is it only $10?",
@@ -226,7 +211,7 @@ export default function PricingPage() {
                     </h1>
                     <p className="text-zinc-400 text-sm md:text-base max-w-lg leading-relaxed mb-12">
                         El Portal is the bridge between your Current Self and your Future
-                        Self. Start free, or unlock everything — forever — for a single
+                        Self. Start free, or unlock everything, forever, for a single
                         payment.
                     </p>
 
