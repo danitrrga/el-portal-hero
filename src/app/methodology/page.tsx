@@ -1,5 +1,8 @@
 "use client";
 
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CycleBentoCard } from "@/components/animations/CycleBentoCard";
@@ -8,153 +11,195 @@ import { TaskProgressionCard } from "@/components/animations/TaskProgressionCard
 import { CycleProgressionChart } from "@/components/animations/CycleProgressionChart";
 import { VersionSelector } from "@/components/animations/VersionSelector";
 import { DayBentoCard } from "@/components/animations/DayBentoCard";
-import { ShinyButton } from "@/components/ui/shiny-button";
+import { ArrowRight, Layers, Target, Calendar, ChevronDown } from "lucide-react";
+
+const modalities = [
+    {
+        icon: "visibility",
+        title: "Visualization (Cinema Mode)",
+        description: "A full-screen, minimalist, Zen-mode environment. Features 5 persistent slides: Me, Her, Purpose, Social, Material Life. Each slide consists of an editable image and dynamic caption text.",
+    },
+    {
+        icon: "inventory_2",
+        title: "The Archives (Knowledge Base)",
+        description: "Text/Markdown-driven database entries that act as the permanent mental cache. Includes: My Routines, Mantra Archive, Life To-Do List, 5-Year Vision, and Theory Notes.",
+    },
+    {
+        icon: "monitoring",
+        title: "Analytics & Intelligence",
+        description: "In-depth visualization of consistency: weekly progress plots, GitHub-style heatmaps, and aggregated 15-day / 90-day performance reviews with dynamic edge-case handling.",
+    },
+];
 
 export default function MethodologyPage() {
+    const [heroRef, heroInView] = useInView({ threshold: 0.1, triggerOnce: true });
+    const [gridRef, gridInView] = useInView({ threshold: 0.1, triggerOnce: true });
+    const [modalitiesRef, modalitiesInView] = useInView({ threshold: 0.1, triggerOnce: true });
+
     return (
-        <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden bg-zinc-950">
-            {/* Grain texture overlay (matching Pricing) */}
-            <div
-                className="fixed inset-0 z-50 pointer-events-none opacity-[0.02]"
-                style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-                }}
-            />
-
-            {/* Top radial blue gradient (DESIGN.md §2) */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-950/40 via-zinc-950 to-zinc-950 pointer-events-none" />
-
-            {/* Background grid texture */}
-            <div
-                className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"
-                style={{
-                    maskImage: "radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%)",
-                    WebkitMaskImage: "radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%)"
-                }}
-            />
-
+        <div className="relative w-full overflow-x-hidden bg-cream min-h-screen">
             <Navbar />
 
-            <main className="flex-1 px-6 md:px-8 max-w-5xl mx-auto w-full pt-40 pb-16 md:pt-48 md:pb-24 space-y-24 relative z-10">
-
+            <main className="relative z-10">
                 {/* Hero Section */}
-                <section className="flex flex-col items-center text-center max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-1000">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-6">
-                        <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                        <span className="text-xs font-bold text-primary tracking-widest uppercase">Protocol v2.4</span>
-                    </div>
+                <section className="pt-32 pb-20 md:pt-40 md:pb-28 px-6">
+                    <motion.div
+                        ref={heroRef}
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        className="max-w-4xl mx-auto text-center"
+                    >
+                        <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary text-xs uppercase tracking-widest font-semibold rounded-full mb-6">
+                            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                            Protocol v2.4
+                        </span>
 
-                    <h1 className="text-zinc-100 text-4xl md:text-5xl font-extrabold tracking-tighter mb-6">
-                        The Engine
-                    </h1>
+                        <h1 className="font-serif italic text-5xl md:text-6xl lg:text-7xl text-charcoal leading-tight tracking-tight mb-6 text-balance">
+                            The Engine
+                        </h1>
 
-                    <p className="text-zinc-400 text-lg md:text-xl leading-relaxed max-w-2xl">
-                        A high-fidelity behavioral feedback system designed for temporal hierarchy and peak performance optimization.
-                    </p>
+                        <p className="text-lg md:text-xl text-charcoal-light max-w-2xl mx-auto leading-relaxed mb-10">
+                            A high-fidelity behavioral feedback system designed for temporal hierarchy and peak performance optimization.
+                        </p>
 
-                    <div className="mt-10">
-                        <ShinyButton>
+                        <Link
+                            href="https://el-portal-app.vercel.app"
+                            className="group inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-full font-medium text-sm transition-all duration-300 hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/20"
+                        >
                             Explore Protocol
-                        </ShinyButton>
-                    </div>
+                            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                        </Link>
+                    </motion.div>
                 </section>
 
                 {/* Temporal Hierarchy Grid */}
-                <section className="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-150 fill-mode-forwards">
-                    <div className="flex items-center justify-between mb-8">
-                        <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Temporal Hierarchy</h3>
-                        <span className="h-px flex-1 bg-zinc-800/50 ml-4"></span>
-                    </div>
+                <section className="py-20 md:py-28 px-6 bg-warm-white">
+                    <div className="max-w-6xl mx-auto">
+                        <motion.div
+                            ref={gridRef}
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={gridInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                            className="flex items-center gap-4 mb-12"
+                        >
+                            <span className="text-xs font-bold uppercase tracking-widest text-primary">
+                                Temporal Hierarchy
+                            </span>
+                            <div className="flex-1 h-px bg-charcoal/10" />
+                        </motion.div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {/* Version */}
-                        <VersionSelector />
-
-                        {/* Cycle */}
-                        <CycleBentoCard />
-
-                        {/* Day */}
-                        <DayBentoCard />
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <motion.div
+                                initial={{ opacity: 0, y: 40 }}
+                                animate={gridInView ? { opacity: 1, y: 0 } : {}}
+                                transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                                className="bg-white rounded-2xl border border-charcoal/5 overflow-hidden shadow-sm"
+                            >
+                                <VersionSelector />
+                            </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0, y: 40 }}
+                                animate={gridInView ? { opacity: 1, y: 0 } : {}}
+                                transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                                className="bg-white rounded-2xl border border-charcoal/5 overflow-hidden shadow-sm"
+                            >
+                                <CycleBentoCard />
+                            </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0, y: 40 }}
+                                animate={gridInView ? { opacity: 1, y: 0 } : {}}
+                                transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                                className="bg-white rounded-2xl border border-charcoal/5 overflow-hidden shadow-sm"
+                            >
+                                <DayBentoCard />
+                            </motion.div>
+                        </div>
                     </div>
                 </section>
 
                 {/* Performance Dashboard */}
-                <section className="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300 fill-mode-forwards">
-                    <DynamicPerformanceScore />
+                <section className="py-20 md:py-28 px-6 bg-cream">
+                    <div className="max-w-6xl mx-auto">
+                        <div className="bg-white rounded-2xl border border-charcoal/5 overflow-hidden shadow-sm p-6 md:p-8">
+                            <DynamicPerformanceScore />
+                        </div>
+                    </div>
                 </section>
 
                 {/* Goal Architecture Grid */}
-                <section className="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500 fill-mode-forwards">
-                    <div className="flex items-center justify-between mb-8">
-                        <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Goal Architecture</h3>
-                        <span className="h-px flex-1 bg-zinc-800/50 ml-4"></span>
-                    </div>
+                <section className="py-20 md:py-28 px-6 bg-warm-white">
+                    <div className="max-w-6xl mx-auto">
+                        <div className="flex items-center gap-4 mb-12">
+                            <span className="text-xs font-bold uppercase tracking-widest text-primary">
+                                Goal Architecture
+                            </span>
+                            <div className="flex-1 h-px bg-charcoal/10" />
+                        </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {/* Asymptotic Consistency */}
-                        <CycleProgressionChart />
-
-                        {/* Task-Based Projects */}
-                        <TaskProgressionCard />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="bg-white rounded-2xl border border-charcoal/5 overflow-hidden shadow-sm">
+                                <CycleProgressionChart />
+                            </div>
+                            <div className="bg-white rounded-2xl border border-charcoal/5 overflow-hidden shadow-sm">
+                                <TaskProgressionCard />
+                            </div>
+                        </div>
                     </div>
                 </section>
 
-                {/* Core Modalities Accordion */}
-                <section className="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-700 fill-mode-forwards max-w-4xl mx-auto w-full">
-                    <div className="text-center mb-10">
-                        <h2 className="font-serif text-4xl text-zinc-100 mb-4">Core Modalities</h2>
-                        <p className="text-zinc-400 text-lg">The distinct interaction paradigms governing the El Portal system.</p>
-                    </div>
+                {/* Core Modalities */}
+                <section className="py-20 md:py-28 px-6 bg-cream">
+                    <div className="max-w-4xl mx-auto">
+                        <motion.div
+                            ref={modalitiesRef}
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={modalitiesInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                            className="text-center mb-16"
+                        >
+                            <h2 className="font-serif italic text-4xl md:text-5xl text-charcoal mb-4">
+                                Core Modalities
+                            </h2>
+                            <p className="text-charcoal-light text-lg">
+                                The distinct interaction paradigms governing the Portal system.
+                            </p>
+                        </motion.div>
 
-                    <div className="space-y-4">
-                        {/* Cinema Mode */}
-                        <details className="group rounded-xl overflow-hidden transition-all duration-300 ease-out [&_summary::-webkit-details-marker]:hidden bg-zinc-950/80 backdrop-blur-xl border border-white/5 hover:border-blue-500/30" open>
-                            <summary className="flex items-center justify-between p-6 cursor-pointer hover:bg-white/[0.02]">
-                                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                                    <span className="material-symbols-outlined text-blue-500 text-2xl">theater_comedy</span>
-                                    <span className="font-bold text-lg text-zinc-100">Visualization (Cinema Mode)</span>
-                                </div>
-                                <span className="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-zinc-500 shrink-0 ml-4">expand_more</span>
-                            </summary>
-                            <div className="px-6 pb-6 text-sm text-zinc-400 leading-relaxed border-t border-zinc-800/50 pt-4 sm:ml-12 mt-2">
-                                A full-screen, minimalist, Zen-mode environment. Features 5 persistent slides: <strong>Me, Her, Purpose, Social, Material Life</strong>. Each slide consists of an editable image (pulled via signed URLs) and dynamic caption text.
-                            </div>
-                        </details>
-
-                        {/* Archives */}
-                        <details className="group rounded-xl overflow-hidden transition-all duration-300 ease-out [&_summary::-webkit-details-marker]:hidden bg-zinc-950/80 backdrop-blur-xl border border-white/5 hover:border-blue-500/30">
-                            <summary className="flex items-center justify-between p-6 cursor-pointer hover:bg-white/[0.02]">
-                                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                                    <span className="material-symbols-outlined text-blue-500 text-2xl">inventory_2</span>
-                                    <span className="font-bold text-lg text-zinc-100">The Archives (Knowledge Base)</span>
-                                </div>
-                                <span className="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-zinc-500 shrink-0 ml-4">expand_more</span>
-                            </summary>
-                            <div className="px-6 pb-6 text-sm text-zinc-400 leading-relaxed border-t border-zinc-800/50 pt-4 sm:ml-12 mt-2">
-                                Text/Markdown-driven database entries that act as the permanent mental cache. Includes: My Routines, Mantra Archive, Life To-Do List, 5-Year Vision, and Theory Notes. Operates distinctly from daily tactical execution.
-                            </div>
-                        </details>
-
-                        {/* Analytics */}
-                        <details className="group rounded-xl overflow-hidden transition-all duration-300 ease-out [&_summary::-webkit-details-marker]:hidden bg-zinc-950/80 backdrop-blur-xl border border-white/5 hover:border-blue-500/30">
-                            <summary className="flex items-center justify-between p-6 cursor-pointer hover:bg-white/[0.02]">
-                                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                                    <span className="material-symbols-outlined text-blue-500 text-2xl">monitoring</span>
-                                    <span className="font-bold text-lg text-zinc-100">Analytics & Intelligence</span>
-                                </div>
-                                <span className="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-zinc-500 shrink-0 ml-4">expand_more</span>
-                            </summary>
-                            <div className="px-6 pb-6 text-sm text-zinc-400 leading-relaxed border-t border-zinc-800/50 pt-4 sm:ml-12 mt-2">
-                                In-depth visualization of consistency: weekly progress plots, GitHub-style heatmaps, and aggregated 15-day / 90-day performance reviews. Robustly handles edge-cases like missing cycle data dynamically.
-                            </div>
-                        </details>
+                        <div className="space-y-4">
+                            {modalities.map((modality, index) => (
+                                <motion.details
+                                    key={modality.title}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={modalitiesInView ? { opacity: 1, y: 0 } : {}}
+                                    transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                                    className="group bg-white rounded-xl border border-charcoal/5 overflow-hidden transition-all duration-300 hover:border-primary/30 hover:shadow-md"
+                                    open={index === 0}
+                                >
+                                    <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
+                                        <div className="flex items-center gap-4">
+                                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                                                <span className="material-symbols-outlined text-primary text-xl">
+                                                    {modality.icon}
+                                                </span>
+                                            </div>
+                                            <span className="font-semibold text-charcoal">
+                                                {modality.title}
+                                            </span>
+                                        </div>
+                                        <ChevronDown className="w-5 h-5 text-charcoal-light transition-transform duration-300 group-open:rotate-180" />
+                                    </summary>
+                                    <div className="px-6 pb-6 pt-2 pl-20 text-charcoal-light leading-relaxed">
+                                        {modality.description}
+                                    </div>
+                                </motion.details>
+                            ))}
+                        </div>
                     </div>
                 </section>
             </main>
 
-            <div className="relative z-10 w-full mt-auto">
-                <Footer />
-            </div>
+            <Footer />
         </div>
     );
 }

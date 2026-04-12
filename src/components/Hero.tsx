@@ -1,86 +1,134 @@
 "use client";
+
 import React from "react";
-import { ContainerScroll } from "@/components/ui/container-scroll-animation";
-import Image from "next/image";
 import Link from "next/link";
-import { ShinyButton } from "@/components/ui/shiny-button";
-import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
     return (
-        <div className="flex flex-col overflow-hidden relative z-10 w-full">
-            {/* Ambient Top Glow */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-[radial-gradient(circle_at_50%_0%,_rgba(30,64,175,0.18)_0%,_rgba(2,6,23,0)_70%)] pointer-events-none opacity-80 -z-10"></div>
-
-            <ContainerScroll
-                titleComponent={
-                    <motion.div
-                        initial="hidden"
-                        animate="visible"
-                        variants={{
-                            hidden: { opacity: 0 },
-                            visible: {
-                                opacity: 1,
-                                transition: {
-                                    staggerChildren: 0.1,
-                                    delayChildren: 0.2,
-                                },
-                            },
-                        }}
-                        className="flex flex-col items-center max-w-4xl mx-auto relative z-10 text-center"
-                    >
-                        {/* Ambient Glow has been moved to top edge of the page */}
-                        <motion.div
-                            variants={{
-                                hidden: { opacity: 0, y: 30 },
-                                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-                            }}
-                            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[11px] uppercase tracking-widest font-semibold mb-6 shadow-[0_0_20px_rgba(30,64,175,0.15)]"
-                        >
-                            <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]"></span>
-                            V2.0 Access
-                        </motion.div>
-
-                        <motion.h1
-                            variants={{
-                                hidden: { opacity: 0, y: 30 },
-                                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-                            }}
-                            className="text-5xl md:text-7xl font-black tracking-[-0.04em] bg-gradient-to-r from-white to-slate-200 bg-clip-text text-transparent mb-6 leading-tight text-glow-hero"
-                        >
-                            Your shortcut to <br />
-                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-glow via-blue-200 to-accent-neon-green">
-                                high performance.
-                            </span>
-                        </motion.h1>
-                        <motion.div
-                            variants={{
-                                hidden: { opacity: 0, y: 30 },
-                                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-                            }}
-                            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-                        >
-                        </motion.div>
-                    </motion.div>
-                }
+        <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-20 overflow-hidden">
+            {/* Hero Content */}
+            <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={{
+                    hidden: { opacity: 0 },
+                    visible: {
+                        opacity: 1,
+                        transition: {
+                            staggerChildren: 0.15,
+                            delayChildren: 0.2,
+                        },
+                    },
+                }}
+                className="flex flex-col items-center max-w-5xl mx-auto text-center"
             >
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-                    className="h-full w-full rounded-2xl shadow-[0_0_30px_-5px_rgba(30,64,175,0.15)] relative"
+                {/* Headline */}
+                <motion.h1
+                    variants={{
+                        hidden: { opacity: 0, y: 40 },
+                        visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+                    }}
+                    className="font-serif italic text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-charcoal leading-[1.05] tracking-tight text-balance"
                 >
-                    <Image
-                        src={`/assets/showcase/dashboard_black.png`}
-                        alt="hero"
-                        height={720}
-                        width={1400}
-                        className="mx-auto rounded-2xl object-cover h-full object-left-top"
-                        draggable={false}
-                    />
+                    Optimal organization{" "}
+                    <br className="hidden sm:block" />
+                    meets exquisite design
+                </motion.h1>
+
+                {/* Subheadline */}
+                <motion.p
+                    variants={{
+                        hidden: { opacity: 0, y: 30 },
+                        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+                    }}
+                    className="mt-8 text-lg md:text-xl text-charcoal-light max-w-2xl leading-relaxed text-pretty"
+                >
+                    Transform your daily workflow into a seamless experience
+                    with Portal&apos;s intuitive personal operating system.
+                </motion.p>
+
+                {/* CTA Buttons */}
+                <motion.div
+                    variants={{
+                        hidden: { opacity: 0, y: 30 },
+                        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+                    }}
+                    className="mt-10 flex flex-col sm:flex-row items-center gap-4"
+                >
+                    <Link
+                        href="https://el-portal-app.vercel.app"
+                        className="group inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-full font-medium text-sm transition-all duration-300 hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/20"
+                    >
+                        Get Started
+                        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </Link>
+                    <Link
+                        href="/methodology"
+                        className="inline-flex items-center gap-2 px-8 py-4 bg-transparent text-charcoal rounded-full font-medium text-sm border border-charcoal/20 transition-all duration-300 hover:border-charcoal/40 hover:bg-charcoal/5"
+                    >
+                        Learn More
+                    </Link>
                 </motion.div>
-            </ContainerScroll>
-        </div>
+            </motion.div>
+
+            {/* Hero Image */}
+            <motion.div
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
+                className="mt-20 w-full max-w-5xl mx-auto"
+            >
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-charcoal/10 border border-charcoal/5">
+                    <Image
+                        src="/assets/showcase/dashboard_black.png"
+                        alt="Portal Dashboard Preview"
+                        width={1400}
+                        height={800}
+                        className="w-full h-auto object-cover"
+                        priority
+                    />
+                </div>
+            </motion.div>
+
+            {/* Side navigation hints */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 1 }}
+                className="absolute bottom-20 left-8 hidden lg:flex flex-col items-center gap-3"
+            >
+                <Link
+                    href="/manifesto"
+                    className="group flex flex-col items-center text-charcoal-light hover:text-primary transition-colors duration-300"
+                >
+                    <span className="text-xs uppercase tracking-widest font-medium">Learn Our</span>
+                    <span className="text-xs uppercase tracking-widest font-medium">Philosophy</span>
+                    <div className="mt-2 w-10 h-10 rounded-full border border-current flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all duration-300">
+                        <ArrowRight className="w-4 h-4" />
+                    </div>
+                </Link>
+            </motion.div>
+
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 1 }}
+                className="absolute bottom-20 right-8 hidden lg:flex flex-col items-center gap-3"
+            >
+                <Link
+                    href="/pricing"
+                    className="group flex flex-col items-center text-charcoal-light hover:text-primary transition-colors duration-300"
+                >
+                    <span className="text-xs uppercase tracking-widest font-medium">View Our</span>
+                    <span className="text-xs uppercase tracking-widest font-medium">Plans</span>
+                    <div className="mt-2 w-10 h-10 rounded-full border border-current flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all duration-300">
+                        <ArrowRight className="w-4 h-4" />
+                    </div>
+                </Link>
+            </motion.div>
+        </section>
     );
 }

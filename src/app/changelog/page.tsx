@@ -1,467 +1,235 @@
-"use client"
+"use client";
+
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { ChangelogItem } from "@/components/ChangelogItem";
+import { Rocket, Sparkles, Wrench, Tag } from "lucide-react";
 
-// Filter type
 type FilterType = "All" | "Features" | "Fixes" | "Release";
+
+const filterOptions: { label: FilterType; icon: React.ReactNode }[] = [
+    { label: "All", icon: null },
+    { label: "Features", icon: <Sparkles className="w-3.5 h-3.5" /> },
+    { label: "Fixes", icon: <Wrench className="w-3.5 h-3.5" /> },
+    { label: "Release", icon: <Rocket className="w-3.5 h-3.5" /> },
+];
+
+const changelogData = [
+    {
+        version: "2.0.0",
+        date: "March 14, 2026",
+        type: "Release" as const,
+        title: "Version 2.0 - Official Release",
+        description: "Portal V2 is live. A ground-up rebuild delivering a mobile-first experience, unified architecture, semantic design system, and a completely overhauled interaction model.",
+        highlight: "All existing user data has been seamlessly migrated. No action required.",
+    },
+    {
+        version: "2.0.16",
+        date: "April 02, 2026",
+        type: "Features" as const,
+        title: "Trends Mobile, Performance & Polish",
+        description: "The Trends analytics dashboard has been optimized for mobile and polished for speed - lazy-loaded sections, single-pass computation, and a redesigned empty state.",
+        items: [
+            "Mobile trends page with responsive layout and floating pill navigator",
+            "Skeleton loading during data fetch with lazy below-fold sections",
+            "Monochromatic palette - all charts unified under a refined color scheme",
+        ],
+    },
+    {
+        version: "2.0.15",
+        date: "March 19, 2026",
+        type: "Features" as const,
+        title: "Trends - Analytics Dashboard",
+        description: "A full analytics dashboard for visualizing your Pulse data over time - mood trajectories, vitals, sleep, activities, emotions, and behavioral correlations across 5 time scales.",
+        items: [
+            "9 visualization sections including mood trends, vitals, sleep duration, and more",
+            "5 time scales: Week, month, year, cycle, and version",
+            "Correlation insights surfacing activities linked to mood patterns",
+        ],
+    },
+    {
+        version: "2.0.13",
+        date: "March 18, 2026",
+        type: "Features" as const,
+        title: "Daily Pulse - Check-In System",
+        description: "Track your daily well-being through structured morning and evening check-ins. Daily Pulse captures mood, vitals, emotions, and activities.",
+        items: [
+            "Morning check-in with mood via interactive MoodOrb",
+            "Evening check-in with productivity, stress, and energy tracking",
+            "PulseCard with animated sky and night gradients",
+        ],
+    },
+    {
+        version: "2.0.10",
+        date: "March 28, 2026",
+        type: "Fixes" as const,
+        title: "Architecture, Accessibility & Performance",
+        description: "A sweeping refactor pass decomposing monolithic pages, adding WCAG 2.1 AA compliance, and parallelizing data fetching.",
+        items: [
+            "Lab page decomposed into 6 focused components",
+            "ARIA roles, labels, and keyboard navigation added",
+            "Promise.all for parallel data fetching",
+        ],
+    },
+    {
+        version: "2.0.4",
+        date: "March 12, 2026",
+        type: "Features" as const,
+        title: "Mobile-First Experience",
+        description: "Portal is no longer desktop-only. A full mobile experience has been built from the ground up with dedicated routes and native-feeling navigation.",
+        items: [
+            "Dedicated mobile routes for all core features",
+            "Bottom tab navigation with haptic feedback",
+            "Pull-to-refresh and swipe gestures",
+        ],
+    },
+];
 
 export default function ChangelogPage() {
     const [filter, setFilter] = useState<FilterType>("All");
+    const [heroRef, heroInView] = useInView({ threshold: 0.1, triggerOnce: true });
 
-    // Extracted changelog data to cleanly filter and map
-    const changelogData = [
-        {
-            version: "2.0.0",
-            date: "March 14, 2026",
-            tags: ["Release"],
-            type: "Release",
-            title: "Version 2.0 — Official Release",
-            description: (
-                <>
-                    <p>El Portal V2 is live. A ground-up rebuild delivering a mobile-first experience, unified architecture, semantic design system, and a completely overhauled interaction model. Every layer of the stack has been touched.</p>
-                    <div className="flex items-center gap-2 p-3 rounded-lg bg-blue-950/30 border border-blue-900/50 mt-4">
-                        <span className="material-symbols-outlined text-blue-200">rocket_launch</span>
-                        <p className="text-sm font-medium text-blue-200">All existing user data has been seamlessly migrated. No action required.</p>
-                    </div>
-                </>
-            ),
-        },
-        {
-            version: "2.0.16",
-            date: "April 02, 2026",
-            tags: ["Improvement", "Optimization"],
-            type: "Features",
-            title: "Trends Mobile, Performance & Polish",
-            description: (
-                <>
-                    <p>The Trends analytics dashboard has been optimized for mobile and polished for speed — lazy-loaded sections, single-pass computation, and a redesigned empty state.</p>
-                    <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Mobile trends page</strong> — Fully responsive layout with a floating pill time navigator, single-column chart grid, and week-only mood calendar with larger touch targets.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Performance</strong> — Skeleton loading during data fetch, lazy below-fold sections via <code className="text-blue-400/80 text-xs">useInView</code>, single-pass vitals computation, and a pre-built DOW map for O(1) lookups across all charts.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Monochromatic palette</strong> — All charts and mood indicators unified under a portal-derived blue gradient, from deep navy to bright cyan.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Redesigned empty state with gradient overlay and progress bar. Reduced motion support. Mood calendar dots now scale by size based on mood intensity.</span></li>
-                    </ul>
-                </>
-            ),
-        },
-        {
-            version: "2.0.15",
-            date: "March 19, 2026",
-            tags: ["New Feature"],
-            type: "Features",
-            title: "Trends — Analytics Dashboard",
-            description: (
-                <>
-                    <p>A full analytics dashboard for visualizing your Pulse data over time — mood trajectories, vitals, sleep, activities, emotions, and behavioral correlations across 5 time scales.</p>
-                    <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">9 visualization sections</strong> — Mood trend chart, 6 vitals charts (sleep, energy, stress, performance, motivation, connectedness), mood calendar, sleep duration bars, activities and emotions pie charts, and consistency streaks.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">5 time scales</strong> — Week, month, year, cycle, and version. Time navigator with previous/next navigation and dynamic period labels.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Correlation insights</strong> — &quot;What makes you shine&quot; and &quot;What makes you down&quot; cards that surface activities statistically linked to high or low mood days.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Previous-period comparison on all charts. Blurred sample data when insufficient check-ins. Keyboard hotkeys and full i18n across 5 locales.</span></li>
-                    </ul>
-                    <div className="flex items-center gap-2 p-3 rounded-lg bg-blue-950/30 border border-blue-900/50 mt-4">
-                        <span className="material-symbols-outlined text-blue-200">lock</span>
-                        <p className="text-sm font-medium text-blue-200">Trends is a Pro-exclusive feature available to Lifetime members.</p>
-                    </div>
-                </>
-            ),
-        },
-        {
-            version: "2.0.14",
-            date: "March 19, 2026",
-            tags: ["New Feature"],
-            type: "Features",
-            title: "Feedback Page & White-Mode Emails",
-            description: (
-                <>
-                    <p>A new in-app feedback channel and a redesigned email template that works beautifully in light-mode email clients.</p>
-                    <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Feedback page</strong> — Submit feedback directly from the app with auto-filled name, email, and plan. Wrapped in the cinematic auth layout with a success animation.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">White-mode email templates</strong> — Light background redesign for verification and auth emails. Inter font with responsive fallback and branded footer with social links.</span></li>
-                    </ul>
-                </>
-            ),
-        },
-        {
-            version: "2.0.13",
-            date: "March 18, 2026",
-            tags: ["New Feature"],
-            type: "Features",
-            title: "Daily Pulse — Check-In System",
-            description: (
-                <>
-                    <p>Track your daily well-being through structured morning and evening check-ins. Daily Pulse captures mood, vitals, emotions, and activities to build a rich picture of your life over time.</p>
-                    <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Morning check-in</strong> — 4 steps: mood via the interactive MoodOrb (0–100), sleep quality, feelings (choose from 24 emotions across positive, neutral, and negative sentiments), and focus tags for the day.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Evening check-in</strong> — 8 steps: mood, productivity, stress, motivation, energy, and connectedness (all 0–100 vital sliders), plus feelings and activity tags.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">MoodOrb</strong> — A 7-ring animated glass sphere using portal logo colors. Internal color masses drift and scale with mood. Eyes open progressively, mouth curves from frown to smile, and specular highlights shimmer.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">PulseCard</strong> — Split morning/evening card with animated sky and night gradients, breathing sun and twinkling moon, and completion status badges.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Dashboard <code className="text-blue-400/80 text-xs">PulseSignal</code> indicators, mobile <code className="text-blue-400/80 text-xs">PulseFAB</code> that auto-shows when a check-in is pending, and reminder settings in the Pulse tab.</span></li>
-                    </ul>
-                    <div className="flex items-center gap-2 p-3 rounded-lg bg-blue-950/30 border border-blue-900/50 mt-4">
-                        <span className="material-symbols-outlined text-blue-200">lock</span>
-                        <p className="text-sm font-medium text-blue-200">Daily Pulse is a Pro-exclusive feature available to Lifetime members.</p>
-                    </div>
-                </>
-            ),
-        },
-        {
-            version: "2.0.12",
-            date: "April 01, 2026",
-            tags: ["New Feature"],
-            type: "Features",
-            title: "Archives WYSIWYG Editor & Checklists",
-            description: (
-                <>
-                    <p>The Archives have been rebuilt with a rich-text WYSIWYG editor and interactive checklists, replacing the raw Markdown workflow with a polished writing experience.</p>
-                    <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">MDXEditor integration</strong> — Floating toolbar with bold, italic, headings, quotes, lists, links, and code blocks. Fully themed to match the El Portal glass design.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Interactive checklists</strong> — Type <code className="text-blue-400/80 text-xs">- [ ]</code> and it auto-converts into a toggleable checklist with dark-mode theming and accessible focus states.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Component extraction</strong> — Archives page decomposed from a monolith into 8 focused components (ArchiveEditorView, EntriesSidebar, MantraBankView, LifeChecklistView, and more).</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Proper Unicode typography across all 5 locales — curly quotes, en dashes, and ellipses replacing ASCII approximations.</span></li>
-                    </ul>
-                </>
-            ),
-        },
-        {
-            version: "2.0.11",
-            date: "March 29, 2026",
-            tags: ["New Feature", "Improvement"],
-            type: "Features",
-            title: "Dashboard Day Inspector & Multi-Cycle Goals",
-            description: (
-                <>
-                    <p>The standalone History page has been merged into the Dashboard as an inline Day Inspector, and the Goals page now supports multi-cycle viewing with past-cycle intelligence.</p>
-                    <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Day Inspector</strong> — Click any data point on the performance chart to view and edit that day&apos;s habits inline. URL-synced state with <code className="text-blue-400/80 text-xs">?view=week|30d|cycle&amp;date=YYYY-MM-DD</code> for shareable views.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Multi-cycle goals</strong> — Select multiple cycles via pill toggles to view goals across time. Past-cycle goals are read-only with carry-forward capability. Metric stats frozen at cycle boundaries to prevent retroactive score inflation.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Chart reactivity fix</strong> — Progress chart now updates instantly on habit toggle via synchronous optimistic scoring.</span></li>
-                    </ul>
-                </>
-            ),
-        },
-        {
-            version: "2.0.10",
-            date: "March 28, 2026",
-            tags: ["Improvement", "Fix"],
-            type: "Features",
-            title: "Architecture, Accessibility & Performance",
-            description: (
-                <>
-                    <p>A sweeping refactor pass decomposing monolithic pages, adding WCAG 2.1 AA compliance, and parallelizing data fetching across the app.</p>
-                    <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Lab page decomposition</strong> — Split into 6 focused components (VersionBar, CycleCard, CycleList, CycleGoalsPanel, HabitSelectorModal, VersionEditorModal) with version activate/edit/delete management.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Settings modal extraction</strong> — 1,259-line monolith split into 5 tab components (Account, General, Appearance, Pulse, Storage).</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Accessibility audit</strong> — ARIA roles, labels, and keyboard navigation added to 12 components. Cycle editor uses <code className="text-blue-400/80 text-xs">listbox/option</code> roles, forms use <code className="text-blue-400/80 text-xs">aria-invalid</code> + <code className="text-blue-400/80 text-xs">aria-describedby</code>.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Performance</strong> — <code className="text-blue-400/80 text-xs">Promise.all</code> for parallel data fetching, Google SDK moved to <code className="text-blue-400/80 text-xs">afterInteractive</code>, react-markdown dynamically imported (~60KB saved).</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Identity system toggle</strong> — Restored in Settings with reactive UI hiding across Lab, Dashboard, Archives, and CycleEditor when disabled.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>TypeScript strict mode enabled (removed <code className="text-blue-400/80 text-xs">ignoreBuildErrors</code>), Version modal redesigned with stepper, Raycast-style hover states on habit list.</span></li>
-                    </ul>
-                </>
-            ),
-        },
-        {
-            version: "2.0.9",
-            date: "March 16, 2026",
-            tags: ["Improvement"],
-            type: "Features",
-            title: "Database Page Refactor & Unified Actions",
-            description: (
-                <>
-                    <p>The Database page has been rebuilt with consolidated actions, memoized lookups, and full type safety across all four tabs.</p>
-                    <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Unified entity actions</strong> — Duplicate, edit, and delete handlers consolidated into single reusable functions across versions, cycles, habits, and goals.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Performance</strong> — Memoized lookup maps (<code className="text-blue-400/80 text-xs">versionMap</code>, <code className="text-blue-400/80 text-xs">cycleMap</code>, <code className="text-blue-400/80 text-xs">logIndex</code>) for O(1) access, plus <code className="text-blue-400/80 text-xs">useCallback</code>-wrapped handlers.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>New <code className="text-blue-400/80 text-xs">addVersion()</code> and <code className="text-blue-400/80 text-xs">addCycle()</code> service helpers. SegmentedToggle secondary variant with graphite theme.</span></li>
-                    </ul>
-                </>
-            ),
-        },
-        {
-            version: "2.0.8",
-            date: "March 15, 2026",
-            tags: ["Fix", "Optimization"],
-            type: "Features",
-            title: "Codebase Review — Type Safety, Hooks & Dead Code",
-            description: (
-                <>
-                    <p>A comprehensive codebase review pass fixing React hook violations, removing dead code, and eliminating unsafe types across all portal pages.</p>
-                    <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Critical hook fix</strong> — Resolved conditional <code className="text-blue-400/80 text-xs">useMemo</code> violation on the dashboard where chart data was computed after an early return guard.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Type safety</strong> — Extended Goal interface with missing <code className="text-blue-400/80 text-xs">priority</code> and <code className="text-blue-400/80 text-xs">goal_lineage_id</code> fields, replaced <code className="text-blue-400/80 text-xs">any</code> casts, extracted <code className="text-blue-400/80 text-xs">LabPageData</code> interface, and added null-safety guards throughout.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Dead code removal</strong> — Cleaned up console.logs, stale localStorage refs, unused imports, and commented-out <code className="text-blue-400/80 text-xs">unstable_cache</code> from cinema page.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Added missing <code className="text-blue-400/80 text-xs">&quot;use client&quot;</code> directives to 5 components. Extracted <code className="text-blue-400/80 text-xs">parseSubtaskLines</code> helper to deduplicate regex logic. Fixed hardcoded English string with i18n key.</span></li>
-                    </ul>
-                </>
-            ),
-        },
-        {
-            version: "2.0.4",
-            date: "March 12, 2026",
-            tags: ["New Feature"],
-            type: "Features",
-            title: "Mobile-First Experience",
-            description: (
-                <>
-                    <p>El Portal is no longer desktop-only. A full mobile experience has been built from the ground up with dedicated routes and native-feeling navigation.</p>
-                    <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Dedicated <code className="text-blue-400/80 text-xs">/m/</code> routes for habits, goals, and analytics — optimized for touch and small screens.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>New <strong className="text-zinc-200">BottomTabBar</strong> navigation for fast context switching on mobile.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Responsive dialog system replacing desktop modals with mobile-friendly sheets.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Automatic mobile detection with screen-width and user-agent based redirect logic.</span></li>
-                    </ul>
-                </>
-            ),
-        },
-        {
-            version: "2.0.7",
-            date: "March 14, 2026",
-            tags: ["New Feature"],
-            type: "Features",
-            title: "Internationalization — 5 Languages",
-            description: (
-                <>
-                    <p>El Portal now speaks your language. Full internationalization powered by next-intl with 670+ translation keys across every screen.</p>
-                    <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Supports <strong className="text-zinc-200">English, Spanish, Chinese (Simplified), Portuguese, and French</strong>.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Language preference syncs between localStorage and your database settings — persists across devices.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>670+ translation keys organized across 12 namespaces for complete UI coverage.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Added Noto Sans SC font for proper Chinese character rendering.</span></li>
-                    </ul>
-                </>
-            ),
-        },
-        {
-            version: "2.0.6",
-            date: "March 14, 2026",
-            tags: ["New Feature", "Fix"],
-            type: "Features",
-            title: "Password Reset Flow & Security Hardening",
-            description: (
-                <>
-                    <p>A complete forgot/reset password system and critical security improvements to the authentication layer.</p>
-                    <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Password reset flow</strong> — Forgot password link on login, secure token-based API endpoint, branded email with 1-hour expiring tokens, and a dedicated reset page with confirmation validation.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Security hardening</strong> — Removed hardcoded Supabase anon key fallback. Replaced signed URL tokens in email templates with public bucket URLs for static assets.</span></li>
-                    </ul>
-                    <div className="flex items-center gap-2 p-3 rounded-lg bg-blue-950/30 border border-blue-900/50 mt-4">
-                        <span className="material-symbols-outlined text-blue-200">lock</span>
-                        <p className="text-sm font-medium text-blue-200">Security-first: no credentials are ever exposed in client-side code.</p>
-                    </div>
-                </>
-            ),
-        },
-        {
-            version: "2.0.5",
-            date: "March 14, 2026",
-            tags: ["Improvement"],
-            type: "Features",
-            title: "Tempo Redesign & Custom Components",
-            description: (
-                <>
-                    <p>A visual overhaul of the Tempo settings and a new custom Select component for a more polished interaction model.</p>
-                    <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Tempo UI redesign</strong> — Hero sprint length display as centerpiece, color-coded valid/invalid division indicators, inline day input and cycle stepper, and an animated timeline bar visualizing version division into cycles.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Custom Select component</strong> — Styled dropdown replacing native HTML selects across settings and history pages, with full accessibility support.</span></li>
-                    </ul>
-                </>
-            ),
-        },
-        {
-            version: "2.0.3",
-            date: "March 10, 2026",
-            tags: ["New Feature", "Improvement"],
-            type: "Features",
-            title: "Drag-and-Drop & Unified Settings",
-            description: (
-                <>
-                    <p>Two major UX upgrades that eliminate friction in daily workflows.</p>
-                    <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Drag-and-drop reordering</strong> — Reorder habits and goals with smooth dnd-kit interactions. Ordering is persisted to the database instantly.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Unified Settings modal</strong> — Three separate modals (Account, Tempo, General) consolidated into one tabbed interface. Password changes, avatar uploads, and account deletion all in one place.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Secure account deletion</strong> — New API endpoint with session verification and FK-safe cascade deletion order.</span></li>
-                    </ul>
-                </>
-            ),
-        },
-        {
-            version: "2.0.2",
-            date: "March 07, 2026",
-            tags: ["Improvement"],
-            type: "Features",
-            title: "Semantic Design Tokens & Dashboard Polish",
-            description: (
-                <>
-                    <p>A visual consistency pass across the entire app, replacing scattered hardcoded colors with a unified token system.</p>
-                    <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Semantic design tokens</strong> — CSS variable-based system (<code className="text-blue-400/80 text-xs">bg-surface</code>, <code className="text-blue-400/80 text-xs">text-fg</code>, <code className="text-blue-400/80 text-xs">border-border</code>) with automatic light/dark mode switching.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Dashboard viewport fix</strong> — Dashboard no longer forces unnecessary scrolling.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Replaced monospace font with Inter on all charts and numeric indicators for visual consistency.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Chart tooltips now position above the data point to prevent triggering page scroll.</span></li>
-                    </ul>
-                </>
-            ),
-        },
-        {
-            version: "2.0.1",
-            date: "March 04, 2026",
-            tags: ["Fix", "Improvement"],
-            type: "Features",
-            title: "Auth Migration & Architecture Modernization",
-            description: (
-                <>
-                    <p>Infrastructure-level changes that make El Portal faster, more secure, and easier to evolve.</p>
-                    <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Local authentication</strong> — Migrated from n8n workflow automation to native Next.js API routes. Uses Supabase Admin SDK for server-side user creation and Nodemailer for branded verification emails.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Next.js 16 modernization</strong> — Migrated from <code className="text-blue-400/80 text-xs">middleware.ts</code> to <code className="text-blue-400/80 text-xs">proxy.ts</code> for modern request handling.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Data model refinements</strong> — Beliefs fused with Mantras for simplified knowledge management. User settings consolidated into a single JSONB column.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Codebase cleanup: removed unused documentation, test files, and improved overall project organization.</span></li>
-                    </ul>
-                </>
-            ),
-        },
-        {
-            version: "1.2.0",
-            date: "March 15, 2026",
-            tags: ["New Feature", "Optimization"],
-            type: "Features",
-            title: "Performance Heatmaps & Dual-Progression System V2",
-            description: (
-                <>
-                    <p>We've completely rewritten our core synchronization engine to reduce latency by 45% in high-concurrency environments while heavily upgrading the statistics visualization.</p>
-                    <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Implemented asymptotic habit consistency formula (`Progress % = 100 × (1 − e^(−0.061 × streak_days))`).</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Upgraded weekly progress area plots and introduced GitHub-style day-of-week performance heatmaps.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Added support for offline persistence via IndexedDB ensuring day-logs are never lost.</span></li>
-                    </ul>
-                </>
-            ),
-        },
-        {
-            version: "1.1.5",
-            date: "March 02, 2026",
-            tags: ["Improvement"],
-            type: "Features",
-            title: "Cinema Mode Enhancements",
-            description: (
-                <>
-                    <p>Visualizing your goals is a core mechanic of El Portal. Cinema Mode has been upgraded for better immersion and focus.</p>
-                    <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>You can now edit the dynamic caption text overlaying the 5 persistent life slides: Me, Her, Purpose, Social, Material Life.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Smoother transitions between slides utilizing Framer Motion.</span></li>
-                    </ul>
-                    <div className="flex items-center gap-2 p-3 rounded-lg bg-blue-950/30 border border-blue-900/50 mt-4">
-                        <span className="material-symbols-outlined text-blue-200">info</span>
-                        <p className="text-sm font-medium text-blue-200">Existing custom images from Supabase Storage will remain unaffected.</p>
-                    </div>
-                </>
-            ),
-        },
-        {
-            version: "1.1.0",
-            date: "February 18, 2026",
-            tags: ["New Feature"],
-            type: "Features",
-            title: "The Archives: Advanced Search Syntax",
-            description: (
-                <>
-                    <p>Unlock the power of writing across My Routines, Mantra Archive, and Theory Notes.</p>
-                    <div className="flex items-center gap-2 p-3 rounded-lg bg-blue-950/30 border border-blue-900/50 mt-4">
-                        <span className="material-symbols-outlined text-blue-200">edit_note</span>
-                        <p className="text-sm font-medium text-blue-200">
-                            Unleash the power of reflecting on your life and growth.
-                        </p>
-                    </div>
-                </>
-            ),
-        },
-        {
-            version: "1.0.0",
-            date: "January 26, 2026",
-            tags: ["Release"],
-            type: "Release",
-            title: "Deployment of Version 1",
-            description: (
-                <>
-                    <p>The initial release of El Portal.</p>
-                </>
-            ),
-        },
-    ];
-
-    const filteredData = changelogData.filter(item => {
-        if (filter === "All") return true;
-        if (filter === "Features") return item.tags.some(t => t.toLowerCase().includes("feature") || t.toLowerCase().includes("improvement") || t.toLowerCase().includes("optimization"));
-        if (filter === "Fixes") return item.tags.some(t => t.toLowerCase().includes("fix"));
-        return true;
-    });
+    const filteredData = changelogData.filter(
+        (item) => filter === "All" || item.type === filter
+    );
 
     return (
-        <div className="relative min-h-screen w-full flex-col overflow-x-hidden bg-zinc-950">
-            {/* Background grid texture */}
-            <div
-                className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"
-                style={{
-                    maskImage: "radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%)",
-                    WebkitMaskImage: "radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%)"
-                }}
-            />
-
-            {/* Subtle Top Radial Gradient */}
-            <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-blue-700/10 blur-[120px] rounded-full -z-10 pointer-events-none"></div>
-
+        <div className="relative w-full overflow-x-hidden bg-cream min-h-screen">
             <Navbar />
 
-            <main className="relative z-10 mx-auto flex w-full max-w-[960px] flex-1 flex-col px-6 pt-56 pb-24 lg:px-10">
-                {/* Title & Filter */}
-                <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-                    <div className="flex flex-col gap-2">
-                        <h1 className="text-4xl font-black tracking-tight text-zinc-100 lg:text-5xl">Changelog</h1>
-                        <p className="text-zinc-400 text-lg">Stay updated with our latest improvements and technical milestones.</p>
-                    </div>
+            <main className="relative z-10">
+                {/* Hero Section */}
+                <section className="pt-32 pb-12 md:pt-40 md:pb-16 px-6">
+                    <motion.div
+                        ref={heroRef}
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        className="max-w-3xl mx-auto text-center"
+                    >
+                        <h1 className="font-serif italic text-5xl md:text-6xl lg:text-7xl text-charcoal leading-tight tracking-tight mb-6 text-balance">
+                            Changelog
+                        </h1>
 
-                    {/* Segmented Control (Shadcn Style) */}
-                    <div className="flex h-9 items-center rounded-xl bg-zinc-900/80 p-1 border border-white/5 shadow-inner backdrop-blur-md">
-                        {(["All", "Features", "Fixes"] as FilterType[]).map((f) => (
-                            <button
-                                key={f}
-                                onClick={() => setFilter(f)}
-                                className={`flex h-full flex-1 items-center justify-center rounded-lg px-5 text-xs font-semibold shadow-sm transition-colors ${filter === f
-                                    ? "bg-zinc-800 text-zinc-100" // Active state
-                                    : "text-zinc-400 hover:text-zinc-300" // Inactive state
+                        <p className="text-lg md:text-xl text-charcoal-light max-w-lg mx-auto leading-relaxed mb-10">
+                            Every improvement, feature, and fix - documented and transparent.
+                        </p>
+
+                        {/* Filter Tabs */}
+                        <div className="flex items-center justify-center gap-2 flex-wrap">
+                            {filterOptions.map((option) => (
+                                <button
+                                    key={option.label}
+                                    onClick={() => setFilter(option.label)}
+                                    className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                                        filter === option.label
+                                            ? "bg-primary text-white"
+                                            : "bg-white text-charcoal-light border border-charcoal/10 hover:border-primary/30"
                                     }`}
-                            >
-                                {f}
-                            </button>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Timeline Container */}
-                <div className="relative mt-8">
-                    {/* The absolute vertical line running exactly through the dots */}
-                    <div className="absolute left-0 top-4 bottom-0 w-px bg-white/5 z-0 md:top-6" />
-
-                    {filteredData.map((item, index) => (
-                        <ChangelogItem
-                            key={index}
-                            version={item.version}
-                            date={item.date}
-                            tags={item.tags}
-                            title={item.title}
-                            description={item.description}
-                        />
-                    ))}
-
-                    {filteredData.length === 0 && (
-                        <div className="text-center py-12 border border-white/5 bg-zinc-900/50 rounded-xl">
-                            <p className="text-zinc-400">No entries found for this category.</p>
+                                >
+                                    {option.icon}
+                                    {option.label}
+                                </button>
+                            ))}
                         </div>
-                    )}
-                </div>
+                    </motion.div>
+                </section>
 
+                {/* Timeline */}
+                <section className="py-16 md:py-24 px-6">
+                    <div className="max-w-3xl mx-auto">
+                        <div className="relative">
+                            {/* Timeline line */}
+                            <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-charcoal/10" />
+
+                            <div className="space-y-12">
+                                {filteredData.map((item, index) => (
+                                    <motion.div
+                                        key={item.version}
+                                        initial={{ opacity: 0, y: 30 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{
+                                            duration: 0.6,
+                                            delay: index * 0.05,
+                                            ease: [0.22, 1, 0.36, 1],
+                                        }}
+                                        viewport={{ once: true }}
+                                        className="relative pl-8 md:pl-20"
+                                    >
+                                        {/* Timeline dot */}
+                                        <div className={`absolute left-0 md:left-8 top-2 w-4 h-4 rounded-full border-2 -translate-x-1/2 ${
+                                            item.type === "Release"
+                                                ? "bg-accent border-accent"
+                                                : item.type === "Features"
+                                                ? "bg-primary border-primary"
+                                                : "bg-charcoal-light border-charcoal-light"
+                                        }`} />
+
+                                        {/* Card */}
+                                        <div className="bg-white rounded-2xl border border-charcoal/5 p-6 md:p-8 hover:shadow-lg transition-shadow duration-300">
+                                            {/* Header */}
+                                            <div className="flex flex-wrap items-center gap-3 mb-4">
+                                                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold ${
+                                                    item.type === "Release"
+                                                        ? "bg-accent/10 text-accent"
+                                                        : item.type === "Features"
+                                                        ? "bg-primary/10 text-primary"
+                                                        : "bg-charcoal/10 text-charcoal-light"
+                                                }`}>
+                                                    {item.type === "Release" && <Rocket className="w-3 h-3" />}
+                                                    {item.type === "Features" && <Sparkles className="w-3 h-3" />}
+                                                    {item.type === "Fixes" && <Wrench className="w-3 h-3" />}
+                                                    {item.type}
+                                                </span>
+                                                <span className="text-xs text-charcoal-light flex items-center gap-1">
+                                                    <Tag className="w-3 h-3" />
+                                                    v{item.version}
+                                                </span>
+                                                <span className="text-xs text-charcoal-light">
+                                                    {item.date}
+                                                </span>
+                                            </div>
+
+                                            {/* Title */}
+                                            <h3 className="text-xl font-semibold text-charcoal mb-3">
+                                                {item.title}
+                                            </h3>
+
+                                            {/* Description */}
+                                            <p className="text-charcoal-light leading-relaxed mb-4">
+                                                {item.description}
+                                            </p>
+
+                                            {/* Highlight (for releases) */}
+                                            {item.highlight && (
+                                                <div className="flex items-center gap-3 p-4 bg-primary/5 rounded-xl border border-primary/10">
+                                                    <Rocket className="w-5 h-5 text-primary shrink-0" />
+                                                    <p className="text-sm font-medium text-primary">
+                                                        {item.highlight}
+                                                    </p>
+                                                </div>
+                                            )}
+
+                                            {/* Items list */}
+                                            {item.items && (
+                                                <ul className="space-y-2">
+                                                    {item.items.map((listItem, i) => (
+                                                        <li key={i} className="flex items-start gap-2 text-sm text-charcoal-light">
+                                                            <span className="text-charcoal/30 mt-1">-</span>
+                                                            {listItem}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            )}
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </main>
 
             <Footer />

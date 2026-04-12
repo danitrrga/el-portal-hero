@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Instrument_Serif } from "next/font/google";
+import { Inter, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
 });
 
 const instrumentSerif = Instrument_Serif({
@@ -22,9 +16,9 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "El Portal - The personal OS",
+  title: "Portal - Your Personal Operating System",
   description:
-    "El Portal is a mobile-first personal operating system. Manage habits with drag-and-drop, track deep work cycles, and align your goals — now with a unified architecture and semantic design system.",
+    "Portal is a mobile-first personal operating system. Manage habits with drag-and-drop, track deep work cycles, and align your goals with elegant simplicity.",
 };
 
 export default function RootLayout({
@@ -33,13 +27,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
       </head>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable} bg-gradient-to-br from-slate-950 via-black to-slate-950 text-slate-300 font-sans antialiased selection:bg-primary/30 selection:text-white overflow-x-hidden`}
+        className={`${inter.variable} ${instrumentSerif.variable} bg-cream text-charcoal font-sans antialiased selection:bg-primary/20 selection:text-primary overflow-x-hidden`}
       >
         {children}
       </body>

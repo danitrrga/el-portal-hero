@@ -1,124 +1,157 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { ShinyButton } from "./ui/shiny-button";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
     { href: "/manifesto", label: "Manifesto" },
-    { href: "/changelog", label: "Changelog" },
     { href: "/methodology", label: "Methodology" },
+    { href: "/changelog", label: "Changelog" },
     { href: "/pricing", label: "Pricing" },
 ];
 
 export default function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
     const pathname = usePathname();
 
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 20);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
-        <nav
-            className={[
-                "fixed top-4 left-1/2 -translate-x-1/2 z-50",
-                "max-w-5xl w-[calc(100%-2rem)]",
-                "bg-zinc-900/80 backdrop-blur-xl",
-                "border border-white/5",
-                "shadow-[0_0_30px_-5px_rgba(0,0,0,0.5)]",
-                "rounded-2xl transition-all duration-300",
-            ].join(" ")}
+        <motion.nav
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+                scrolled
+                    ? "bg-cream/90 backdrop-blur-xl border-b border-charcoal/5 shadow-sm"
+                    : "bg-transparent"
+            }`}
         >
-            <div className="px-6">
-                <div className="flex justify-between h-16 items-center">
+            <div className="max-w-6xl mx-auto px-6">
+                <div className="flex justify-between h-20 items-center">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2">
-                        <span className="font-bold text-2xl text-white tracking-tighter relative z-10 flex items-center">
-                            P
-                            <img
-                                src="/icon.svg"
-                                alt="El Portal Icon"
-                                className="w-[1.1em] h-[1.1em] mx-[2px]"
-                            />
-                            RTAL
+                    <Link href="/" className="flex items-center gap-1">
+                        <span className="font-serif italic text-2xl text-charcoal tracking-tight">
+                            Portal
                         </span>
                     </Link>
 
-                    {/* Desktop Nav Links */}
-                    <div className="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    {/* Desktop Nav Links - Center */}
+                    <div className="hidden md:flex items-center gap-8">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.href}
-                                className={[
-                                    "transition-colors duration-300",
-                                    pathname === link.href
-                                        ? "text-zinc-100"
-                                        : "text-zinc-400 hover:text-zinc-100",
-                                ].join(" ")}
                                 href={link.href}
+                                className={`relative text-sm font-medium transition-colors duration-300 ${
+                                    pathname === link.href
+                                        ? "text-primary"
+                                        : "text-charcoal-light hover:text-charcoal"
+                                }`}
                             >
                                 {link.label}
+                                {pathname === link.href && (
+                                    <motion.div
+                                        layoutId="activeNav"
+                                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                                    />
+                                )}
                             </Link>
                         ))}
                     </div>
 
                     {/* Right Actions */}
-                    <div className="flex items-center space-x-4">
+                    <div className="flex items-center gap-4">
                         <Link
-                            className="text-sm font-medium text-zinc-400 hover:text-zinc-100 transition-colors duration-300 hidden sm:block pr-4"
                             href="https://el-portal-app.vercel.app/login"
+                            className="hidden sm:block text-sm font-medium text-charcoal-light hover:text-charcoal transition-colors duration-300"
                         >
                             Log in
                         </Link>
-                        <Link href="https://el-portal-app.vercel.app">
-                            <ShinyButton className="!px-6 !py-3 !text-sm !rounded-xl !h-[44px] !font-medium">
-                                Get Started
-                            </ShinyButton>
+                        <Link
+                            href="https://el-portal-app.vercel.app"
+                            className="hidden sm:flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-full text-sm font-medium transition-all duration-300 hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/20"
+                        >
+                            Get Started
                         </Link>
-                        {/* Mobile Hamburger */}
+
+                        {/* Mobile Menu Button */}
                         <button
-                            className="md:hidden text-zinc-400 hover:text-zinc-100 transition-colors duration-300"
+                            className="md:hidden w-10 h-10 flex items-center justify-center text-charcoal hover:text-primary transition-colors duration-300"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                             aria-label="Toggle menu"
                         >
-                            {mobileMenuOpen ? (
-                                <X size={20} />
-                            ) : (
-                                <Menu size={20} />
-                            )}
+                            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
                         </button>
                     </div>
                 </div>
             </div>
 
             {/* Mobile Menu */}
-            {mobileMenuOpen && (
-                <div className="md:hidden border-t border-white/5 bg-zinc-950/95 backdrop-blur-xl rounded-b-2xl">
-                    <div className="px-6 py-4 space-y-1">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.href}
-                                className={[
-                                    "block text-sm font-medium py-2 transition-colors duration-300",
-                                    pathname === link.href
-                                        ? "text-zinc-100"
-                                        : "text-zinc-400 hover:text-zinc-100",
-                                ].join(" ")}
-                                href={link.href}
-                                onClick={() => setMobileMenuOpen(false)}
+            <AnimatePresence>
+                {mobileMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="md:hidden bg-cream border-t border-charcoal/5 overflow-hidden"
+                    >
+                        <div className="px-6 py-6 space-y-1">
+                            {navLinks.map((link, index) => (
+                                <motion.div
+                                    key={link.href}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: index * 0.05 }}
+                                >
+                                    <Link
+                                        href={link.href}
+                                        onClick={() => setMobileMenuOpen(false)}
+                                        className={`block py-3 text-base font-medium transition-colors duration-300 ${
+                                            pathname === link.href
+                                                ? "text-primary"
+                                                : "text-charcoal-light hover:text-charcoal"
+                                        }`}
+                                    >
+                                        {link.label}
+                                    </Link>
+                                </motion.div>
+                            ))}
+                            <motion.div
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: navLinks.length * 0.05 }}
+                                className="pt-4 border-t border-charcoal/10"
                             >
-                                {link.label}
-                            </Link>
-                        ))}
-                        <Link
-                            className="block text-sm font-medium text-zinc-400 hover:text-zinc-100 transition-colors duration-300 py-2"
-                            href="https://el-portal-app.vercel.app/login"
-                            onClick={() => setMobileMenuOpen(false)}
-                        >
-                            Log in
-                        </Link>
-                    </div>
-                </div>
-            )}
-        </nav>
+                                <Link
+                                    href="https://el-portal-app.vercel.app/login"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="block py-3 text-base font-medium text-charcoal-light hover:text-charcoal transition-colors duration-300"
+                                >
+                                    Log in
+                                </Link>
+                                <Link
+                                    href="https://el-portal-app.vercel.app"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="mt-2 block w-full text-center px-5 py-3 bg-primary text-white rounded-full text-sm font-medium transition-all duration-300 hover:bg-primary-dark"
+                                >
+                                    Get Started
+                                </Link>
+                            </motion.div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </motion.nav>
     );
 }
