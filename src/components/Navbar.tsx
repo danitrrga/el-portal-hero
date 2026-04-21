@@ -10,7 +10,6 @@ const navLinks = [
     { href: "/manifesto", label: "Manifesto" },
     { href: "/changelog", label: "Changelog" },
     { href: "/methodology", label: "Methodology" },
-    { href: "/pricing", label: "Pricing" },
 ];
 
 export default function Navbar() {

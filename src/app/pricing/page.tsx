@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ShinyButton } from "@/components/ui/shiny-button";
@@ -179,6 +180,8 @@ const faqs = [
 /* ─── Component ───────────────────────────────────────────────────── */
 
 export default function PricingPage() {
+    notFound();
+
     return (
         <div className="relative w-full overflow-x-hidden bg-zinc-950 min-h-screen">
             {/* Grain texture overlay */}
