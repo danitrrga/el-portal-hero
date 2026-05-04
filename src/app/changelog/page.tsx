@@ -17,16 +17,16 @@ export default function ChangelogPage() {
             date: "May 02, 2026",
             tags: ["New Feature", "Improvement"],
             type: "Features",
-            title: "Insights — Higher-Order Pattern Detection",
+            title: "Smarter Insights — Deeper Patterns, Cleaner Cards",
             description: (
                 <>
-                    <p>The correlation engine has been expanded with four new pattern detectors and a Linear-style card design that lets a single status primitive carry the entire signal.</p>
+                    <p>Insights surfaces deeper patterns now: how a habit you do today ripples into tomorrow, which feelings tend to come together, and which behaviors actually move your daily score. Cards have been redesigned around a single signal-strength indicator.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Habit-lag detection</strong> — Habit Day N to vital Day N+1 / N+2 across 6 vitals, with Benjamini-Hochberg correction across the full habit × vital × lag family. Lag-2 is suppressed when lag-1 is stronger for the same pair.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Feelings as a substrate</strong> — Point-biserial <code className="text-blue-400/80 text-xs">r</code> between feeling presence and habit completion, plus phi coefficient + chi-squared on 2×2 tables for feeling-pair clustering.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Habit-KPI lift</strong> — New <code className="text-blue-400/80 text-xs">computeHabitKpi</code> ties habits directly to daily score, perfect-day rate, and composite wellbeing.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Linear-style card</strong> — One status primitive — empty ring (low), half-filled with subtle halo (moderate), full disc with stronger glow (strong). No more rainbow tints, no more pictograms.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">History navigation &amp; freshness widget</strong> — Floating PeriodPill-style control walks through up to 10 stored reports. Per-cycle freshness arc tracks compute schedule; client-side recompute is fully locked — cron is the only legitimate trigger.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Habits that ripple forward</strong> — Insights now spots when a habit you do today predicts how a vital looks tomorrow or the day after.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Feelings as signals</strong> — Discover which feelings tend to show up together, and which habits make a feeling more — or less — likely.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Habits vs. your score</strong> — See exactly which habits are pulling your daily score and overall wellbeing up, and which ones aren&apos;t earning their place.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">One status, three states</strong> — Each insight card now uses a single circle: empty for emerging, half-filled for moderate, full for strong. No more rainbow categories.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Browse past reports</strong> — Step back through your last ten reports with a floating control, and see at a glance when the next one will be ready.</span></li>
                     </ul>
                 </>
             ),
@@ -36,16 +36,16 @@ export default function ChangelogPage() {
             date: "April 30, 2026",
             tags: ["New Feature", "Improvement"],
             type: "Features",
-            title: "Privacy, Consent & Linear Brand Realign",
+            title: "Privacy You Control & A Quieter Look",
             description: (
                 <>
-                    <p>A foundational privacy rebuild paired with a top-to-bottom brand realign. Consent is now granular and reversible, your data is fully exportable and deletable, and the visual language has been pulled toward Linear&apos;s pure-mono restraint.</p>
+                    <p>You now control exactly what data you share, and you can take it all back at any time. The visual language has been pulled toward something quieter and more confident — green and amber retired in favor of a single cohesive blue.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">3-bucket consent</strong> — Bucket C (mood/habit/cycle data, GDPR Art. 9(2)(a)), Bucket A (PostHog Cloud EU telemetry, lazy-loaded only after consent), and Bucket B (anonymized AI research corpus). Each gate is independent and toggleable from the new Privacy tab in Settings.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">GDPR endpoints</strong> — <code className="text-blue-400/80 text-xs">/api/me/export</code> (Art. 15 + 20 portability) and <code className="text-blue-400/80 text-xs">/api/me/delete</code> (Art. 17 erasure) with type-to-confirm modal. Pseudonymization via HMAC-SHA256 with a rotating salt env.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Public /privacy page</strong> — Linear-grade transparency: 680px column, no cards, hairline dividers, pure mono. Inline Bucket / Provider / Right rows.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Brand realign</strong> — Green retired everywhere (habit done-state migrated from bali-500 to white). Pacific palette re-aliased to logo sky-blue, harmonizing 301 existing usages without a code sweep. Amber and yellow suppressed across the analytics surface.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Cookie-free telemetry</strong> — PostHog persistence set to <code className="text-blue-400/80 text-xs">memory</code>; <code className="text-blue-400/80 text-xs">distinct_id</code> resets per tab so the &quot;no cookies of any kind&quot; promise holds.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Three independent privacy switches</strong> — One for your personal data, one for anonymous usage analytics, one for opt-in research. Each toggleable in Settings, all off by default.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Export everything, delete everything</strong> — One click downloads your full data in a readable format. Another permanently erases it. Both protected by a confirmation step.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">A new public Privacy page</strong> — Plain-language explanation of what each switch covers, where your data lives, and exactly which rights you have.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">A more cohesive palette</strong> — Green is gone, amber and yellow are out of analytics, and the blue used everywhere now comes straight from the portal logo.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">No cookies, full stop</strong> — Anonymous analytics no longer set any cookies on your device.</span></li>
                     </ul>
                     <div className="flex items-center gap-2 p-3 rounded-lg bg-blue-950/30 border border-blue-900/50 mt-4">
                         <span className="material-symbols-outlined text-blue-200">lock</span>
@@ -62,11 +62,12 @@ export default function ChangelogPage() {
             title: "Cinema — Fall Into the Photo",
             description: (
                 <>
-                    <p>Opening a Cinema slide is no longer a fade — it is a morph. The card &quot;falls&quot; into a full-bleed overlay using a shared photo element, and the chrome assembles around it.</p>
+                    <p>Opening a Cinema slide no longer just fades in — the photo itself expands smoothly into the full view, and everything else assembles around it. Tap a slide and you fall into it.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Shared-element transition</strong> — Card → overlay morph via Motion <code className="text-blue-400/80 text-xs">layoutId</code>, spring settle <code className="text-blue-400/80 text-xs">{`{ duration: 0.55, bounce: 0.2 }`}</code>. Backdrop swaps to solid graphite during the morph to kill per-frame backdrop-filter cost; nav chrome fades in only after the photo settles.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Asymmetric exit</strong> — Snappy ease-out, no spring overshoot on close. Text panel staggers in via GPU-accelerated <code className="text-blue-400/80 text-xs">translateX</code>.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>ESC + arrow keys + body scroll lock wired. <code className="text-blue-400/80 text-xs">useReducedMotion</code> drops the morph and falls back to opacity crossfade.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">The photo leads</strong> — When you open a slide, the image you tapped grows smoothly into the full-bleed view. Text and chrome fade in afterward, so the photo always feels like the centerpiece.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Snappy close</strong> — Hit ESC or the back arrow and the slide closes cleanly, no overshoot.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Keyboard friendly</strong> — Arrow keys to navigate, ESC to close, page scroll locks while you&apos;re immersed.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>If your system asks for less motion, the morph drops to a simple crossfade.</span></li>
                     </ul>
                 </>
             ),
@@ -76,16 +77,16 @@ export default function ChangelogPage() {
             date: "April 22, 2026",
             tags: ["New Feature", "Improvement"],
             type: "Features",
-            title: "Insights Tab & Floating Period Pill",
+            title: "Insights Tab & Unified Time Pill",
             description: (
                 <>
-                    <p>The Insights tab graduated from sample preview to a real narrative engine, and time-scale navigation across analytics has been unified into a single floating pill.</p>
+                    <p>The Insights tab is live with real correlations and a written narrative each report. Period and time-scale navigation across analytics has been collapsed into a single floating pill at the bottom of the screen.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Insights tab</strong> — Multi-target correlations, pattern detection, and a template-driven narrative engine. Graduated empty states with sample preview when there isn&apos;t enough data yet.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Floating period pill</strong> — The scale selector and time navigator have been merged into one segmented-control-style pill, anchored at the bottom with a responsive mobile variant and safe-area awareness.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Notifications tab</strong> — Settings split: Notifications + Email moved to a dedicated Bell-icon tab. Auto-save on change (800ms debounce), removed manual Save buttons. Report frequency picker (biweekly / monthly / bimonthly / quarterly / per-cycle).</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">PulseFAB lifted to header</strong> — Frees the bottom-right FAB slot on mobile and gets the check-in indicator into the visible chrome.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Arrow-key navigation, ARIA roles, and keyboard focus polish across the entire analytics surface. Hardcoded English strings extracted into i18n.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Insights tab</strong> — Surfaces patterns across your habits, feelings, and vitals — written up as a short narrative. Includes a blurred preview of what your insights will look like once you&apos;ve logged enough data.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Floating period pill</strong> — Scale and time navigation are now one control: tap to switch week / month / year, step forward or back with the chevrons. Sits at the bottom on mobile and respects the safe area.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Notifications tab</strong> — Notifications and email settings moved into their own tab. Changes save automatically — no more Save button. Pick how often you want reports: biweekly, monthly, every cycle, or quarterly.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Pulse always one tap away</strong> — The Pulse check-in shortcut now lives in the header on mobile, so it&apos;s reachable from any screen.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Better keyboard navigation and screen-reader support across every analytics screen, plus translation polish.</span></li>
                     </ul>
                 </>
             ),
@@ -95,15 +96,15 @@ export default function ChangelogPage() {
             date: "April 20, 2026",
             tags: ["Improvement", "Fix"],
             type: "Features",
-            title: "Wordmark, Volumetric Sidebar & Auth Hardening",
+            title: "Wordmark, New Sidebar & Sign-In Fixes",
             description: (
                 <>
-                    <p>The brand identity gets its first reusable lockup, the sidebar gains a cinematic active state, and Google Sign-In has been rebuilt against the modern FedCM API.</p>
+                    <p>A refined logo lockup, a sidebar that lights up around the page you&apos;re on, and Google Sign-In has been rebuilt so it works reliably — including after you log out and back in.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">ElPortalWordmark</strong> — Extracted into a single component for consistent lockup across the auth screens, privacy page, and email templates. O-to-letter spacing tuned.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Volumetric cone sidebar</strong> — Active nav item now renders a layered radial-gradient cone light anchored off-screen right, a slim portal-400 pill with dual-stop glow, and a subtle <code className="text-blue-400/80 text-xs">feTurbulence</code> grain overlay that only shows on the selected row.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Shimmer skeletons</strong> — Reusable Skeleton primitive backed by a GPU-accelerated sweep with a <code className="text-blue-400/80 text-xs">--shimmer-index</code> cascade. Applied across Dashboard, Lab, Goals, Trends, and Archives.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Google Sign-In via FedCM + nonce</strong> — Fragile invisible-overlay button replaced with a clean visible button. SHA-256 nonce pair per session fixes the Supabase 400 nonce-mismatch error. <code className="text-blue-400/80 text-xs">google.accounts.id.cancel()</code> on sign-out fixes the &quot;origin not allowed&quot; error after re-login.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Refined wordmark</strong> — A consistent El Portal lockup now appears across auth screens, the privacy page, and emails. Same wordmark everywhere.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Volumetric sidebar</strong> — The active page in the sidebar glows with a soft conical light and a subtle film-grain overlay. Subtle, but unmistakable when you scan the nav.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Smoother loading</strong> — Flat skeleton placeholders have been replaced with a polished shimmer that cascades across each page while data loads.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Google Sign-In, fixed</strong> — The button now actually appears on the page, the sign-in flow works first try, and logging out then back in no longer breaks.</span></li>
                     </ul>
                 </>
             ),
@@ -116,14 +117,14 @@ export default function ChangelogPage() {
             title: "Trends — Tabbed Analytics Dashboard",
             description: (
                 <>
-                    <p>The monolithic 581-line Trends page has been refactored into a five-tab analytics shell with sliding indicator and URL-driven state. Four new wellbeing sections, a full Performance tab, a full Cycles tab, and a Reports tab with PNG/PDF export ship together.</p>
+                    <p>The Trends page has been reorganized into five focused tabs and is now free for everyone. Each tab takes a different angle on your data — wellbeing, performance, cycles, insights, and reports.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Five-tab shell</strong> — Wellbeing / Performance / Cycles / Insights / Reports, with URL state via <code className="text-blue-400/80 text-xs">?tab=wellbeing</code> for shareable views. The page-level Pro gate has been removed — analytics is now free for all users.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Performance tab</strong> — 4 KPI cards (daily score average, perfect-day rate, best streak, consistency), daily score trend chart with score-decomposition popover, sortable habit reliability table, day-of-week heatmap, and a GitHub-style year heatmap.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Cycles tab</strong> — Cycle-over-Cycle score chart with regression trend line, scrollable cycle report cards, GoalJourneyCards (replacing GoalVelocity + GoalLineage), IdentityEvolutionTimeline, EnergyTimeline averaging energy by cycle-day position, and a problem-recurrence scanner that flags frictions appearing in 3+ cycles.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Reports tab</strong> — Premium report card with narrative, sparkline, and highlights. Rich config panel with PNG and PDF export via <code className="text-blue-400/80 text-xs">modern-screenshot</code> + <code className="text-blue-400/80 text-xs">jsPDF</code>, scroll lock during render, and a print stylesheet.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Mobile mirror</strong> — The full tab system is mirrored to <code className="text-blue-400/80 text-xs">/m/trends</code>, preserving touch-target sizing and the floating period pill.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Wellbeing tab gains 4 new sections: CompositeWellbeingScore, VitalsRadarChart, MoodDeltaChart, SleepConsistencyCard. Full i18n across all 5 locales.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Five tabs</strong> — Wellbeing, Performance, Cycles, Insights, and Reports. The dashboard is now free; only AI-generated reports remain a Pro feature.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Performance tab</strong> — Daily-score average, perfect-day rate, best streak, and a habit reliability table you can sort. A year-long heatmap shows the days you tend to slip and the days you tend to nail.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Cycles tab</strong> — Cycle-over-cycle score chart with a trend line, scrollable cycle reports, goal-journey cards, an identity-evolution timeline, and a recurrence scanner that flags frictions showing up across multiple cycles.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Reports tab</strong> — A polished report card with narrative, sparkline, and highlights. Export as PNG or PDF, or print it.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Mobile mirror</strong> — Every tab has a fully native mobile version with proper touch targets and the floating period pill.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Wellbeing tab adds a composite wellbeing score, a vitals radar, a mood-delta chart, and a sleep-consistency card. Available in all five languages.</span></li>
                     </ul>
                 </>
             ),
@@ -133,15 +134,15 @@ export default function ChangelogPage() {
             date: "April 02, 2026",
             tags: ["Improvement", "Optimization"],
             type: "Features",
-            title: "Trends Mobile, Performance & Polish",
+            title: "Trends — Mobile, Speed & Polish",
             description: (
                 <>
-                    <p>The Trends analytics dashboard has been optimized for mobile and polished for speed — lazy-loaded sections, single-pass computation, and a redesigned empty state.</p>
+                    <p>The Trends dashboard runs noticeably faster and reads beautifully on phones. Sections load on demand, charts share one calm blue palette, and the empty state has been redesigned.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Mobile trends page</strong> — Fully responsive layout with a floating pill time navigator, single-column chart grid, and week-only mood calendar with larger touch targets.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Performance</strong> — Skeleton loading during data fetch, lazy below-fold sections via <code className="text-blue-400/80 text-xs">useInView</code>, single-pass vitals computation, and a pre-built DOW map for O(1) lookups across all charts.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Monochromatic palette</strong> — All charts and mood indicators unified under a portal-derived blue gradient, from deep navy to bright cyan.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Redesigned empty state with gradient overlay and progress bar. Reduced motion support. Mood calendar dots now scale by size based on mood intensity.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Mobile Trends</strong> — Full mobile layout with a floating time navigator, single-column charts, and a week-only mood calendar with bigger touch targets.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Faster scrolling</strong> — Charts below the fold now load only when you scroll near them. Skeleton placeholders show while data comes in.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Calmer palette</strong> — Every chart and mood indicator now shares one cohesive blue gradient, from deep navy to bright cyan.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Redesigned empty state with a softer gradient and progress bar. Mood calendar dots scale with intensity. Reduced-motion preferences respected.</span></li>
                     </ul>
                 </>
             ),
@@ -151,15 +152,15 @@ export default function ChangelogPage() {
             date: "March 19, 2026",
             tags: ["New Feature"],
             type: "Features",
-            title: "Trends — Analytics Dashboard",
+            title: "Trends — Your Pulse Data, Visualized",
             description: (
                 <>
-                    <p>A full analytics dashboard for visualizing your Pulse data over time — mood trajectories, vitals, sleep, activities, emotions, and behavioral correlations across 5 time scales.</p>
+                    <p>A full analytics dashboard for your Pulse data — mood trajectories, vitals, sleep, activities, emotions, and the behaviors statistically tied to your best and worst days.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">9 visualization sections</strong> — Mood trend chart, 6 vitals charts (sleep, energy, stress, performance, motivation, connectedness), mood calendar, sleep duration bars, activities and emotions pie charts, and consistency streaks.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">5 time scales</strong> — Week, month, year, cycle, and version. Time navigator with previous/next navigation and dynamic period labels.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Correlation insights</strong> — &quot;What makes you shine&quot; and &quot;What makes you down&quot; cards that surface activities statistically linked to high or low mood days.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Previous-period comparison on all charts. Blurred sample data when insufficient check-ins. Keyboard hotkeys and full i18n across 5 locales.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Nine sections</strong> — Mood trend, six vitals (sleep, energy, stress, performance, motivation, connectedness), mood calendar, sleep duration, activities and emotions breakdown, and consistency streaks.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Five time scales</strong> — Week, month, year, cycle, version. Step through any period with previous and next.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">What lifts you, what drags you</strong> — Cards highlight the activities most linked to your highest- and lowest-mood days.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Every chart shows how the current period compares to the previous one. Sample data appears blurred until you&apos;ve logged enough check-ins. Available in all five languages.</span></li>
                     </ul>
                     <div className="flex items-center gap-2 p-3 rounded-lg bg-blue-950/30 border border-blue-900/50 mt-4">
                         <span className="material-symbols-outlined text-blue-200">lock</span>
@@ -173,13 +174,13 @@ export default function ChangelogPage() {
             date: "March 19, 2026",
             tags: ["New Feature"],
             type: "Features",
-            title: "Feedback Page & White-Mode Emails",
+            title: "Feedback Page & Lighter Emails",
             description: (
                 <>
-                    <p>A new in-app feedback channel and a redesigned email template that works beautifully in light-mode email clients.</p>
+                    <p>Send feedback directly from inside the app, and receive auth emails that look polished in any inbox — light or dark.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Feedback page</strong> — Submit feedback directly from the app with auto-filled name, email, and plan. Wrapped in the cinematic auth layout with a success animation.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">White-mode email templates</strong> — Light background redesign for verification and auth emails. Inter font with responsive fallback and branded footer with social links.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Feedback page</strong> — Share thoughts without leaving the app. Your name, email, and plan auto-fill, and a small confirmation animation plays on send.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Lighter email design</strong> — Verification and password emails now use a clean light layout that reads well in any inbox, with a branded footer linking back to the app.</span></li>
                     </ul>
                 </>
             ),
@@ -189,16 +190,16 @@ export default function ChangelogPage() {
             date: "March 18, 2026",
             tags: ["New Feature"],
             type: "Features",
-            title: "Daily Pulse — Check-In System",
+            title: "Daily Pulse — Morning & Evening Check-Ins",
             description: (
                 <>
-                    <p>Track your daily well-being through structured morning and evening check-ins. Daily Pulse captures mood, vitals, emotions, and activities to build a rich picture of your life over time.</p>
+                    <p>Track your daily wellbeing through structured morning and evening check-ins. Daily Pulse captures mood, vitals, emotions, and activities, building up a rich picture of your life over time.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Morning check-in</strong> — 4 steps: mood via the interactive MoodOrb (0–100), sleep quality, feelings (choose from 24 emotions across positive, neutral, and negative sentiments), and focus tags for the day.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Evening check-in</strong> — 8 steps: mood, productivity, stress, motivation, energy, and connectedness (all 0–100 vital sliders), plus feelings and activity tags.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">MoodOrb</strong> — A 7-ring animated glass sphere using portal logo colors. Internal color masses drift and scale with mood. Eyes open progressively, mouth curves from frown to smile, and specular highlights shimmer.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">PulseCard</strong> — Split morning/evening card with animated sky and night gradients, breathing sun and twinkling moon, and completion status badges.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Dashboard <code className="text-blue-400/80 text-xs">PulseSignal</code> indicators, mobile <code className="text-blue-400/80 text-xs">PulseFAB</code> that auto-shows when a check-in is pending, and reminder settings in the Pulse tab.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Morning check-in</strong> — Four steps: mood, sleep quality, how you&apos;re feeling (24 emotions to pick from), and what you want to focus on today.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Evening check-in</strong> — Eight steps covering mood, productivity, stress, motivation, energy, and connectedness on a 0–100 scale, plus what you felt and what you did.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">MoodOrb</strong> — A glowing sphere that breathes with your mood: the colors drift, the eyes open, the smile curves up. The orb is tied to El Portal&apos;s logo palette.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Pulse card on the dashboard</strong> — Split morning and evening card with sun and moon animations, and clear badges for what&apos;s done.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Subtle indicators on the dashboard, a floating shortcut on mobile when a check-in is pending, and customizable reminder timing in Settings.</span></li>
                     </ul>
                     <div className="flex items-center gap-2 p-3 rounded-lg bg-blue-950/30 border border-blue-900/50 mt-4">
                         <span className="material-symbols-outlined text-blue-200">lock</span>
@@ -212,15 +213,15 @@ export default function ChangelogPage() {
             date: "April 01, 2026",
             tags: ["New Feature"],
             type: "Features",
-            title: "Archives WYSIWYG Editor & Checklists",
+            title: "Archives — Rich-Text Editor & Checklists",
             description: (
                 <>
-                    <p>The Archives have been rebuilt with a rich-text WYSIWYG editor and interactive checklists, replacing the raw Markdown workflow with a polished writing experience.</p>
+                    <p>The Archives have a real writing experience now: a rich-text editor with a floating toolbar, and interactive checklists you can tick directly inside your notes.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">MDXEditor integration</strong> — Floating toolbar with bold, italic, headings, quotes, lists, links, and code blocks. Fully themed to match the El Portal glass design.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Interactive checklists</strong> — Type <code className="text-blue-400/80 text-xs">- [ ]</code> and it auto-converts into a toggleable checklist with dark-mode theming and accessible focus states.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Component extraction</strong> — Archives page decomposed from a monolith into 8 focused components (ArchiveEditorView, EntriesSidebar, MantraBankView, LifeChecklistView, and more).</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Proper Unicode typography across all 5 locales — curly quotes, en dashes, and ellipses replacing ASCII approximations.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Rich-text editing</strong> — Floating toolbar with bold, italic, headings, quotes, lists, links, and code blocks. Themed to match the El Portal glass look.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Interactive checklists</strong> — Type a checkbox marker and it turns into a real checkbox you can toggle. Works in the dark theme with proper focus states.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Faster, calmer page</strong> — The Archives have been reorganized for snappier load and easier reading.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Polished typography across all five languages — curly quotes, en dashes, and proper ellipses.</span></li>
                     </ul>
                 </>
             ),
@@ -230,14 +231,14 @@ export default function ChangelogPage() {
             date: "March 29, 2026",
             tags: ["New Feature", "Improvement"],
             type: "Features",
-            title: "Dashboard Day Inspector & Multi-Cycle Goals",
+            title: "Day Inspector & Multi-Cycle Goals",
             description: (
                 <>
-                    <p>The standalone History page has been merged into the Dashboard as an inline Day Inspector, and the Goals page now supports multi-cycle viewing with past-cycle intelligence.</p>
+                    <p>The standalone History page has been folded into the Dashboard as an inline Day Inspector. The Goals page now lets you view your goals across multiple cycles.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Day Inspector</strong> — Click any data point on the performance chart to view and edit that day&apos;s habits inline. URL-synced state with <code className="text-blue-400/80 text-xs">?view=week|30d|cycle&amp;date=YYYY-MM-DD</code> for shareable views.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Multi-cycle goals</strong> — Select multiple cycles via pill toggles to view goals across time. Past-cycle goals are read-only with carry-forward capability. Metric stats frozen at cycle boundaries to prevent retroactive score inflation.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Chart reactivity fix</strong> — Progress chart now updates instantly on habit toggle via synchronous optimistic scoring.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Day Inspector</strong> — Click any point on your performance chart to inspect and edit that day&apos;s habits without leaving the page. The view stays in the URL, so you can share it.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Multi-cycle goals</strong> — Toggle between cycles to see your goals across time. Past-cycle goals stay locked but can be carried forward into the current cycle.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Snappier chart</strong> — The progress chart now updates instantly when you tick a habit, with no perceptible lag.</span></li>
                     </ul>
                 </>
             ),
@@ -247,17 +248,17 @@ export default function ChangelogPage() {
             date: "March 28, 2026",
             tags: ["Improvement", "Fix"],
             type: "Features",
-            title: "Architecture, Accessibility & Performance",
+            title: "Faster, Cleaner & More Accessible",
             description: (
                 <>
-                    <p>A sweeping refactor pass decomposing monolithic pages, adding WCAG 2.1 AA compliance, and parallelizing data fetching across the app.</p>
+                    <p>Pages load faster, every screen is now usable with a keyboard or screen reader, and Lab and Settings have been rebuilt for clarity.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Lab page decomposition</strong> — Split into 6 focused components (VersionBar, CycleCard, CycleList, CycleGoalsPanel, HabitSelectorModal, VersionEditorModal) with version activate/edit/delete management.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Settings modal extraction</strong> — 1,259-line monolith split into 5 tab components (Account, General, Appearance, Pulse, Storage).</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Accessibility audit</strong> — ARIA roles, labels, and keyboard navigation added to 12 components. Cycle editor uses <code className="text-blue-400/80 text-xs">listbox/option</code> roles, forms use <code className="text-blue-400/80 text-xs">aria-invalid</code> + <code className="text-blue-400/80 text-xs">aria-describedby</code>.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Performance</strong> — <code className="text-blue-400/80 text-xs">Promise.all</code> for parallel data fetching, Google SDK moved to <code className="text-blue-400/80 text-xs">afterInteractive</code>, react-markdown dynamically imported (~60KB saved).</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Identity system toggle</strong> — Restored in Settings with reactive UI hiding across Lab, Dashboard, Archives, and CycleEditor when disabled.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>TypeScript strict mode enabled (removed <code className="text-blue-400/80 text-xs">ignoreBuildErrors</code>), Version modal redesigned with stepper, Raycast-style hover states on habit list.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Reorganized Lab</strong> — Clearer sections for versions, cycles, goals, and habits. Editing a version now goes through a focused stepper.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Cleaner Settings</strong> — Five tabs: Account, General, Appearance, Pulse, Storage. Easy to find what you&apos;re looking for.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Accessibility</strong> — Twelve key parts of the app now work properly with screen readers and keyboard-only navigation. WCAG AA compliant.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Faster loading</strong> — Pages fetch their data in parallel and only load heavy bits when they&apos;re actually needed. The whole app feels meaningfully snappier.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Identity toggle</strong> — Turn the identity system on or off in Settings, and the related UI hides instantly across Lab, Dashboard, Archives, and the cycle editor.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Version-creation modal redesigned with a stepper, plus subtle Raycast-style hover states on the habit list.</span></li>
                     </ul>
                 </>
             ),
@@ -267,14 +268,14 @@ export default function ChangelogPage() {
             date: "March 16, 2026",
             tags: ["Improvement"],
             type: "Features",
-            title: "Database Page Refactor & Unified Actions",
+            title: "Database Page — Cleaner & Faster",
             description: (
                 <>
-                    <p>The Database page has been rebuilt with consolidated actions, memoized lookups, and full type safety across all four tabs.</p>
+                    <p>The Database page has been rebuilt for speed and consistency. Every entity now behaves the same way, and navigating between tabs feels noticeably quicker.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Unified entity actions</strong> — Duplicate, edit, and delete handlers consolidated into single reusable functions across versions, cycles, habits, and goals.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Performance</strong> — Memoized lookup maps (<code className="text-blue-400/80 text-xs">versionMap</code>, <code className="text-blue-400/80 text-xs">cycleMap</code>, <code className="text-blue-400/80 text-xs">logIndex</code>) for O(1) access, plus <code className="text-blue-400/80 text-xs">useCallback</code>-wrapped handlers.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>New <code className="text-blue-400/80 text-xs">addVersion()</code> and <code className="text-blue-400/80 text-xs">addCycle()</code> service helpers. SegmentedToggle secondary variant with graphite theme.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Unified actions</strong> — Duplicate, edit, and delete now work the same way across versions, cycles, habits, and goals.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Snappier interactions</strong> — Filtering and switching tabs feels instant, even on large databases.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>New polished segmented toggle with a subtle graphite variant.</span></li>
                     </ul>
                 </>
             ),
@@ -284,15 +285,15 @@ export default function ChangelogPage() {
             date: "March 15, 2026",
             tags: ["Fix", "Optimization"],
             type: "Features",
-            title: "Codebase Review — Type Safety, Hooks & Dead Code",
+            title: "Quality Pass — Stability & Polish",
             description: (
                 <>
-                    <p>A comprehensive codebase review pass fixing React hook violations, removing dead code, and eliminating unsafe types across all portal pages.</p>
+                    <p>A focused pass to fix subtle bugs, tighten up data handling, and clear out dead weight across every page.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Critical hook fix</strong> — Resolved conditional <code className="text-blue-400/80 text-xs">useMemo</code> violation on the dashboard where chart data was computed after an early return guard.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Type safety</strong> — Extended Goal interface with missing <code className="text-blue-400/80 text-xs">priority</code> and <code className="text-blue-400/80 text-xs">goal_lineage_id</code> fields, replaced <code className="text-blue-400/80 text-xs">any</code> casts, extracted <code className="text-blue-400/80 text-xs">LabPageData</code> interface, and added null-safety guards throughout.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Dead code removal</strong> — Cleaned up console.logs, stale localStorage refs, unused imports, and commented-out <code className="text-blue-400/80 text-xs">unstable_cache</code> from cinema page.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Added missing <code className="text-blue-400/80 text-xs">&quot;use client&quot;</code> directives to 5 components. Extracted <code className="text-blue-400/80 text-xs">parseSubtaskLines</code> helper to deduplicate regex logic. Fixed hardcoded English string with i18n key.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Dashboard fix</strong> — Resolved a rare ordering issue that could cause a chart to render incorrectly under specific conditions.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">More accurate goal data</strong> — Goals carry richer metadata now, with safer handling when fields are missing.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Cleaner under the hood</strong> — Removed leftover diagnostics and unused code paths.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>A stray English string in non-English locales has been pulled into the proper translation.</span></li>
                     </ul>
                 </>
             ),
@@ -305,12 +306,12 @@ export default function ChangelogPage() {
             title: "Mobile-First Experience",
             description: (
                 <>
-                    <p>El Portal is no longer desktop-only. A full mobile experience has been built from the ground up with dedicated routes and native-feeling navigation.</p>
+                    <p>El Portal is no longer desktop-only. A full mobile experience has been built from the ground up with native-feeling navigation.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Dedicated <code className="text-blue-400/80 text-xs">/m/</code> routes for habits, goals, and analytics — optimized for touch and small screens.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>New <strong className="text-zinc-200">BottomTabBar</strong> navigation for fast context switching on mobile.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Responsive dialog system replacing desktop modals with mobile-friendly sheets.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Automatic mobile detection with screen-width and user-agent based redirect logic.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Dedicated mobile screens for habits, goals, and analytics — built for touch and small screens.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>New <strong className="text-zinc-200">bottom tab bar</strong> for fast switching between the screens you use most.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Mobile-friendly sheets replace desktop modals where it matters.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Automatic mobile detection on first load — open the app on your phone and you land in the right place.</span></li>
                     </ul>
                 </>
             ),
@@ -320,15 +321,15 @@ export default function ChangelogPage() {
             date: "March 14, 2026",
             tags: ["New Feature"],
             type: "Features",
-            title: "Internationalization — 5 Languages",
+            title: "Now in 5 Languages",
             description: (
                 <>
-                    <p>El Portal now speaks your language. Full internationalization powered by next-intl with 670+ translation keys across every screen.</p>
+                    <p>El Portal now speaks your language. Every screen has been fully translated, and your language preference follows you across devices.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Supports <strong className="text-zinc-200">English, Spanish, Chinese (Simplified), Portuguese, and French</strong>.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Language preference syncs between localStorage and your database settings — persists across devices.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>670+ translation keys organized across 12 namespaces for complete UI coverage.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Added Noto Sans SC font for proper Chinese character rendering.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Available in <strong className="text-zinc-200">English, Spanish, Chinese (Simplified), Portuguese, and French</strong>.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Your language preference syncs to your account, so it follows you to any device.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Every screen, every label, every error message — fully translated.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Proper Chinese character rendering with a dedicated font.</span></li>
                     </ul>
                 </>
             ),
@@ -338,13 +339,13 @@ export default function ChangelogPage() {
             date: "March 14, 2026",
             tags: ["New Feature", "Fix"],
             type: "Features",
-            title: "Password Reset Flow & Security Hardening",
+            title: "Password Reset & Security Hardening",
             description: (
                 <>
-                    <p>A complete forgot/reset password system and critical security improvements to the authentication layer.</p>
+                    <p>A complete forgot-password flow, plus important security improvements to the auth layer.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Password reset flow</strong> — Forgot password link on login, secure token-based API endpoint, branded email with 1-hour expiring tokens, and a dedicated reset page with confirmation validation.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Security hardening</strong> — Removed hardcoded Supabase anon key fallback. Replaced signed URL tokens in email templates with public bucket URLs for static assets.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Reset your password</strong> — Forgot-password link on the login screen sends a branded email with a one-hour reset link, and a clean reset page handles the new password and confirmation.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Security hardened</strong> — Internal cleanup to remove unused fallback credentials and tighten how email assets are served.</span></li>
                     </ul>
                     <div className="flex items-center gap-2 p-3 rounded-lg bg-blue-950/30 border border-blue-900/50 mt-4">
                         <span className="material-symbols-outlined text-blue-200">lock</span>
@@ -358,13 +359,13 @@ export default function ChangelogPage() {
             date: "March 14, 2026",
             tags: ["Improvement"],
             type: "Features",
-            title: "Tempo Redesign & Custom Components",
+            title: "Tempo Redesign",
             description: (
                 <>
-                    <p>A visual overhaul of the Tempo settings and a new custom Select component for a more polished interaction model.</p>
+                    <p>A visual overhaul of the Tempo screen and a new dropdown that finally feels at home in the dark theme.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Tempo UI redesign</strong> — Hero sprint length display as centerpiece, color-coded valid/invalid division indicators, inline day input and cycle stepper, and an animated timeline bar visualizing version division into cycles.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Custom Select component</strong> — Styled dropdown replacing native HTML selects across settings and history pages, with full accessibility support.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Tempo redesign</strong> — Sprint length now sits as the centerpiece, with color-coded indicators showing whether your version divides cleanly into cycles. An animated timeline visualizes the breakdown.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Polished dropdowns</strong> — Native dropdowns have been replaced with a styled version that matches the rest of the app and supports keyboard navigation.</span></li>
                     </ul>
                 </>
             ),
@@ -377,11 +378,11 @@ export default function ChangelogPage() {
             title: "Drag-and-Drop & Unified Settings",
             description: (
                 <>
-                    <p>Two major UX upgrades that eliminate friction in daily workflows.</p>
+                    <p>Two upgrades that take real friction out of daily use: reorder habits and goals by dragging, and find every setting in one place.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Drag-and-drop reordering</strong> — Reorder habits and goals with smooth dnd-kit interactions. Ordering is persisted to the database instantly.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Unified Settings modal</strong> — Three separate modals (Account, Tempo, General) consolidated into one tabbed interface. Password changes, avatar uploads, and account deletion all in one place.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Secure account deletion</strong> — New API endpoint with session verification and FK-safe cascade deletion order.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Drag-and-drop reordering</strong> — Reorder habits and goals with a smooth drag. The new order saves instantly.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">One Settings window</strong> — Account, Tempo, and General preferences now live in a single tabbed window. Password changes, avatar uploads, and account deletion all in one place.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Account deletion</strong> — Delete your account directly from Settings. A confirmation step prevents accidents, and everything is removed cleanly.</span></li>
                     </ul>
                 </>
             ),
@@ -391,15 +392,15 @@ export default function ChangelogPage() {
             date: "March 07, 2026",
             tags: ["Improvement"],
             type: "Features",
-            title: "Semantic Design Tokens & Dashboard Polish",
+            title: "Design Consistency & Dashboard Polish",
             description: (
                 <>
-                    <p>A visual consistency pass across the entire app, replacing scattered hardcoded colors with a unified token system.</p>
+                    <p>A consistency pass across the entire app — same surfaces, same blues, same hover states everywhere.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Semantic design tokens</strong> — CSS variable-based system (<code className="text-blue-400/80 text-xs">bg-surface</code>, <code className="text-blue-400/80 text-xs">text-fg</code>, <code className="text-blue-400/80 text-xs">border-border</code>) with automatic light/dark mode switching.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Dashboard viewport fix</strong> — Dashboard no longer forces unnecessary scrolling.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Replaced monospace font with Inter on all charts and numeric indicators for visual consistency.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Chart tooltips now position above the data point to prevent triggering page scroll.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Unified visual language</strong> — Every color and surface now comes from a single shared system, so the app looks coherent from screen to screen.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">No more forced scrolling</strong> — The Dashboard now fits cleanly in your viewport.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Charts and numbers now use the same font as the rest of the app.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Chart tooltips now appear above your cursor instead of below, so they no longer trigger page scroll on hover.</span></li>
                     </ul>
                 </>
             ),
@@ -409,15 +410,15 @@ export default function ChangelogPage() {
             date: "March 04, 2026",
             tags: ["Fix", "Improvement"],
             type: "Features",
-            title: "Auth Migration & Architecture Modernization",
+            title: "Sign-In & Foundations Modernized",
             description: (
                 <>
-                    <p>Infrastructure-level changes that make El Portal faster, more secure, and easier to evolve.</p>
+                    <p>Foundation-level work that makes El Portal faster, more secure, and easier to grow.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Local authentication</strong> — Migrated from n8n workflow automation to native Next.js API routes. Uses Supabase Admin SDK for server-side user creation and Nodemailer for branded verification emails.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Next.js 16 modernization</strong> — Migrated from <code className="text-blue-400/80 text-xs">middleware.ts</code> to <code className="text-blue-400/80 text-xs">proxy.ts</code> for modern request handling.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Data model refinements</strong> — Beliefs fused with Mantras for simplified knowledge management. User settings consolidated into a single JSONB column.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Codebase cleanup: removed unused documentation, test files, and improved overall project organization.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">New sign-in pipeline</strong> — Sign-in and verification now run on our own infrastructure, with faster, more reliable verification emails.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Modern foundation</strong> — Underlying request handling has been brought up to the latest version of our stack, opening the door for faster pages and new features.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Cleaner data model</strong> — Beliefs and Mantras are now one unified concept. Settings consolidated into a single, easier-to-manage place.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>General cleanup — unused files removed and overall project organization improved.</span></li>
                     </ul>
                 </>
             ),
@@ -430,7 +431,7 @@ export default function ChangelogPage() {
             title: "Version 2.0 — Official Release",
             description: (
                 <>
-                    <p>El Portal V2 is live. A ground-up rebuild delivering a mobile-first experience, unified architecture, semantic design system, and a completely overhauled interaction model. Every layer of the stack has been touched.</p>
+                    <p>El Portal V2 is live. A ground-up rebuild delivering a true mobile experience, a refined visual language, and a completely overhauled interaction model. Every screen has been rethought.</p>
                     <div className="flex items-center gap-2 p-3 rounded-lg bg-blue-950/30 border border-blue-900/50 mt-4">
                         <span className="material-symbols-outlined text-blue-200">rocket_launch</span>
                         <p className="text-sm font-medium text-blue-200">All existing user data has been seamlessly migrated. No action required.</p>
@@ -443,14 +444,14 @@ export default function ChangelogPage() {
             date: "March 15, 2026",
             tags: ["New Feature", "Optimization"],
             type: "Features",
-            title: "Performance Heatmaps & Dual-Progression System V2",
+            title: "Heatmaps & Smarter Progress",
             description: (
                 <>
-                    <p>We've completely rewritten our core synchronization engine to reduce latency by 45% in high-concurrency environments while heavily upgrading the statistics visualization.</p>
+                    <p>Faster sync, sharper-looking charts, and offline support so your daily logs are never lost.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Implemented asymptotic habit consistency formula (`Progress % = 100 × (1 − e^(−0.061 × streak_days))`).</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Upgraded weekly progress area plots and introduced GitHub-style day-of-week performance heatmaps.</span></li>
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Added support for offline persistence via IndexedDB ensuring day-logs are never lost.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>A new habit-consistency curve that rewards staying on a streak — early consistency now matters as much as long ones.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Upgraded weekly progress charts and a new day-of-week heatmap that shows your strongest and weakest days.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Offline support — your day logs save locally and sync when you&apos;re back online.</span></li>
                     </ul>
                 </>
             ),
