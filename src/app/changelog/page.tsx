@@ -17,7 +17,7 @@ export default function ChangelogPage() {
             date: "May 02, 2026",
             tags: ["New Feature", "Improvement"],
             type: "Features",
-            title: "Insights v4.1 — Higher-Order Pattern Detection",
+            title: "Insights — Higher-Order Pattern Detection",
             description: (
                 <>
                     <p>The correlation engine has been expanded with four new pattern detectors and a Linear-style card design that lets a single status primitive carry the entire signal.</p>
@@ -81,7 +81,7 @@ export default function ChangelogPage() {
                 <>
                     <p>The Insights tab graduated from sample preview to a real narrative engine, and time-scale navigation across analytics has been unified into a single floating pill.</p>
                     <ul className="list-none space-y-2 mt-3">
-                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Insights tab v1</strong> — Multi-target correlations, pattern detection, and a template-driven narrative engine. Graduated empty states with sample preview when there isn&apos;t enough data yet.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Insights tab</strong> — Multi-target correlations, pattern detection, and a template-driven narrative engine. Graduated empty states with sample preview when there isn&apos;t enough data yet.</span></li>
                         <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Floating period pill</strong> — The scale selector and time navigator have been merged into one segmented-control-style pill, anchored at the bottom with a responsive mobile variant and safe-area awareness.</span></li>
                         <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Notifications tab</strong> — Settings split: Notifications + Email moved to a dedicated Bell-icon tab. Auto-save on change (800ms debounce), removed manual Save buttons. Report frequency picker (biweekly / monthly / bimonthly / quarterly / per-cycle).</span></li>
                         <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">PulseFAB lifted to header</strong> — Frees the bottom-right FAB slot on mobile and gets the check-in indicator into the visible chrome.</span></li>
@@ -113,7 +113,7 @@ export default function ChangelogPage() {
             date: "April 18, 2026",
             tags: ["New Feature"],
             type: "Features",
-            title: "Trends 2.0 — Tabbed Analytics Dashboard",
+            title: "Trends — Tabbed Analytics Dashboard",
             description: (
                 <>
                     <p>The monolithic 581-line Trends page has been refactored into a five-tab analytics shell with sliding indicator and URL-driven state. Four new wellbeing sections, a full Performance tab, a full Cycles tab, and a Reports tab with PNG/PDF export ship together.</p>
