@@ -33,7 +33,7 @@ export function ChangelogItem({
             <div className="absolute -left-[3.5px] top-[32px] md:top-[40px] h-2 w-2 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.6)] z-10" />
 
             {/* Content Card (Bento Box rules) */}
-            <div className="rounded-xl border border-white/5 bg-zinc-950/80 backdrop-blur-xl transition-all duration-300 ease-out hover:border-white/10 hover:bg-zinc-900/40 p-6 md:p-8 overflow-hidden">
+            <div className="rounded-xl border border-white/5 bg-zinc-950/80 transition-colors duration-300 ease-out hover:border-white/10 hover:bg-zinc-900/40 p-6 md:p-8 overflow-hidden">
 
                 {/* Metadata Row */}
                 <div className="flex flex-wrap items-center gap-3 mb-4">

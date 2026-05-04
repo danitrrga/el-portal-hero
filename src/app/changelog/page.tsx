@@ -13,22 +13,6 @@ export default function ChangelogPage() {
     // Extracted changelog data to cleanly filter and map
     const changelogData = [
         {
-            version: "2.0.0",
-            date: "March 14, 2026",
-            tags: ["Release"],
-            type: "Release",
-            title: "Version 2.0 — Official Release",
-            description: (
-                <>
-                    <p>El Portal V2 is live. A ground-up rebuild delivering a mobile-first experience, unified architecture, semantic design system, and a completely overhauled interaction model. Every layer of the stack has been touched.</p>
-                    <div className="flex items-center gap-2 p-3 rounded-lg bg-blue-950/30 border border-blue-900/50 mt-4">
-                        <span className="material-symbols-outlined text-blue-200">rocket_launch</span>
-                        <p className="text-sm font-medium text-blue-200">All existing user data has been seamlessly migrated. No action required.</p>
-                    </div>
-                </>
-            ),
-        },
-        {
             version: "2.0.22",
             date: "May 02, 2026",
             tags: ["New Feature", "Improvement"],
@@ -435,6 +419,22 @@ export default function ChangelogPage() {
                         <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Data model refinements</strong> — Beliefs fused with Mantras for simplified knowledge management. User settings consolidated into a single JSONB column.</span></li>
                         <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Codebase cleanup: removed unused documentation, test files, and improved overall project organization.</span></li>
                     </ul>
+                </>
+            ),
+        },
+        {
+            version: "2.0.0",
+            date: "March 14, 2026",
+            tags: ["Release"],
+            type: "Release",
+            title: "Version 2.0 — Official Release",
+            description: (
+                <>
+                    <p>El Portal V2 is live. A ground-up rebuild delivering a mobile-first experience, unified architecture, semantic design system, and a completely overhauled interaction model. Every layer of the stack has been touched.</p>
+                    <div className="flex items-center gap-2 p-3 rounded-lg bg-blue-950/30 border border-blue-900/50 mt-4">
+                        <span className="material-symbols-outlined text-blue-200">rocket_launch</span>
+                        <p className="text-sm font-medium text-blue-200">All existing user data has been seamlessly migrated. No action required.</p>
+                    </div>
                 </>
             ),
         },
