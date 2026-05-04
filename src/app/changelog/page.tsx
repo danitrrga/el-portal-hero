@@ -29,6 +29,122 @@ export default function ChangelogPage() {
             ),
         },
         {
+            version: "2.0.22",
+            date: "May 02, 2026",
+            tags: ["New Feature", "Improvement"],
+            type: "Features",
+            title: "Insights v4.1 — Higher-Order Pattern Detection",
+            description: (
+                <>
+                    <p>The correlation engine has been expanded with four new pattern detectors and a Linear-style card design that lets a single status primitive carry the entire signal.</p>
+                    <ul className="list-none space-y-2 mt-3">
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Habit-lag detection</strong> — Habit Day N to vital Day N+1 / N+2 across 6 vitals, with Benjamini-Hochberg correction across the full habit × vital × lag family. Lag-2 is suppressed when lag-1 is stronger for the same pair.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Feelings as a substrate</strong> — Point-biserial <code className="text-blue-400/80 text-xs">r</code> between feeling presence and habit completion, plus phi coefficient + chi-squared on 2×2 tables for feeling-pair clustering.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Habit-KPI lift</strong> — New <code className="text-blue-400/80 text-xs">computeHabitKpi</code> ties habits directly to daily score, perfect-day rate, and composite wellbeing.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Linear-style card</strong> — One status primitive — empty ring (low), half-filled with subtle halo (moderate), full disc with stronger glow (strong). No more rainbow tints, no more pictograms.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">History navigation &amp; freshness widget</strong> — Floating PeriodPill-style control walks through up to 10 stored reports. Per-cycle freshness arc tracks compute schedule; client-side recompute is fully locked — cron is the only legitimate trigger.</span></li>
+                    </ul>
+                </>
+            ),
+        },
+        {
+            version: "2.0.21",
+            date: "April 30, 2026",
+            tags: ["New Feature", "Improvement"],
+            type: "Features",
+            title: "Privacy, Consent & Linear Brand Realign",
+            description: (
+                <>
+                    <p>A foundational privacy rebuild paired with a top-to-bottom brand realign. Consent is now granular and reversible, your data is fully exportable and deletable, and the visual language has been pulled toward Linear&apos;s pure-mono restraint.</p>
+                    <ul className="list-none space-y-2 mt-3">
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">3-bucket consent</strong> — Bucket C (mood/habit/cycle data, GDPR Art. 9(2)(a)), Bucket A (PostHog Cloud EU telemetry, lazy-loaded only after consent), and Bucket B (anonymized AI research corpus). Each gate is independent and toggleable from the new Privacy tab in Settings.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">GDPR endpoints</strong> — <code className="text-blue-400/80 text-xs">/api/me/export</code> (Art. 15 + 20 portability) and <code className="text-blue-400/80 text-xs">/api/me/delete</code> (Art. 17 erasure) with type-to-confirm modal. Pseudonymization via HMAC-SHA256 with a rotating salt env.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Public /privacy page</strong> — Linear-grade transparency: 680px column, no cards, hairline dividers, pure mono. Inline Bucket / Provider / Right rows.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Brand realign</strong> — Green retired everywhere (habit done-state migrated from bali-500 to white). Pacific palette re-aliased to logo sky-blue, harmonizing 301 existing usages without a code sweep. Amber and yellow suppressed across the analytics surface.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Cookie-free telemetry</strong> — PostHog persistence set to <code className="text-blue-400/80 text-xs">memory</code>; <code className="text-blue-400/80 text-xs">distinct_id</code> resets per tab so the &quot;no cookies of any kind&quot; promise holds.</span></li>
+                    </ul>
+                    <div className="flex items-center gap-2 p-3 rounded-lg bg-blue-950/30 border border-blue-900/50 mt-4">
+                        <span className="material-symbols-outlined text-blue-200">lock</span>
+                        <p className="text-sm font-medium text-blue-200">Privacy by default. Granular consent. Full export and erasure on request.</p>
+                    </div>
+                </>
+            ),
+        },
+        {
+            version: "2.0.20",
+            date: "April 25, 2026",
+            tags: ["New Feature"],
+            type: "Features",
+            title: "Cinema — Fall Into the Photo",
+            description: (
+                <>
+                    <p>Opening a Cinema slide is no longer a fade — it is a morph. The card &quot;falls&quot; into a full-bleed overlay using a shared photo element, and the chrome assembles around it.</p>
+                    <ul className="list-none space-y-2 mt-3">
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Shared-element transition</strong> — Card → overlay morph via Motion <code className="text-blue-400/80 text-xs">layoutId</code>, spring settle <code className="text-blue-400/80 text-xs">{`{ duration: 0.55, bounce: 0.2 }`}</code>. Backdrop swaps to solid graphite during the morph to kill per-frame backdrop-filter cost; nav chrome fades in only after the photo settles.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Asymmetric exit</strong> — Snappy ease-out, no spring overshoot on close. Text panel staggers in via GPU-accelerated <code className="text-blue-400/80 text-xs">translateX</code>.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>ESC + arrow keys + body scroll lock wired. <code className="text-blue-400/80 text-xs">useReducedMotion</code> drops the morph and falls back to opacity crossfade.</span></li>
+                    </ul>
+                </>
+            ),
+        },
+        {
+            version: "2.0.19",
+            date: "April 22, 2026",
+            tags: ["New Feature", "Improvement"],
+            type: "Features",
+            title: "Insights Tab & Floating Period Pill",
+            description: (
+                <>
+                    <p>The Insights tab graduated from sample preview to a real narrative engine, and time-scale navigation across analytics has been unified into a single floating pill.</p>
+                    <ul className="list-none space-y-2 mt-3">
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Insights tab v1</strong> — Multi-target correlations, pattern detection, and a template-driven narrative engine. Graduated empty states with sample preview when there isn&apos;t enough data yet.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Floating period pill</strong> — The scale selector and time navigator have been merged into one segmented-control-style pill, anchored at the bottom with a responsive mobile variant and safe-area awareness.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Notifications tab</strong> — Settings split: Notifications + Email moved to a dedicated Bell-icon tab. Auto-save on change (800ms debounce), removed manual Save buttons. Report frequency picker (biweekly / monthly / bimonthly / quarterly / per-cycle).</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">PulseFAB lifted to header</strong> — Frees the bottom-right FAB slot on mobile and gets the check-in indicator into the visible chrome.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Arrow-key navigation, ARIA roles, and keyboard focus polish across the entire analytics surface. Hardcoded English strings extracted into i18n.</span></li>
+                    </ul>
+                </>
+            ),
+        },
+        {
+            version: "2.0.18",
+            date: "April 20, 2026",
+            tags: ["Improvement", "Fix"],
+            type: "Features",
+            title: "Wordmark, Volumetric Sidebar & Auth Hardening",
+            description: (
+                <>
+                    <p>The brand identity gets its first reusable lockup, the sidebar gains a cinematic active state, and Google Sign-In has been rebuilt against the modern FedCM API.</p>
+                    <ul className="list-none space-y-2 mt-3">
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">ElPortalWordmark</strong> — Extracted into a single component for consistent lockup across the auth screens, privacy page, and email templates. O-to-letter spacing tuned.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Volumetric cone sidebar</strong> — Active nav item now renders a layered radial-gradient cone light anchored off-screen right, a slim portal-400 pill with dual-stop glow, and a subtle <code className="text-blue-400/80 text-xs">feTurbulence</code> grain overlay that only shows on the selected row.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Shimmer skeletons</strong> — Reusable Skeleton primitive backed by a GPU-accelerated sweep with a <code className="text-blue-400/80 text-xs">--shimmer-index</code> cascade. Applied across Dashboard, Lab, Goals, Trends, and Archives.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Google Sign-In via FedCM + nonce</strong> — Fragile invisible-overlay button replaced with a clean visible button. SHA-256 nonce pair per session fixes the Supabase 400 nonce-mismatch error. <code className="text-blue-400/80 text-xs">google.accounts.id.cancel()</code> on sign-out fixes the &quot;origin not allowed&quot; error after re-login.</span></li>
+                    </ul>
+                </>
+            ),
+        },
+        {
+            version: "2.0.17",
+            date: "April 18, 2026",
+            tags: ["New Feature"],
+            type: "Features",
+            title: "Trends 2.0 — Tabbed Analytics Dashboard",
+            description: (
+                <>
+                    <p>The monolithic 581-line Trends page has been refactored into a five-tab analytics shell with sliding indicator and URL-driven state. Four new wellbeing sections, a full Performance tab, a full Cycles tab, and a Reports tab with PNG/PDF export ship together.</p>
+                    <ul className="list-none space-y-2 mt-3">
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Five-tab shell</strong> — Wellbeing / Performance / Cycles / Insights / Reports, with URL state via <code className="text-blue-400/80 text-xs">?tab=wellbeing</code> for shareable views. The page-level Pro gate has been removed — analytics is now free for all users.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Performance tab</strong> — 4 KPI cards (daily score average, perfect-day rate, best streak, consistency), daily score trend chart with score-decomposition popover, sortable habit reliability table, day-of-week heatmap, and a GitHub-style year heatmap.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Cycles tab</strong> — Cycle-over-Cycle score chart with regression trend line, scrollable cycle report cards, GoalJourneyCards (replacing GoalVelocity + GoalLineage), IdentityEvolutionTimeline, EnergyTimeline averaging energy by cycle-day position, and a problem-recurrence scanner that flags frictions appearing in 3+ cycles.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Reports tab</strong> — Premium report card with narrative, sparkline, and highlights. Rich config panel with PNG and PDF export via <code className="text-blue-400/80 text-xs">modern-screenshot</code> + <code className="text-blue-400/80 text-xs">jsPDF</code>, scroll lock during render, and a print stylesheet.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span><strong className="text-zinc-200">Mobile mirror</strong> — The full tab system is mirrored to <code className="text-blue-400/80 text-xs">/m/trends</code>, preserving touch-target sizing and the floating period pill.</span></li>
+                        <li className="flex items-start gap-2"><span className="text-zinc-700 mt-1">-</span><span>Wellbeing tab gains 4 new sections: CompositeWellbeingScore, VitalsRadarChart, MoodDeltaChart, SleepConsistencyCard. Full i18n across all 5 locales.</span></li>
+                    </ul>
+                </>
+            ),
+        },
+        {
             version: "2.0.16",
             date: "April 02, 2026",
             tags: ["Improvement", "Optimization"],
