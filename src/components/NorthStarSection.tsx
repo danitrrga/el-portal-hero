@@ -54,7 +54,7 @@ export default function NorthStarSection() {
                 <motion.div variants={containerVariants} className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {/* The System: Version */}
                     <motion.div variants={itemVariants}>
-                        <Card className="h-full group/card card-glow relative overflow-hidden border-zinc-800 bg-zinc-900/80 backdrop-blur-xl shadow-[0_0_30px_-5px_rgba(30,64,175,0.15)] transition-all duration-300 ease-out hover:border-blue-500/30">
+                        <Card className="h-full group/card card-glow relative overflow-hidden border-zinc-800 bg-zinc-900/80 shadow-[0_0_30px_-5px_rgba(30,64,175,0.15)] transition-colors duration-300 ease-out hover:border-blue-500/30">
                             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-blue-700/[0.03] to-transparent" />
                             <CardHeader className="relative pb-4">
                                 <div className="w-12 h-12 rounded-xl bg-zinc-950/50 border border-white/5 flex items-center justify-center mb-6 transition-colors duration-300 group-hover/card:border-blue-500/30">
@@ -73,7 +73,7 @@ export default function NorthStarSection() {
 
                     {/* The Engine: Cycle */}
                     <motion.div variants={itemVariants}>
-                        <Card className="h-full group/card card-glow relative overflow-hidden border-zinc-800 bg-zinc-900/80 backdrop-blur-xl shadow-[0_0_30px_-5px_rgba(30,64,175,0.15)] transition-all duration-300 ease-out hover:border-blue-500/30">
+                        <Card className="h-full group/card card-glow relative overflow-hidden border-zinc-800 bg-zinc-900/80 shadow-[0_0_30px_-5px_rgba(30,64,175,0.15)] transition-colors duration-300 ease-out hover:border-blue-500/30">
                             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-blue-700/[0.03] to-transparent" />
                             <CardHeader className="relative pb-4">
                                 <div className="w-12 h-12 rounded-xl bg-zinc-950/50 border border-white/5 flex items-center justify-center mb-6 transition-colors duration-300 group-hover/card:border-blue-500/30">
@@ -92,7 +92,7 @@ export default function NorthStarSection() {
 
                     {/* The Execution: Day */}
                     <motion.div variants={itemVariants}>
-                        <Card className="h-full group/card card-glow relative overflow-hidden border-zinc-800 bg-zinc-900/80 backdrop-blur-xl shadow-[0_0_30px_-5px_rgba(30,64,175,0.15)] transition-all duration-300 ease-out hover:border-blue-500/30">
+                        <Card className="h-full group/card card-glow relative overflow-hidden border-zinc-800 bg-zinc-900/80 shadow-[0_0_30px_-5px_rgba(30,64,175,0.15)] transition-colors duration-300 ease-out hover:border-blue-500/30">
                             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-blue-700/[0.03] to-transparent" />
                             <CardHeader className="relative pb-4">
                                 <div className="w-12 h-12 rounded-xl bg-zinc-950/50 border border-white/5 flex items-center justify-center mb-6 transition-colors duration-300 group-hover/card:border-blue-500/30">
